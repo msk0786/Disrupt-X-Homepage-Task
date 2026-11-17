@@ -37,12 +37,11 @@ npm run preview
 |---|---------|--------------|
 | 1 | Hero | Outcome headline, the ALEF 360° portfolio dashboard with floating cards for a new job, an AI alert and a closed incident |
 | 2 | Client logos | Real client logos from disrupt-x.io in a slow loop |
-| 3 | Scattered to one place | The brief's example: a pipe leak on WhatsApp, a failed fire door on paper and a permit in Excel fly into one ALEF 360° inbox as you scroll |
-| 4 | Statement | One big sentence that lights up word by word as you scroll, with the key phrases in the brand gradient |
-| 5 | Three teams | Facility, HSE and operator stories. Each one has a live demo screen |
-| 6 | Five live modules | HSEQ, CAFM \| CMMS, iBMS, Connected Operations and Mobility in tabs, with real product screenshots |
-| 7 | Why ALEF 360° | Platform strengths with count up numbers |
-| 8 | Final call to action and footer | Book a demo |
+| 3 | Chapter 01, scattered to one place | The brief's example: a pipe leak on WhatsApp, a failed fire door on paper and a permit in Excel fly into one ALEF 360° inbox as you scroll |
+| 4 | Chapter 02, three teams | Facility, HSE and operator stories. Each one has a live demo screen |
+| 5 | Chapter 03, five live modules | HSEQ, CAFM \| CMMS, iBMS, Connected Operations and Mobility in tabs, with real product screenshots |
+| 6 | Chapter 04, why ALEF 360° | Platform strengths with count up numbers |
+| 7 | Final call to action and footer | Book a demo |
 
 Only the five live modules from the brief appear on the page.
 
@@ -57,7 +56,7 @@ Every demo uses real buttons and announces changes through an `aria-live` region
 
 ## Scroll motion
 
-All motion runs through two hooks in `src/motion`. Components opt in with data attributes, so sections stay simple and the timing stays consistent.
+Every main section opens with a chapter scene (`ChapterIntro`), the way translate-wf.com moves from scene to scene. Smaller reveals run through two shared hooks in `src/motion`, and components opt in with data attributes, so sections stay simple and the timing stays consistent.
 
 | Effect | Where | How |
 |--------|-------|-----|
@@ -65,22 +64,24 @@ All motion runs through two hooks in `src/motion`. Components opt in with data a
 | Layered depth | Hero dashboard and cards | GSAP scrub: the dashboard tilts flat while cards drift at different speeds |
 | Scene exit | Hero | Copy eases away and the grid sinks slower than the page |
 | Scroll progress and active section | Header | A gradient line fills with the page, and the nav link for the current section lights up |
-| Word by word title reveal | Every section title | `SplitWords` masks each word, `data-words` makes them rise in turn |
-| Scattered to one place | Story section | Pinned scrub on desktop, unpinned on phones, so nothing fights the address bar |
-| Scroll lit statement | Statement | Each word goes from dim to white as you scroll, accent phrases light up in the gradient. Every word stays on screen and the dim colour still passes contrast |
-| Cursor spotlight | Hero and strength cards | `trackPointer` writes the cursor position to CSS variables, so a mint light follows the mouse across the grid and around card borders. No re-renders |
-| Timeline line | Teams | The brand's glowing line draws down the page and lights each team's node |
-| Swing in and parallax | Team screens | `data-reveal="right"` plus `data-speed` on a wrapper |
-| Curtain wipe | Module explorer | `data-reveal="clip"` |
-| Line draw and card flip | Why ALEF 360° | `data-draw` and `data-reveal="flip"` |
+| Chapter scenes | Start of chapters 01 to 04 | A brand grid panel wipes in as the section scrolls up: an expanding window (01), from the right with a glowing edge (02), a growing circle (03) and a rising curtain (04). The chapter number, title and lead rise in with it |
+| No dead scroll | Chapter scenes | Everything plays while the page is still moving. On desktop the scene then holds briefly, and the grid zooms and the text drifts during the hold, so the page never looks stuck |
+| Scattered to one place | Chapter 01 | Pinned scrub on desktop, unpinned on phones, so nothing fights the address bar |
+| Timeline line | Chapter 02 | The brand's glowing line draws down the page and lights each team's node |
+| Copy and screen fly in | Team stories | Copy slides in from the left, the product screen swings in from the right in 3D, both scrubbed so they reverse on the way back up |
+| Explorer zoom | Chapter 03 | The module explorer rises out of a smaller rounded window and settles at full size |
+| Cards lock in | Chapter 04 | Strength cards fly up from below at different speeds and land in the grid. The divider lines draw themselves |
+| Word by word titles | Team story titles, call to action | `SplitWords` masks each word, `data-words` makes them rise in turn |
 | Count up | Dashboards and stats | `CountUp` writes straight into the text node, so React does not re-render every frame |
 | Window opening | Final call to action | Clip path scrubs from inset to full size |
+| Footer reveal | Desktop | The page lifts away and uncovers the footer waiting underneath |
+| Cursor spotlight | Hero and strength cards | `trackPointer` writes the cursor position to CSS variables, so a mint light follows the mouse. No re-renders |
 
-Reveal variants: `data-reveal` (lift), `left`, `right`, `scale`, `flip`, `clip`. Parallax: `data-speed="0.35"`.
+Reveal variants for smaller elements: `data-reveal` (lift), `left`, `right`, `scale`, `flip`, `clip`. Parallax: `data-speed="0.35"`.
 
 **Reduced motion.** Everything animated sits inside `gsap.matchMedia()` with `prefers-reduced-motion: no-preference`, and the CSS loops stop. People who ask for less motion get every final state straight away, and the demos still work. Checked by rendering the page in Chrome with `--force-prefers-reduced-motion`.
 
-**Mobile.** The pin turns off below 900px, parallax distance halves, and `main` clips sideways overflow so nothing that slides in can widen the page.
+**Mobile.** Pins and the footer reveal turn off below 900px, the wipes and fly ins still play with shorter distances, and `main` clips sideways overflow so nothing that slides in can widen the page.
 
 ## Project structure
 
@@ -98,11 +99,11 @@ src/
   styles/               tokens.css, fonts.css, base.css, utilities.css
   motion/               gsap setup, useReveal, useParallax, CountUp
   components/ui/        Button, Card, Container, Eyebrow, GradientText, Icon, IconBadge,
-                        SectionHeading, SplitWords, StatusPill, Tabs
+                        SplitWords, StatusPill, Tabs
   components/frames/    BrowserFrame, PhoneFrame
   components/screens/   HeroDashboard, SourceCard, UnifiedInbox, WorkOrderPhone,
                         IncidentFlow, SiteDashboard
-  sections/             Header, Hero, LogoMarquee, ScatteredToOne, Statement, Teams,
+  sections/             Header, Hero, LogoMarquee, ChapterIntro, ScatteredToOne, Teams,
                         TeamStory, Modules, Strengths, FinalCta, Footer
 docs/lighthouse/        saved Lighthouse reports
 ```
