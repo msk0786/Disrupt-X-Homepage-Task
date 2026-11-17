@@ -3,50 +3,173 @@
   "title": "Facility and safety teams that run on ALEF 360°",
   "lead": "Operating since 2022 with 50+ enterprise customers across 20+ countries.",
   "tabsLabel": "Client regions",
-  "pause": "Pause the logos",
-  "play": "Play the logos",
   "regions": [
     {
       "id": "mena",
       "label": "MENA",
       "items": [
-        { "name": "Taaleem", "src": "/images/clients/taaleem.svg", "width": 166, "height": 60 },
-        { "name": "Majid Al Futtaim", "src": "/images/clients/majid-alfuttaim.svg", "width": 238, "height": 43 },
-        { "name": "Al-Futtaim Technologies", "src": "/images/clients/al-futtaim.svg", "width": 395, "height": 43 },
-        { "name": "Imdaad", "src": "/images/clients/imdaad.svg", "width": 63, "height": 60 },
-        { "name": "wasl properties", "src": "/images/clients/wasl-properties.svg", "width": 156, "height": 60 },
-        { "name": "ABM Olayan", "src": "/images/clients/abm-olayan.svg", "width": 226, "height": 43 },
-        { "name": "NAFFCO", "src": "/images/clients/naffco.svg", "width": 164, "height": 66 },
-        { "name": "Dynasys Networks", "src": "/images/clients/dynasys.svg", "width": 184, "height": 56 },
+        {
+          "name": "Taaleem",
+          "src": "/images/clients/taaleem.svg",
+          "width": 166,
+          "height": 60
+        },
+        {
+          "name": "Majid Al Futtaim",
+          "src": "/images/clients/majid-alfuttaim.svg",
+          "width": 238,
+          "height": 43
+        },
+        {
+          "name": "Al-Futtaim Technologies",
+          "src": "/images/clients/al-futtaim.svg",
+          "width": 395,
+          "height": 43
+        },
+        {
+          "name": "Imdaad",
+          "src": "/images/clients/imdaad.svg",
+          "width": 63,
+          "height": 60
+        },
+        {
+          "name": "wasl properties",
+          "src": "/images/clients/wasl-properties.svg",
+          "width": 156,
+          "height": 60
+        },
+        {
+          "name": "ABM Olayan",
+          "src": "/images/clients/abm-olayan.svg",
+          "width": 226,
+          "height": 43
+        },
+        {
+          "name": "NAFFCO",
+          "src": "/images/clients/naffco.svg",
+          "width": 164,
+          "height": 66
+        },
+        {
+          "name": "Dynasys Networks",
+          "src": "/images/clients/dynasys.svg",
+          "width": 184,
+          "height": 56
+        },
         {
           "name": "Al Ghurair Properties",
           "src": "/images/clients/alghurair-properties.svg",
           "width": 236,
           "height": 60
         },
-        { "name": "Al Khaleej", "src": "/images/clients/alkhaleej.svg", "width": 205, "height": 60 },
-        { "name": "ZainTech", "src": "/images/clients/zaintech.svg", "width": 212, "height": 37 },
-        { "name": "Digital Mesh", "src": "/images/clients/digital-mesh.svg", "width": 258, "height": 60 },
-        { "name": "MulticomIoT", "src": "/images/clients/multicomiot.svg", "width": 214, "height": 42 },
-        { "name": "Operon ME", "src": "/images/clients/operon-me.svg", "width": 201, "height": 54 },
-        { "name": "Tadoom", "src": "/images/clients/tadoom.svg", "width": 235, "height": 60 },
-        { "name": "ServeU", "src": "/images/clients/serveu.svg", "width": 129, "height": 60 },
-        { "name": "Watad", "src": "/images/clients/watad.svg", "width": 86, "height": 60 },
-        { "name": "Rekeep", "src": "/images/clients/rekeep.svg", "width": 199, "height": 60 },
-        { "name": "OCS", "src": "/images/clients/ocs.svg", "width": 153, "height": 60 }
+        {
+          "name": "Al Khaleej",
+          "src": "/images/clients/alkhaleej.svg",
+          "width": 205,
+          "height": 60
+        },
+        {
+          "name": "ZainTech",
+          "src": "/images/clients/zaintech.svg",
+          "width": 212,
+          "height": 37
+        },
+        {
+          "name": "Digital Mesh",
+          "src": "/images/clients/digital-mesh.svg",
+          "width": 258,
+          "height": 60
+        },
+        {
+          "name": "MulticomIoT",
+          "src": "/images/clients/multicomiot.svg",
+          "width": 214,
+          "height": 42
+        },
+        {
+          "name": "Operon ME",
+          "src": "/images/clients/operon-me.svg",
+          "width": 201,
+          "height": 54
+        },
+        {
+          "name": "Tadoom",
+          "src": "/images/clients/tadoom.svg",
+          "width": 235,
+          "height": 60
+        },
+        {
+          "name": "ServeU",
+          "src": "/images/clients/serveu.svg",
+          "width": 129,
+          "height": 60
+        },
+        {
+          "name": "Watad",
+          "src": "/images/clients/watad.svg",
+          "width": 86,
+          "height": 60
+        },
+        {
+          "name": "Rekeep",
+          "src": "/images/clients/rekeep.svg",
+          "width": 199,
+          "height": 60
+        },
+        {
+          "name": "OCS",
+          "src": "/images/clients/ocs.svg",
+          "width": 153,
+          "height": 60
+        }
       ]
     },
     {
       "id": "apac",
       "label": "APAC",
       "items": [
-        { "name": "UEM Edgenta", "src": "/images/clients/uem.svg", "width": 118, "height": 71 },
-        { "name": "KBR", "src": "/images/clients/kbr.svg", "width": 176, "height": 51 },
-        { "name": "Enviro Group", "src": "/images/clients/enviro.svg", "width": 196, "height": 60 },
-        { "name": "Resource Data Management", "src": "/images/clients/resource-rdm.svg", "width": 113, "height": 71 },
-        { "name": "Singamas Technology", "src": "/images/clients/singamas.webp", "width": 483, "height": 88 },
-        { "name": "Switchzmart", "src": "/images/clients/switchzmart.webp", "width": 275, "height": 88 },
-        { "name": "VergeIoT", "src": "/images/clients/vergeiot.svg", "width": 140, "height": 60 }
+        {
+          "name": "UEM Edgenta",
+          "src": "/images/clients/uem.svg",
+          "width": 118,
+          "height": 71
+        },
+        {
+          "name": "KBR",
+          "src": "/images/clients/kbr.svg",
+          "width": 176,
+          "height": 51
+        },
+        {
+          "name": "Enviro Group",
+          "src": "/images/clients/enviro.svg",
+          "width": 196,
+          "height": 60
+        },
+        {
+          "name": "Resource Data Management",
+          "src": "/images/clients/resource-rdm.svg",
+          "width": 113,
+          "height": 71
+        },
+        {
+          "name": "Singamas Technology",
+          "src": "/images/clients/singamas.webp",
+          "width": 483,
+          "height": 88
+        },
+        {
+          "name": "Switchzmart",
+          "src": "/images/clients/switchzmart.webp",
+          "width": 275,
+          "height": 88
+        },
+        {
+          "name": "VergeIoT",
+          "src": "/images/clients/vergeiot.svg",
+          "width": 140,
+          "height": 60
+        }
       ]
     }
   ]

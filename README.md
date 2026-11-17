@@ -28,7 +28,7 @@ npm run check        # lint, formatting, build and the smoke tests
 | #   | Section                   | What it does                                                                                                                                                                                |
 | --- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | Hero                      | Outcome headline and the ALEF 360° portfolio dashboard for one school group, with floating cards for a new job, an AI alert and a closed incident                                           |
-| 2   | Clients                   | The official facts (since 2022, 50+ enterprise customers, 20+ countries) and all 26 client logos from disrupt-x.io, in colour on a light band, split into MENA and APAC                     |
+| 2   | Clients                   | The official facts (since 2022, 50+ enterprise customers, 20+ countries) and all 26 client logos from disrupt-x.io, in white on a slate band, split into MENA and APAC                      |
 | 3   | Chapter 01, one place     | The brief's example: a pipe leak on WhatsApp, a failed fire door on paper and a permit in Excel fly into one ALEF 360° inbox as you scroll                                                  |
 | 4   | Chapter 02, three teams   | Facility, HSE and operator stories, each with a live demo screen and a site photo behind it                                                                                                 |
 | 5   | Chapter 03, five modules  | The skyline from disrupt-x.io lights up the building for each module; tabs show HSEQ, CAFM \| CMMS, iBMS, Connected Operations and Mobility with real product screenshots and product names |
@@ -52,7 +52,7 @@ Only the five live modules from the brief appear on the page. Asset Management i
 2. **Incident to closed action.** Move the incident through its four steps, forward with the main button or by tapping any step. The action card and audit trail fill in as you go.
 3. **Multi site dashboard.** Pick a school or All sites. The numbers count to their new values, the energy chart redraws and the latest alerts change.
 4. **Module explorer.** Accessible tabs with arrow keys, Home and End. The skyline above follows the active module, and clicking a building's node is a mouse shortcut to the same tab.
-5. **Client regions.** MENA and APAC tabs, and a pause button for the moving logo strip.
+5. **Client regions.** MENA and APAC tabs for the moving logo strip, which stops under the mouse.
 6. **Cursor spotlights** on the hero and the strength and news cards, and a mobile menu that locks the page behind it.
 
 All three demos keep the same height at every step, so nothing below them moves when you tap. Every demo uses real buttons and announces changes through an `aria-live` region.
@@ -160,7 +160,7 @@ Measured from disrupt-x.io and kept in `src/styles/tokens.css`.
 | `--c-teal`         | `#19a993`                | brand button colour                            |
 | `--c-teal-deep`    | `#0e806e`                | button fill used on this page (see trade offs) |
 | `--c-text-muted`   | `#9da4b0`                | body copy                                      |
-| `--c-light`        | `#f4f6f5`                | the client logo band                           |
+| `--c-band`         | `#1a1d21`                | the slate band behind the client logos         |
 | `--font-sans`      | Poppins                  | all text                                       |
 
 Spacing, radii, type scale and motion timings live in the same file.
@@ -172,7 +172,7 @@ Spacing, radii, type scale and motion timings live in the same file.
 - Decorative mockups and the skyline are hidden from screen readers. The energy chart has a table version for them.
 - Colour contrast passes WCAG AA everywhere, including while sections scroll in (Lighthouse accessibility 100).
 - Buttons, tabs and menu links are at least 44px tall. Text links meet the 24px minimum of WCAG 2.2 AA.
-- The moving logo strip has a pause button and stops on hover and keyboard focus (WCAG 2.2.2).
+- The moving logo strip stops on hover and keyboard focus, and becomes a still grid with reduced motion. There is no pause button on touch screens, a deliberate design choice that falls short of WCAG 2.2.2.
 - The page works without JavaScript and with reduced motion. Both are covered by the smoke tests.
 
 ## Performance
@@ -223,6 +223,7 @@ Still to check before sending:
 
 ## Decisions and trade offs
 
+- **Client logos in white.** The logos are drawn in their own colours for white backgrounds, and many are dark. On the dark page they are shown as one white mark each on a slate band, so all 26 are equally clear.
 - **Button colour.** White text on the brand teal `#19a993` is only 2.9:1, which fails WCAG AA. Buttons use a deeper teal `#0e806e` (4.9:1) with a mint glow on hover, so they still read as Disrupt-X.
 - **Coded screens and real screenshots.** The three team demos are coded so they can be interactive and sharp at any size. The module explorer uses real product screenshots from disrupt-x.io.
 - **Demo data.** Numbers inside the product screens are sample data for one fictional group of four schools, and they add up across the page.

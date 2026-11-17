@@ -12,8 +12,7 @@
   will-change: transform;
 }
 
-/* stops for the pause button, for a mouse resting on it and for keyboard focus inside */
-.paused .track,
+/* stops for a mouse resting on it and for keyboard focus inside */
 .viewport:hover .track,
 .viewport:focus-within .track {
   animation-play-state: paused;
@@ -27,6 +26,14 @@
 .track img {
   max-width: none;
   object-fit: contain;
+  /* one clean white mark for every client, bright enough to read at a glance */
+  filter: brightness(0) invert(1);
+  opacity: 0.88;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.track li:hover img {
+  opacity: 1;
 }
 
 @keyframes slide {

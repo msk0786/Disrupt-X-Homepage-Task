@@ -2,17 +2,16 @@ import { useState } from 'react'
 import Container from '../components/ui/Container.jsx'
 import Eyebrow from '../components/ui/Eyebrow.jsx'
 import Tabs from '../components/ui/Tabs.jsx'
-import Icon from '../components/ui/Icon.jsx'
 import LogoMarquee from './LogoMarquee.jsx'
 import styles from './Clients.module.css'
 
 /*
-  Every client from disrupt-x.io, in colour on a light band as on the live site,
-  split into MENA and APAC with the same accessible tabs the module explorer uses.
+  Every client from disrupt-x.io on a slate band, split into MENA and APAC with the
+  same accessible tabs the module explorer uses. The logos are shown in white, so
+  dark and colourful marks are equally clear on the dark page.
 */
 export default function Clients({ clients }) {
   const [region, setRegion] = useState(clients.regions[0].id)
-  const [paused, setPaused] = useState(false)
 
   return (
     <section id="clients" className={styles.section} aria-labelledby="clients-title">
@@ -35,15 +34,7 @@ export default function Clients({ clients }) {
             panelClassName={styles.panel}
             renderPanel={(item) => (
               <div className={styles.band}>
-                <LogoMarquee items={item.items} paused={paused} />
-                <button
-                  type="button"
-                  className={styles.pause}
-                  aria-label={paused ? clients.play : clients.pause}
-                  onClick={() => setPaused((value) => !value)}
-                >
-                  <Icon name={paused ? 'play' : 'pause'} size={16} />
-                </button>
+                <LogoMarquee items={item.items} />
               </div>
             )}
           />

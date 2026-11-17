@@ -35,40 +35,14 @@
   border-radius: var(--r-xl);
 }
 
-/* the light band from disrupt-x.io, so every client logo shows in its own colours */
+/* a slate band, lighter than the page so the strip reads as one surface */
 .band {
   position: relative;
-  padding-block: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  padding-block: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  border: 1px solid var(--c-band-edge);
   border-radius: var(--r-xl);
-  background: var(--c-light);
-  box-shadow: inset 0 0 0 1px var(--c-light-edge);
-}
-
-.pause {
-  position: absolute;
-  right: var(--space-3);
-  bottom: var(--space-3);
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  color: var(--c-light-ink);
-  border-radius: 50%;
-  background: var(--c-light-raised);
-  box-shadow: 0 0 0 1px var(--c-light-edge);
-  transition: background-color var(--dur-fast) ease;
-}
-
-.pause:hover {
-  background: var(--c-light);
-}
-
-.pause:focus-visible {
-  outline-color: var(--c-teal-deep);
-}
-
-@media (max-width: 640px) {
-  .band {
-    padding-bottom: calc(var(--space-7) + var(--space-3));
-  }
+  background:
+    radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--c-mint) 6%, transparent), transparent 70%),
+    var(--c-band);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--c-text) 6%, transparent);
 }

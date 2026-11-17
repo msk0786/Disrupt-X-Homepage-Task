@@ -31,11 +31,9 @@
   --c-danger: #ff5d6c;
   --c-info: #4f8cff;
 
-  /* Light band for client logos, which are drawn for white backgrounds */
-  --c-light: #f4f6f5;
-  --c-light-raised: #ffffff;
-  --c-light-edge: rgba(11, 11, 11, 0.08);
-  --c-light-ink: #1b1d20;
+  /* Slate band behind the client logos */
+  --c-band: #1a1d21;
+  --c-band-edge: rgba(255, 255, 255, 0.1);
 
   /* Third party colours used inside the story mockups */
   --c-whatsapp: #25d366;

@@ -150,19 +150,22 @@ test('mobile menu locks the page and jumps to a section', async ({ page }, testI
     .toBeLessThan(120)
 })
 
-test('logo strip can be paused and switched to APAC', async ({ page }) => {
+test('logo strip switches to APAC and stops under the mouse', async ({ page }, testInfo) => {
   await page.goto('/')
   await bringIntoView(page, '#clients')
-  await page.getByRole('button', { name: 'Pause the logos' }).click()
-  const playState = () =>
-    page.evaluate(
-      () => getComputedStyle(document.querySelector('#clients [role="tabpanel"]:not([hidden]) ul')).animationPlayState,
-    )
-  expect(await playState()).toBe('paused')
+  const strip = page.locator('#clients [role="tabpanel"]:not([hidden])')
+  await expect(strip.locator('img[alt="Taaleem"]')).toHaveCount(1)
 
   await page.getByRole('tab', { name: 'APAC' }).click()
-  await expect(page.locator('#clients [role="tabpanel"]:not([hidden])')).toContainText('', { timeout: 1000 })
-  await expect(page.locator('#clients [role="tabpanel"]:not([hidden]) img[alt="UEM Edgenta"]')).toHaveCount(1)
+  await expect(strip.locator('img[alt="UEM Edgenta"]')).toHaveCount(1)
+  await expect(strip.locator('img[alt="Taaleem"]')).toHaveCount(0)
+
+  if (!isPhone(testInfo)) {
+    await strip.hover()
+    await expect
+      .poll(() => strip.locator('ul').evaluate((list) => getComputedStyle(list).animationPlayState))
+      .toBe('paused')
+  }
 })
 
 test('reduced motion shows every section straight away', async ({ browser }, testInfo) => {
