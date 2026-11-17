@@ -31,13 +31,29 @@
     "location": "Block B, ground floor",
     "asset": "Cold water line B 1.04",
     "reportedBy": "Caretaker, 07:42",
-    "checklist": ["Isolate the water supply", "Replace the damaged joint", "Pressure test and clean up"]
+    "assignee": "Omar K.",
+    "appTitle": "My jobs",
+    "timerLabel": "Time on job",
+    "checklistTitle": "Checklist",
+    "checklist": ["Isolate the water supply", "Replace the damaged joint", "Pressure test and clean up"],
+    "photo": "IMG_0412.jpg",
+    "steps": [
+      { "status": "Assigned", "tone": "purple", "action": "Start job", "announce": "Job WO 1042 is assigned to Omar K." },
+      { "status": "In progress", "tone": "warning", "action": "Add photo", "announce": "Job started. The timer is running." },
+      { "status": "Photo added", "tone": "info", "action": "Complete job", "announce": "Photo added to the job." },
+      { "status": "Completed", "tone": "success", "action": "Run it again", "announce": "Job completed and synced. The site manager has been notified." }
+    ],
+    "done": { "title": "Job closed in {minutes} min", "body": "Synced to CAFM. The Hills Academy manager has been notified." }
   },
   "incident": {
     "ref": "INC 2291",
     "title": "Fire door FD 12 failed its check",
     "site": "Marina Primary",
     "severity": "Medium",
+    "trailTitle": "Audit trail",
+    "back": "Back",
+    "restart": "Start again",
+    "closedBadge": "Audit ready",
     "steps": [
       {
         "key": "reported",
@@ -131,5 +147,17 @@
       ]
     }
   ],
-  "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  "dashboard": {
+    "all": "All sites",
+    "sitesLabel": "Choose a site",
+    "openJobs": "Open jobs",
+    "alerts": "Active alerts",
+    "energy": "Energy this week",
+    "compliance": "Compliance",
+    "chart": "Energy use this week, MWh",
+    "issues": "Latest from site",
+    "healthy": "Healthy",
+    "alertsUnit": "alerts"
+  }
 }

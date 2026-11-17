@@ -1,0 +1,35 @@
+.section {
+  padding-block: var(--section-y);
+}
+
+.track {
+  position: relative;
+  display: grid;
+  gap: clamp(5rem, 3rem + 6vw, 9rem);
+  margin-top: var(--space-8);
+}
+
+/* Runs through the centre of every team's icon node */
+.rail {
+  position: absolute;
+  top: 30px;
+  bottom: 0;
+  left: 29px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--c-border-strong), transparent);
+}
+
+.line {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-line);
+  box-shadow: 0 0 12px rgba(0, 255, 206, 0.55);
+  transform-origin: top;
+}
+
+@media (max-width: 899px) {
+  .rail {
+    top: 22px;
+    left: 21px;
+  }
+}

@@ -1,0 +1,128 @@
+.story {
+  --node: 60px;
+  --node-gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: var(--space-6) clamp(1.5rem, 1rem + 3vw, 4rem);
+  padding-left: calc(var(--node) + var(--node-gap));
+}
+
+.copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Sits on the timeline rail, level with the audience label */
+.node {
+  position: absolute;
+  top: -18px;
+  left: calc(-1 * (var(--node) + var(--node-gap)));
+  z-index: 1;
+  border-radius: 50%;
+  background: var(--c-bg);
+}
+
+/* lit by the timeline as the story reaches the middle of the screen */
+.node[data-lit] > span {
+  border-color: var(--c-mint);
+  box-shadow:
+    var(--glow-mint),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.audience {
+  color: var(--c-mint);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+.title {
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+}
+
+.lead {
+  max-width: 480px;
+}
+
+.points {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+.points li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.points svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--c-mint);
+}
+
+.hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  color: var(--c-text-dim);
+  font-size: var(--fs-xs);
+}
+
+.hint svg {
+  color: var(--c-purple);
+}
+
+.screen {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.screen::before {
+  content: '';
+  position: absolute;
+  inset: 10% 5%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 255, 206, 0.16), transparent);
+  filter: blur(30px);
+}
+
+@media (max-width: 899px) {
+  .story {
+    --node: 44px;
+    --node-gap: var(--space-4);
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .node {
+    top: -10px;
+  }
+
+  .node > span {
+    width: 44px;
+    height: 44px;
+  }
+
+  .node svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* the product screen takes the full width and covers the rail behind it */
+  .screen {
+    margin-left: calc(-1 * (var(--node) + var(--node-gap)));
+  }
+}

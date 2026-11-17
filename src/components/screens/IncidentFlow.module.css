@@ -1,0 +1,251 @@
+.frame {
+  width: 100%;
+}
+
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  text-align: left;
+  background: var(--c-bg-sunken);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.ref {
+  color: var(--c-text-dim);
+  font-size: var(--fs-xs);
+}
+
+.title {
+  color: var(--c-text);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Four steps with a mint line that fills as the incident moves along */
+.stepper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.stepper::before,
+.stepper::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-border-strong);
+}
+
+.stepper::after {
+  right: auto;
+  width: calc(75% * var(--progress));
+  background: var(--c-mint);
+  box-shadow: var(--glow-mint);
+  transition: width 0.5s var(--ease-out);
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: 0 var(--space-1);
+  border-radius: var(--r-sm);
+}
+
+.dot {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--c-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  border: 1.5px solid var(--c-border-strong);
+  border-radius: 50%;
+  background: var(--c-bg-raised);
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.stepLabel {
+  color: var(--c-text-dim);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  transition: color var(--dur) ease;
+}
+
+.step:hover .dot {
+  border-color: var(--c-mint);
+}
+
+.complete .dot {
+  color: var(--c-bg);
+  border-color: var(--c-mint);
+  background: var(--c-mint);
+}
+
+.current .dot {
+  color: var(--c-mint);
+  border-color: var(--c-mint);
+  box-shadow: var(--glow-mint);
+}
+
+.complete .stepLabel,
+.current .stepLabel {
+  color: var(--c-text);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-4);
+}
+
+.detail {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-bg-raised);
+}
+
+.detail > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  color: var(--c-bg);
+  font-size: var(--fs-2xs);
+  font-weight: 700;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+}
+
+.meta {
+  font-size: var(--fs-2xs);
+  color: var(--c-text-dim);
+}
+
+.note {
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  color: var(--c-mint);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  border-radius: var(--r-sm);
+  background: rgba(0, 255, 206, 0.08);
+  animation: pop 0.4s var(--ease-out);
+}
+
+.trail {
+  padding: var(--space-4);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+}
+
+.trailTitle {
+  margin-bottom: var(--space-2);
+  color: var(--c-text-dim);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.trail ul {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.trail li {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  line-height: 1.4;
+}
+
+.time {
+  color: var(--c-mint);
+  font-variant-numeric: tabular-nums;
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.pop {
+  animation: pop 0.4s var(--ease-out);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@container (max-width: 520px) {
+  .flow {
+    padding: var(--space-4);
+  }
+
+  .body {
+    grid-template-columns: 1fr;
+  }
+
+  .stepLabel {
+    font-size: var(--fs-2xs);
+  }
+
+  .foot {
+    justify-content: stretch;
+  }
+
+  .foot > * {
+    flex: 1;
+  }
+}

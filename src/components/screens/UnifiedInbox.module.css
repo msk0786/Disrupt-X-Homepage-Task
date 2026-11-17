@@ -1,5 +1,4 @@
 .inbox {
-  container-type: inline-size;
   padding: var(--space-5);
   background: var(--c-bg-sunken);
 }

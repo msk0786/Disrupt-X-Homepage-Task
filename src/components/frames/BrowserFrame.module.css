@@ -51,6 +51,8 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+/* Screens inside adapt to the frame width, not the viewport */
 .screen {
   position: relative;
+  container-type: inline-size;
 }

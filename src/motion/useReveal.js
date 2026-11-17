@@ -26,7 +26,8 @@ export function useReveal(scope) {
               scale: 1,
               duration: motion.duration,
               ease: motion.ease,
-              stagger: motion.stagger,
+              // big groups share a fixed budget, so a fast scroll never waits on a long queue
+              stagger: Math.min(motion.stagger, 0.36 / batch.length),
               overwrite: true,
             }),
         })
