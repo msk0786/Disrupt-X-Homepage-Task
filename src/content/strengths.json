@@ -4,10 +4,24 @@
   "accent": "you already work.",
   "lead": "No rip and replace. ALEF 360° connects to the systems, sensors and teams you have today.",
   "stats": [
-    { "value": 50, "suffix": "+", "label": "enterprise customers" },
-    { "value": 20, "suffix": "+", "label": "countries" },
-    { "value": 5, "label": "live modules on one platform" },
-    { "value": 3, "label": "ways to deploy: cloud, hybrid or on premises" }
+    {
+      "value": 50,
+      "suffix": "+",
+      "label": "enterprise customers"
+    },
+    {
+      "value": 20,
+      "suffix": "+",
+      "label": "countries"
+    },
+    {
+      "value": 5,
+      "label": "live modules on one platform"
+    },
+    {
+      "value": 3,
+      "label": "ways to deploy: cloud, hybrid or on premises"
+    }
   ],
   "cards": [
     {
@@ -38,17 +52,32 @@
       {
         "name": "ISO 27001:2022 certified",
         "detail": "Information security management, certified by QAS International",
-        "image": { "src": "/images/awards/iso-27001-qas.webp", "width": 161, "height": 200, "alt": "QAS International ISO 27001:2022 registered company badge" }
+        "image": {
+          "src": "/images/awards/iso-27001-qas.webp",
+          "width": 161,
+          "height": 200,
+          "alt": "QAS International ISO 27001:2022 registered company badge"
+        }
       },
       {
         "name": "Mohammed Bin Rashid Innovation Fund",
         "detail": "Backed by the UAE innovation fund for companies building the future",
-        "image": { "src": "/images/awards/mbrif.webp", "width": 567, "height": 200, "alt": "Mohammed Bin Rashid Innovation Fund logo" }
+        "image": {
+          "src": "/images/awards/mbrif.webp",
+          "width": 567,
+          "height": 200,
+          "alt": "Mohammed Bin Rashid Innovation Fund logo"
+        }
       },
       {
         "name": "Future 100, 2024",
         "detail": "Named by the UAE Ministry of Economy among the enterprises shaping the future",
-        "image": { "src": "/images/awards/future-100-2024.webp", "width": 242, "height": 200, "alt": "UAE Ministry of Economy Future 100 2024 award" }
+        "image": {
+          "src": "/images/awards/future-100-2024.webp",
+          "width": 242,
+          "height": 200,
+          "alt": "UAE Ministry of Economy Future 100 2024 award"
+        }
       }
     ]
   },
@@ -56,14 +85,55 @@
     "title": "Technology partners",
     "lead": "Built with the clouds, networks and devices you already trust.",
     "items": [
-      { "name": "Microsoft Azure", "src": "/images/partners/microsoft-azure.svg", "width": 142, "height": 40 },
-      { "name": "AWS", "src": "/images/partners/aws.svg", "width": 69, "height": 40 },
-      { "name": "Teltonika", "src": "/images/partners/teltonika.svg", "width": 206, "height": 40 },
-      { "name": "Kerlink", "src": "/images/partners/kerlink.svg", "width": 107, "height": 40 },
-      { "name": "LoRa Alliance", "src": "/images/partners/lora-alliance.svg", "width": 173, "height": 40 },
-      { "name": "Sigfox", "src": "/images/partners/sigfox.svg", "width": 125, "height": 40 },
-      { "name": "UnaBiz", "src": "/images/partners/unabiz.svg", "width": 152, "height": 40 },
-      { "name": "UL Solutions", "src": "/images/partners/ul-solutions.svg", "width": 99, "height": 40 }
+      {
+        "name": "Microsoft Azure",
+        "src": "/images/partners/microsoft-azure.svg",
+        "width": 142,
+        "height": 40
+      },
+      {
+        "name": "AWS",
+        "src": "/images/partners/aws.svg",
+        "width": 69,
+        "height": 40
+      },
+      {
+        "name": "Teltonika",
+        "src": "/images/partners/teltonika.svg",
+        "width": 206,
+        "height": 40,
+        "whiteOnDark": true
+      },
+      {
+        "name": "Kerlink",
+        "src": "/images/partners/kerlink.svg",
+        "width": 107,
+        "height": 40
+      },
+      {
+        "name": "LoRa Alliance",
+        "src": "/images/partners/lora-alliance.svg",
+        "width": 173,
+        "height": 40
+      },
+      {
+        "name": "Sigfox",
+        "src": "/images/partners/sigfox.svg",
+        "width": 125,
+        "height": 40
+      },
+      {
+        "name": "UnaBiz",
+        "src": "/images/partners/unabiz.svg",
+        "width": 152,
+        "height": 40
+      },
+      {
+        "name": "UL Solutions",
+        "src": "/images/partners/ul-solutions.svg",
+        "width": 99,
+        "height": 40
+      }
     ]
   }
 }

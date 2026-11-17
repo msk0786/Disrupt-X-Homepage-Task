@@ -68,7 +68,13 @@ export default function Skyline({ items, active, onSelect, prefix, logoAlt }) {
         })}
       </svg>
 
-      <img className={styles.beam} src="/images/skyline/beam.svg" alt="" loading="lazy" style={box({ x: 306, y: 69, w: 334, h: 167 })} />
+      <img
+        className={styles.beam}
+        src="/images/skyline/beam.svg"
+        alt=""
+        loading="lazy"
+        style={box({ x: 306, y: 69, w: 334, h: 167 })}
+      />
 
       {towers.map((tower) => (
         <img
@@ -83,13 +89,23 @@ export default function Skyline({ items, active, onSelect, prefix, logoAlt }) {
         />
       ))}
 
-      <img className={styles.logo} src="/images/brand/alef-360-logo.svg" alt={logoAlt} loading="lazy" style={box(LOGO)} data-reveal="scale" />
+      <img
+        className={styles.logo}
+        src="/images/brand/alef-360-logo.svg"
+        alt={logoAlt}
+        loading="lazy"
+        style={box(LOGO)}
+        data-reveal="scale"
+      />
 
       {items.map((item) => {
         const node = nodes[item.id]
         if (!node) return null
         return (
-          <span
+          // a mouse shortcut to the same choice: kept out of the tab order, the tabs below are the keyboard route
+          <button
+            type="button"
+            tabIndex={-1}
             key={item.id}
             className={cx(styles.node, item.id === active && styles.nodeOn)}
             style={{ left: pct(node.x, STAGE.width), top: pct(node.y, STAGE.height) }}
@@ -99,7 +115,7 @@ export default function Skyline({ items, active, onSelect, prefix, logoAlt }) {
             <span className={styles.label}>
               {prefix} {item.name}
             </span>
-          </span>
+          </button>
         )
       })}
     </div>

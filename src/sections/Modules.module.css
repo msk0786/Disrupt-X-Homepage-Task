@@ -60,8 +60,7 @@
   border: 1px solid var(--c-border);
   border-radius: var(--r-xl);
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--c-text) 3%, transparent), transparent 30%),
-    var(--c-surface);
+    linear-gradient(180deg, color-mix(in srgb, var(--c-text) 3%, transparent), transparent 30%), var(--c-surface);
 }
 
 .copy {

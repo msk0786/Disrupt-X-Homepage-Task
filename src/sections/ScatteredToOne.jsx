@@ -61,7 +61,11 @@ export default function ScatteredToOne({ story, chapter }) {
           const row = rows[i]
           const at = i * 0.3
           timeline
-            .to(card, { x: () => travel(card, row, 'x'), y: () => travel(card, row, 'y'), rotate: 0, scale: 0.9, duration: 1 }, at)
+            .to(
+              card,
+              { x: () => travel(card, row, 'x'), y: () => travel(card, row, 'y'), rotate: 0, scale: 0.9, duration: 1 },
+              at,
+            )
             .to(card, { autoAlpha: 0, duration: 0.2 }, at + 0.85)
             .to(row, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, at + 0.8)
         })
@@ -101,7 +105,12 @@ export default function ScatteredToOne({ story, chapter }) {
             </p>
             <div className={styles.chaos}>
               {story.items.map((item, i) => (
-                <SourceCard key={item.id} item={item} data-source={item.id} className={cx(styles.card, styles[`card${i + 1}`])} />
+                <SourceCard
+                  key={item.id}
+                  item={item}
+                  data-source={item.id}
+                  className={cx(styles.card, styles[`card${i + 1}`])}
+                />
               ))}
             </div>
           </div>
@@ -109,7 +118,12 @@ export default function ScatteredToOne({ story, chapter }) {
           <div className={styles.column} data-reveal="right">
             <p className={cx(styles.label, styles.labelAfter)}>{story.labels.after}</p>
             <BrowserFrame title={story.inbox.window}>
-              <UnifiedInbox title={story.inbox.title} subtitle={story.inbox.subtitle} status={story.inbox.status} items={story.items} />
+              <UnifiedInbox
+                title={story.inbox.title}
+                subtitle={story.inbox.subtitle}
+                status={story.inbox.status}
+                items={story.items}
+              />
             </BrowserFrame>
           </div>
 

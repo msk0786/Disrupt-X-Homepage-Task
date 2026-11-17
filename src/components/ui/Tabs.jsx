@@ -35,7 +35,7 @@ export default function Tabs({ items, active, onChange, label, renderTab, render
 
   return (
     <div className={className}>
-      <div role="tablist" aria-label={label} className={styles.list} onKeyDown={onKeyDown}>
+      <div role="tablist" aria-label={label} className={styles.list}>
         {items.map((item, i) => {
           const selected = item.id === active
           return (
@@ -52,6 +52,7 @@ export default function Tabs({ items, active, onChange, label, renderTab, render
               tabIndex={selected ? 0 : -1}
               className={cx(styles.tab, selected && styles.selected)}
               onClick={() => select(i)}
+              onKeyDown={onKeyDown}
             >
               {renderTab ? renderTab(item, selected) : item.label}
             </button>

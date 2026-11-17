@@ -145,9 +145,18 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--c-bg) 85%, transparent) 0%, color-mix(in srgb, var(--c-bg) 25%, transparent) 50%, transparent),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--c-bg) 85%, transparent) 0%,
+      color-mix(in srgb, var(--c-bg) 25%, transparent) 50%,
+      transparent
+    ),
     linear-gradient(0deg, color-mix(in srgb, var(--c-bg) 70%, transparent), transparent 45%),
-    linear-gradient(135deg, color-mix(in srgb, var(--c-mint) 14%, transparent), color-mix(in srgb, var(--c-purple) 12%, transparent));
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--c-mint) 14%, transparent),
+      color-mix(in srgb, var(--c-purple) 12%, transparent)
+    );
 }
 
 @media (max-width: 899px) {

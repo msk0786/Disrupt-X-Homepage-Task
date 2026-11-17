@@ -17,7 +17,10 @@ function portfolio(sites, label) {
     energy: sites[0].energy.map((_, day) => Math.round(sum(sites.map((s) => s.energy[day])) * 10) / 10),
     compliance: Math.round(sum(sites.map((s) => s.compliance)) / sites.length),
     budget: sum(sites.map((s) => s.budget)),
-    issues: [...sites].sort((a, b) => b.alerts - a.alerts).map((s) => ({ ...s.issues[0], site: s.name })).slice(0, 2),
+    issues: [...sites]
+      .sort((a, b) => b.alerts - a.alerts)
+      .map((s) => ({ ...s.issues[0], site: s.name }))
+      .slice(0, 2),
   }
 }
 
@@ -50,7 +53,13 @@ export default function SiteDashboard({ sites, days, labels }) {
               aria-pressed={site.id === selected}
               onClick={() => setSelected(site.id)}
             >
-              <span className={cx(styles.health, site.alerts === 0 ? styles.ok : site.alerts > 3 ? styles.bad : styles.warn)} aria-hidden="true" />
+              <span
+                className={cx(
+                  styles.health,
+                  site.alerts === 0 ? styles.ok : site.alerts > 3 ? styles.bad : styles.warn,
+                )}
+                aria-hidden="true"
+              />
               {site.name}
             </button>
           ))}

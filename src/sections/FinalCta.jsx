@@ -41,7 +41,15 @@ export default function FinalCta({ cta, demo }) {
     <section className={styles.section} aria-labelledby="cta-title">
       <Container>
         <div ref={panel} className={styles.panel}>
-          <img className={styles.grid} src="/images/brand/hero-grid.svg" width="1920" height="1223" alt="" loading="lazy" data-speed="-0.5" />
+          <img
+            className={styles.grid}
+            src="/images/brand/hero-grid.svg"
+            width="1920"
+            height="1223"
+            alt=""
+            loading="lazy"
+            data-speed="-0.5"
+          />
           <img
             className={styles.logo}
             src="/images/brand/alef-360-logo.svg"

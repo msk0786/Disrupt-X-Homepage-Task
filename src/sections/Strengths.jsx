@@ -121,6 +121,7 @@ export default function Strengths({ strengths, chapter }) {
                 return (
                   <li key={partner.name} data-reveal="scale">
                     <img
+                      className={partner.whiteOnDark ? styles.white : undefined}
                       src={partner.src}
                       width={size.width}
                       height={size.height}

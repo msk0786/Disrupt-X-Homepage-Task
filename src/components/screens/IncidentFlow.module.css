@@ -190,6 +190,7 @@
 
 /* room for all four entries from the start, so the screen keeps its height */
 .trail ul {
+  align-content: start;
   min-height: calc(4 * 2 * 1.4em + 3 * var(--space-2));
   font-size: var(--fs-xs);
 }

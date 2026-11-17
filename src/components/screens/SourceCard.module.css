@@ -88,7 +88,11 @@
   display: block;
   height: 30px;
   margin-top: var(--space-2);
-  background: repeating-linear-gradient(to bottom, transparent 0 9px, color-mix(in srgb, var(--c-paper-ink) 18%, transparent) 9px 10px);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 9px,
+    color-mix(in srgb, var(--c-paper-ink) 18%, transparent) 9px 10px
+  );
 }
 
 .stamp {

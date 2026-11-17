@@ -9,7 +9,14 @@
     "kpis": [
       { "label": "Open work orders", "value": 49, "delta": "12% fewer than last month", "trend": "down" },
       { "label": "Active alerts", "value": 9, "delta": "3 flagged by AI", "trend": "flat" },
-      { "label": "Energy this week", "value": 140.1, "decimals": 1, "suffix": " MWh", "delta": "8% below target", "trend": "down" },
+      {
+        "label": "Energy this week",
+        "value": 140.1,
+        "decimals": 1,
+        "suffix": " MWh",
+        "delta": "8% below target",
+        "trend": "down"
+      },
       { "label": "Compliance", "value": 96, "suffix": "%", "delta": "Audit ready", "trend": "up" }
     ],
     "energyTitle": "Energy use by week, MWh",
@@ -23,8 +30,17 @@
     ]
   },
   "heroCards": {
-    "job": { "app": "ALEF 360°", "time": "now", "title": "New job WO 1042", "body": "Pipe leak, Block B toilets. Hills Academy" },
-    "alert": { "label": "AI fault detection", "title": "AHU 3 bearing wear predicted", "body": "Work order raised automatically" },
+    "job": {
+      "app": "ALEF 360°",
+      "time": "now",
+      "title": "New job WO 1042",
+      "body": "Pipe leak, Block B toilets. Hills Academy"
+    },
+    "alert": {
+      "label": "AI fault detection",
+      "title": "AHU 3 bearing wear predicted",
+      "body": "Work order raised automatically"
+    },
     "closed": { "label": "INC 2291", "title": "Closed and audit ready" }
   },
   "workOrder": {
@@ -49,12 +65,30 @@
     "photoImage": "/images/photos/job-photo.webp",
     "minutes": { "photo": 6, "done": 14 },
     "steps": [
-      { "status": "Assigned", "tone": "purple", "action": "Start job", "announce": "Job WO 1042 is assigned to Omar K." },
-      { "status": "In progress", "tone": "warning", "action": "Add photo", "announce": "Job started. The timer is running." },
+      {
+        "status": "Assigned",
+        "tone": "purple",
+        "action": "Start job",
+        "announce": "Job WO 1042 is assigned to Omar K."
+      },
+      {
+        "status": "In progress",
+        "tone": "warning",
+        "action": "Add photo",
+        "announce": "Job started. The timer is running."
+      },
       { "status": "Photo added", "tone": "info", "action": "Complete job", "announce": "Photo added to the job." },
-      { "status": "Completed", "tone": "success", "action": "Run it again", "announce": "Job completed and synced. The site manager has been notified." }
+      {
+        "status": "Completed",
+        "tone": "success",
+        "action": "Run it again",
+        "announce": "Job completed and synced. The site manager has been notified."
+      }
     ],
-    "done": { "title": "Job closed in {minutes} min", "body": "Synced to CAFM. The Hills Academy manager has been notified." }
+    "done": {
+      "title": "Job closed in {minutes} min",
+      "body": "Synced to CAFM. The Hills Academy manager has been notified."
+    }
   },
   "incident": {
     "ref": "INC 2291",

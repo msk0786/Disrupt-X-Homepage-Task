@@ -53,7 +53,13 @@ export default function Footer({ brand, footer, apps }) {
         <div ref={inner}>
           <div className={styles.top}>
             <div className={styles.brand}>
-              <img src={brand.logo.src} width={brand.logo.width * 1.25} height={brand.logo.height * 1.25} alt={brand.name} loading="lazy" />
+              <img
+                src={brand.logo.src}
+                width={brand.logo.width * 1.25}
+                height={brand.logo.height * 1.25}
+                alt={brand.name}
+                loading="lazy"
+              />
               <p>{footer.tagline}</p>
               <ul className={styles.socials} aria-label={footer.socialLabel}>
                 {footer.socials.map((social) => (

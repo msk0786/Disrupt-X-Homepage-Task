@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { content } from './content/index.js'
-import { ScrollTrigger } from './motion/gsap.js'
+import { ScrollTrigger, media } from './motion/gsap.js'
 import { useReveal } from './motion/useReveal.js'
 import { useParallax } from './motion/useParallax.js'
 import { whenSettled } from './motion/schedule.js'
@@ -28,9 +28,16 @@ export default function App() {
   useEffect(() => {
     // tells the fallback timer in index.html that scripts are running
     window.__dxReady = true
-    // once every section has built its scroll animations, and the web font has
-    // settled the layout, measure all the triggers one final time
-    whenSettled(() => document.fonts.ready.then(() => ScrollTrigger.refresh()))
+
+    // Desktops build their pinned scenes during hydration, so measure every trigger
+    // once more when the web font has settled the layout. Phones have no pins and
+    // build after the first paint, so they only need it if the font arrived late:
+    // a refresh restores the scroll position, which would cut a scroll short.
+    const desktop = window.matchMedia(media.desktop).matches
+    const fontsWereLate = document.fonts.status !== 'loaded'
+    whenSettled(() => {
+      if (desktop || fontsWereLate) document.fonts.ready.then(() => ScrollTrigger.refresh())
+    })
   }, [])
 
   const { site, clients, story, teams, modules, strengths, news, demo } = content

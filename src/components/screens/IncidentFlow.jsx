@@ -96,7 +96,11 @@ export default function IncidentFlow({ data }) {
             <p className={styles.actionHead}>
               <span className={styles.actionTitle}>{action.title}</span>
               {hasAction && (
-                <StatusPill key={closed ? 'closed' : 'open'} tone={closed ? 'success' : 'purple'} className={styles.pop}>
+                <StatusPill
+                  key={closed ? 'closed' : 'open'}
+                  tone={closed ? 'success' : 'purple'}
+                  className={styles.pop}
+                >
                   {closed ? action.closed : action.open}
                 </StatusPill>
               )}

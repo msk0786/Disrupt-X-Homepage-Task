@@ -23,7 +23,13 @@ export default function LogoMarquee({ items, paused = false, minPerPass = 14 }) 
           const size = logoSize(logo, { area: 50, maxWidth: 170 })
           return (
             <li key={`${logo.name}-${i}`} aria-hidden={copy || undefined} className={copy ? styles.copy : undefined}>
-              <img src={logo.src} width={size.width} height={size.height} alt={copy ? '' : logo.name} decoding="async" />
+              <img
+                src={logo.src}
+                width={size.width}
+                height={size.height}
+                alt={copy ? '' : logo.name}
+                decoding="async"
+              />
             </li>
           )
         })}

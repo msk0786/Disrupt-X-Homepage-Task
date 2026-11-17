@@ -146,11 +146,7 @@
   height: 150px;
   padding-top: var(--space-2);
   border-bottom: 1px solid var(--c-border-strong);
-  background: repeating-linear-gradient(
-    to top,
-    transparent 0 37px,
-    var(--c-border) 37px 38px
-  );
+  background: repeating-linear-gradient(to top, transparent 0 37px, var(--c-border) 37px 38px);
 }
 
 .bar {

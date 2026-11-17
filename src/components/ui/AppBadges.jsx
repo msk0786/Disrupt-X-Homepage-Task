@@ -10,7 +10,13 @@ export default function AppBadges({ apps, className }) {
         {apps.items.map((app) => (
           <li key={app.store}>
             <a href={app.href} className={styles.badge}>
-              <img src={app.image.src} width={app.image.width} height={app.image.height} alt={app.image.alt} loading="lazy" />
+              <img
+                src={app.image.src}
+                width={app.image.width}
+                height={app.image.height}
+                alt={app.image.alt}
+                loading="lazy"
+              />
             </a>
           </li>
         ))}

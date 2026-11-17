@@ -33,12 +33,22 @@
       {
         "store": "App Store",
         "href": "https://apps.apple.com/no/developer/disruptx/id1565522302",
-        "image": { "src": "/images/badges/app-store.webp", "width": 172, "height": 52, "alt": "Download ALEF 360° on the App Store" }
+        "image": {
+          "src": "/images/badges/app-store.webp",
+          "width": 172,
+          "height": 52,
+          "alt": "Download ALEF 360° on the App Store"
+        }
       },
       {
         "store": "Google Play",
         "href": "https://play.google.com/store/apps/developer?id=Disrupt-X",
-        "image": { "src": "/images/badges/google-play.webp", "width": 170, "height": 52, "alt": "Get ALEF 360° on Google Play" }
+        "image": {
+          "src": "/images/badges/google-play.webp",
+          "width": 170,
+          "height": 52,
+          "alt": "Get ALEF 360° on Google Play"
+        }
       }
     ]
   },

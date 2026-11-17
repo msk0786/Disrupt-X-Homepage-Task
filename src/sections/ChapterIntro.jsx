@@ -62,8 +62,16 @@ export default function ChapterIntro({ id, chapter, eyebrow, title, accent, lead
 
           const words = root.current.querySelectorAll('[data-word]')
           scene
-            .from('[data-chapter-meta]', { y: 30, autoAlpha: 0, stagger: 0.08, duration: 0.25, ease: 'power2.out' }, 0.3)
-            .from(words, { yPercent: 115, stagger: Math.min(0.04, 0.18 / words.length), duration: 0.28, ease: 'power3.out' }, 0.38)
+            .from(
+              '[data-chapter-meta]',
+              { y: 30, autoAlpha: 0, stagger: 0.08, duration: 0.25, ease: 'power2.out' },
+              0.3,
+            )
+            .from(
+              words,
+              { yPercent: 115, stagger: Math.min(0.04, 0.18 / words.length), duration: 0.28, ease: 'power3.out' },
+              0.38,
+            )
             .from('[data-chapter-lead]', { y: 30, autoAlpha: 0, duration: 0.22, ease: 'power2.out' }, 0.62)
             .fromTo('[data-chapter-content]', { y: 0 }, { y: -50, duration: 0.7 }, 1)
 

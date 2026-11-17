@@ -31,7 +31,6 @@
   transform-origin: right center;
 }
 
-
 .stat {
   display: flex;
   flex-direction: column-reverse;
@@ -173,6 +172,12 @@
 .partners img {
   max-width: 100%;
   height: auto;
+}
+
+/* for partner logos drawn in a dark colour, which would vanish on this background */
+.partners .white {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 /* Starting state while the page wakes up: the cards wait below for the scroll */

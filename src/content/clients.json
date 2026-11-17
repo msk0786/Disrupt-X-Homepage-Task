@@ -18,7 +18,12 @@
         { "name": "ABM Olayan", "src": "/images/clients/abm-olayan.svg", "width": 226, "height": 43 },
         { "name": "NAFFCO", "src": "/images/clients/naffco.svg", "width": 164, "height": 66 },
         { "name": "Dynasys Networks", "src": "/images/clients/dynasys.svg", "width": 184, "height": 56 },
-        { "name": "Al Ghurair Properties", "src": "/images/clients/alghurair-properties.svg", "width": 236, "height": 60 },
+        {
+          "name": "Al Ghurair Properties",
+          "src": "/images/clients/alghurair-properties.svg",
+          "width": 236,
+          "height": 60
+        },
         { "name": "Al Khaleej", "src": "/images/clients/alkhaleej.svg", "width": 205, "height": 60 },
         { "name": "ZainTech", "src": "/images/clients/zaintech.svg", "width": 212, "height": 37 },
         { "name": "Digital Mesh", "src": "/images/clients/digital-mesh.svg", "width": 258, "height": 60 },

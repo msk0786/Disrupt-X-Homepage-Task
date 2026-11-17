@@ -6,7 +6,15 @@ import styles from './Button.module.css'
  * One button for the whole site. Renders a link when given `href`.
  * variant: primary | ghost | link
  */
-export default function Button({ href, variant = 'primary', size = 'md', arrow = false, className, children, ...rest }) {
+export default function Button({
+  href,
+  variant = 'primary',
+  size = 'md',
+  arrow = false,
+  className,
+  children,
+  ...rest
+}) {
   const classes = cx(styles.button, styles[variant], styles[size], className)
   const inner = (
     <>
