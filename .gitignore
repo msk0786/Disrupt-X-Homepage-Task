@@ -4,4 +4,3 @@ dist
 .vercel
 *.local
 .DS_Store
-lighthouse
