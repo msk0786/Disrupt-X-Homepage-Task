@@ -43,8 +43,8 @@
 .selected {
   color: var(--c-text);
   background: var(--c-bg-raised);
-  border-color: rgba(0, 255, 206, 0.45);
-  box-shadow: 0 0 18px -6px rgba(0, 255, 206, 0.6);
+  border-color: color-mix(in srgb, var(--c-mint) 45%, transparent);
+  box-shadow: 0 0 18px -6px color-mix(in srgb, var(--c-mint) 60%, transparent);
 }
 
 .panel:focus-visible {

@@ -6,8 +6,8 @@
   border-radius: 46px;
   background: linear-gradient(160deg, var(--c-device-edge), var(--c-device) 40%, var(--c-device-edge));
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 0 1px color-mix(in srgb, var(--c-text) 10%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--c-text) 6%, transparent),
     var(--shadow-card);
 }
 
@@ -66,7 +66,7 @@
   height: 10px;
   margin-left: 4px;
   border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid color-mix(in srgb, var(--c-text) 60%, transparent);
   background: linear-gradient(90deg, var(--c-text) 70%, transparent 70%) content-box;
   padding: 1px;
 }

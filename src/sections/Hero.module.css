@@ -39,7 +39,7 @@
   width: min(900px, 90vw);
   height: 420px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(0, 255, 206, 0.22), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c-mint) 22%, transparent), transparent);
 }
 
 .backdrop::after {
@@ -47,7 +47,7 @@
   left: 62%;
   width: min(640px, 70vw);
   height: 360px;
-  background: radial-gradient(closest-side, rgba(158, 105, 255, 0.2), transparent);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--c-purple) 20%, transparent), transparent);
 }
 
 .copy {
@@ -232,6 +232,7 @@
   }
 
   .alert {
+    top: -5%;
     right: -2%;
   }
 }

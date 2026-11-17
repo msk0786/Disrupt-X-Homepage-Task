@@ -32,7 +32,7 @@
 
 .navActive {
   color: var(--c-mint);
-  background: rgba(0, 255, 206, 0.1);
+  background: color-mix(in srgb, var(--c-mint) 10%, transparent);
 }
 
 .body {
@@ -165,7 +165,7 @@
 
 .bar:last-child {
   opacity: 1;
-  box-shadow: 0 0 16px rgba(0, 255, 206, 0.45);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--c-mint) 45%, transparent);
 }
 
 .attention ul {

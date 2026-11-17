@@ -15,8 +15,8 @@
   border: 1px solid var(--c-border-strong);
   border-radius: var(--r-xl);
   background:
-    radial-gradient(50% 70% at 50% 100%, rgba(0, 255, 206, 0.2), transparent 70%),
-    radial-gradient(40% 50% at 85% 0%, rgba(158, 105, 255, 0.18), transparent 70%),
+    radial-gradient(50% 70% at 50% 100%, color-mix(in srgb, var(--c-mint) 20%, transparent), transparent 70%),
+    radial-gradient(40% 50% at 85% 0%, color-mix(in srgb, var(--c-purple) 18%, transparent), transparent 70%),
     var(--c-bg-raised);
 }
 

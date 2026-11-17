@@ -32,6 +32,9 @@ export function useReveal(scope) {
             }),
         })
       })
+
+      // text reflows when Poppins arrives, so measure every trigger again
+      document.fonts?.ready.then(() => ScrollTrigger.refresh())
     },
     { scope },
   )

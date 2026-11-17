@@ -174,7 +174,7 @@
   font-size: var(--fs-xs);
   font-weight: 600;
   border-radius: var(--r-sm);
-  background: rgba(0, 255, 206, 0.08);
+  background: color-mix(in srgb, var(--c-mint) 8%, transparent);
   animation: pop 0.4s var(--ease-out);
 }
 

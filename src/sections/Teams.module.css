@@ -23,7 +23,7 @@
   position: absolute;
   inset: 0;
   background: var(--gradient-line);
-  box-shadow: 0 0 12px rgba(0, 255, 206, 0.55);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--c-mint) 55%, transparent);
   transform-origin: top;
 }
 

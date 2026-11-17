@@ -51,7 +51,7 @@
 
 .time {
   justify-self: end;
-  color: rgba(255, 255, 255, 0.6);
+  color: color-mix(in srgb, var(--c-text) 60%, transparent);
   font-size: var(--fs-2xs);
 }
 
@@ -64,7 +64,7 @@
 
 .paper .head {
   color: var(--c-paper-ink);
-  border-bottom: 1px dashed rgba(58, 54, 49, 0.3);
+  border-bottom: 1px dashed color-mix(in srgb, var(--c-paper-ink) 30%, transparent);
 }
 
 .paperBody {
@@ -88,7 +88,7 @@
   display: block;
   height: 30px;
   margin-top: var(--space-2);
-  background: repeating-linear-gradient(to bottom, transparent 0 9px, rgba(58, 54, 49, 0.18) 9px 10px);
+  background: repeating-linear-gradient(to bottom, transparent 0 9px, color-mix(in srgb, var(--c-paper-ink) 18%, transparent) 9px 10px);
 }
 
 .stamp {
@@ -136,17 +136,17 @@
 
 .sheetHeader {
   min-height: 24px;
-  color: rgba(58, 54, 49, 0.6);
+  color: color-mix(in srgb, var(--c-paper-ink) 60%, transparent);
   font-size: var(--fs-2xs);
   text-align: center;
-  background: rgba(58, 54, 49, 0.05);
+  background: color-mix(in srgb, var(--c-paper-ink) 5%, transparent);
 }
 
 .rowNo {
-  color: rgba(58, 54, 49, 0.6);
+  color: color-mix(in srgb, var(--c-paper-ink) 60%, transparent);
   font-size: var(--fs-2xs);
   text-align: center;
-  background: rgba(58, 54, 49, 0.05);
+  background: color-mix(in srgb, var(--c-paper-ink) 5%, transparent);
 }
 
 .selected {
@@ -157,7 +157,7 @@
 
 .sheetFile {
   padding: 6px 8px;
-  color: rgba(58, 54, 49, 0.65);
+  color: color-mix(in srgb, var(--c-paper-ink) 65%, transparent);
   font-size: var(--fs-2xs);
 }
 

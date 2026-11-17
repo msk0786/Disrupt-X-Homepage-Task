@@ -9,7 +9,7 @@
   line-height: 1.2;
   border: 1px solid var(--c-border-strong);
   border-radius: var(--r-pill);
-  background: rgba(255, 255, 255, 0.03);
+  background: color-mix(in srgb, var(--c-text) 3%, transparent);
 }
 
 .dot {

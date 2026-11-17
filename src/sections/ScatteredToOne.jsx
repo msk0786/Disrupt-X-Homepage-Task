@@ -45,8 +45,9 @@ export default function ScatteredToOne({ story }) {
           defaults: { ease: 'power2.inOut' },
           scrollTrigger: {
             trigger: stage.current,
-            start: pinned ? 'center center' : 'top 70%',
-            end: pinned ? '+=110%' : 'bottom 55%',
+            // phones skip the pin and play it while the stack scrolls through the top of the screen
+            start: pinned ? 'center center' : 'top 25%',
+            end: pinned ? '+=110%' : 'bottom 85%',
             pin: pinned,
             scrub: 0.8,
             invalidateOnRefresh: true,

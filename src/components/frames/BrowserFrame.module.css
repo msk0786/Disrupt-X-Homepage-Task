@@ -48,7 +48,7 @@
   font-size: var(--fs-2xs);
   white-space: nowrap;
   border-radius: var(--r-xs);
-  background: rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--c-text) 6%, transparent);
 }
 
 /* Screens inside adapt to the frame width, not the viewport */
