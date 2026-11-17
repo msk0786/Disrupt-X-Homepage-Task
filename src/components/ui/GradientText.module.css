@@ -1,0 +1,12 @@
+.gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* keeps descenders inside the clipped area */
+  padding-bottom: 0.08em;
+}
+
+.block {
+  display: block;
+}

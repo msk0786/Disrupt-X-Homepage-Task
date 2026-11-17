@@ -1,0 +1,73 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--r-pill);
+  transition:
+    background-color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur) var(--ease-out),
+    transform var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.md {
+  padding: 14px 28px;
+  font-size: var(--fs-base);
+}
+
+.sm {
+  min-height: 40px;
+  padding: 10px 20px;
+  font-size: var(--fs-sm);
+}
+
+.primary {
+  color: var(--c-text);
+  background: var(--c-teal-deep);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.primary:hover {
+  box-shadow:
+    0 0 0 1px var(--c-mint),
+    var(--glow-mint),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.ghost {
+  color: var(--c-text);
+  border: 1px solid var(--c-border-strong);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ghost:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.link {
+  min-height: 0;
+  padding: var(--space-1) 0;
+  color: var(--c-mint);
+  font-weight: 500;
+  font-size: var(--fs-sm);
+  border-radius: var(--r-xs);
+}
+
+.arrow {
+  transition: transform var(--dur-fast) ease;
+}
+
+.button:hover .arrow {
+  transform: translateX(3px);
+}

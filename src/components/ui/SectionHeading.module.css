@@ -1,0 +1,31 @@
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 760px;
+}
+
+.center {
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.left {
+  align-items: flex-start;
+}
+
+.title {
+  font-size: var(--fs-h2);
+}
+
+.lead {
+  max-width: 620px;
+  font-size: var(--fs-lg);
+}
+
+@media (max-width: 600px) {
+  .lead {
+    font-size: var(--fs-base);
+  }
+}

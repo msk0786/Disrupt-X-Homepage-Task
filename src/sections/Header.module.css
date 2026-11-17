@@ -1,0 +1,133 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color var(--dur) var(--ease-out),
+    border-color var(--dur) var(--ease-out),
+    backdrop-filter var(--dur) var(--ease-out);
+}
+
+.solid {
+  background: var(--c-glass);
+  border-bottom-color: var(--c-border);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  height: var(--header-h);
+}
+
+.logo {
+  flex: none;
+  border-radius: var(--r-xs);
+}
+
+.links {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  border-radius: var(--r-pill);
+  transition:
+    color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.link:hover {
+  color: var(--c-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.toggle {
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--c-text);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 50%;
+}
+
+.drawer {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .nav {
+    display: none;
+  }
+
+  .toggle {
+    display: grid;
+  }
+
+  .drawer {
+    display: block;
+    position: absolute;
+    inset: var(--header-h) 0 auto;
+    height: calc(100dvh - var(--header-h));
+    padding-block: var(--space-5) var(--space-7);
+    background: var(--c-bg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition:
+      opacity var(--dur) var(--ease-out),
+      transform var(--dur) var(--ease-out),
+      visibility 0s linear var(--dur);
+  }
+
+  .open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .drawerLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    color: var(--c-text);
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .drawerLinks a svg {
+    color: var(--c-mint);
+  }
+
+  .drawerCta {
+    width: 100%;
+    margin-top: var(--space-6);
+  }
+}
+
+@media (max-width: 420px) {
+  .demo {
+    display: none;
+  }
+}

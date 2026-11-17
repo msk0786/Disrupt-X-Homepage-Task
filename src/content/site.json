@@ -1,0 +1,69 @@
+{
+  "brand": {
+    "name": "Disrupt-X",
+    "logo": { "src": "/images/brand/disrupt-x-logo.svg", "width": 95, "height": 24 },
+    "home": "https://disrupt-x.io/"
+  },
+  "nav": [
+    { "label": "Platform", "href": "#platform" },
+    { "label": "Teams", "href": "#teams" },
+    { "label": "Modules", "href": "#modules" },
+    { "label": "Why ALEF 360°", "href": "#why" }
+  ],
+  "demo": { "label": "Book a demo", "href": "https://disrupt-x.io/request-a-demo/" },
+  "hero": {
+    "eyebrow": "For the built environment",
+    "title": "Fewer breakdowns. Safer sites.",
+    "accent": "Every building in one view.",
+    "lead": "ALEF 360° is the AI platform that runs maintenance, safety and live building data from one place. Technicians get the job on their phone, safety teams close every action and managers see every site at a glance.",
+    "secondary": { "label": "See how it works", "href": "#platform" }
+  },
+  "clients": {
+    "title": "Trusted by facility and safety teams across MENA and APAC"
+  },
+  "finalCta": {
+    "eyebrow": "Ready when you are",
+    "title": "See every site",
+    "accent": "in one place.",
+    "lead": "Book a demo and we will walk you through ALEF 360° with your own buildings, assets and safety workflows in mind.",
+    "secondary": { "label": "Contact us", "href": "https://disrupt-x.io/contact-us/" }
+  },
+  "footer": {
+    "tagline": "AI powered technology for the built environment. One platform for buildings, assets and safety.",
+    "columns": [
+      {
+        "title": "Platform",
+        "links": [
+          { "label": "ALEF 360° HSEQ", "href": "https://disrupt-x.io/alef-360-hseq/" },
+          { "label": "ALEF 360° CAFM | CMMS", "href": "https://disrupt-x.io/alef-360-cafm-cmms/" },
+          { "label": "ALEF 360° iBMS", "href": "https://disrupt-x.io/alef-360-integrated-building-management-system/" },
+          { "label": "Connected Operations", "href": "https://disrupt-x.io/alef-360-iot-platform/" },
+          { "label": "Mobility", "href": "https://disrupt-x.io/alef-360-mobility/" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "Our story", "href": "https://disrupt-x.io/our-story/" },
+          { "label": "Our team", "href": "https://disrupt-x.io/our-team/" },
+          { "label": "Become a partner", "href": "https://disrupt-x.io/become-a-partner/" },
+          { "label": "Press releases", "href": "https://disrupt-x.io/press-releases/" }
+        ]
+      },
+      {
+        "title": "Get in touch",
+        "links": [
+          { "label": "Request a demo", "href": "https://disrupt-x.io/request-a-demo/" },
+          { "label": "Contact us", "href": "https://disrupt-x.io/contact-us/" },
+          { "label": "LinkedIn", "href": "https://www.linkedin.com/company/disruptxio" },
+          { "label": "YouTube", "href": "https://www.youtube.com/@disruptxio" }
+        ]
+      }
+    ],
+    "legal": [
+      { "label": "Privacy policy", "href": "https://disrupt-x.io/privacy-policy/" },
+      { "label": "Cookie policy", "href": "https://disrupt-x.io/cookie-policy/" }
+    ],
+    "copyright": "© 2026 Disrupt-X. All rights reserved."
+  }
+}

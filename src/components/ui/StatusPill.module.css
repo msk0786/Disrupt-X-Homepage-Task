@@ -1,0 +1,59 @@
+.pill {
+  --tone: var(--c-text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  color: var(--tone);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--tone) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tone) 28%, transparent);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tone);
+}
+
+.pulse {
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--tone) 60%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+.success {
+  --tone: var(--c-success);
+}
+
+.warning {
+  --tone: var(--c-warning);
+}
+
+.danger {
+  --tone: var(--c-danger);
+}
+
+.info {
+  --tone: var(--c-info);
+}
+
+.purple {
+  --tone: var(--c-purple);
+}
+
+.neutral {
+  --tone: var(--c-text-muted);
+}

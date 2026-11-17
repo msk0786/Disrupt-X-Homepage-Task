@@ -1,0 +1,72 @@
+.phone {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  padding: 10px;
+  border-radius: 46px;
+  background: linear-gradient(160deg, var(--c-device-edge), var(--c-device) 40%, var(--c-device-edge));
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    var(--shadow-card);
+}
+
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  overflow: hidden;
+  border-radius: 37px;
+  background: var(--c-bg-sunken);
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 44px;
+  padding-inline: 24px;
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.island {
+  width: 92px;
+  height: 26px;
+  border-radius: var(--r-pill);
+  background: var(--c-black);
+}
+
+.signal {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.signal i {
+  width: 3px;
+  height: 6px;
+  border-radius: 1px;
+  background: var(--c-text);
+}
+
+.signal i:nth-child(2) {
+  height: 8px;
+}
+
+.signal i:nth-child(3) {
+  height: 10px;
+}
+
+.signal b {
+  width: 20px;
+  height: 10px;
+  margin-left: 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: linear-gradient(90deg, var(--c-text) 70%, transparent 70%) content-box;
+  padding: 1px;
+}

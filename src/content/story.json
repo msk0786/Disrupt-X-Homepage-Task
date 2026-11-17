@@ -1,0 +1,58 @@
+{
+  "eyebrow": "One morning at a school group",
+  "title": "Today the work is everywhere.",
+  "accent": "ALEF 360° puts it in one place.",
+  "lead": "A pipe leaks, a fire door fails its check and a contractor needs a safety permit. Today that lives in WhatsApp, on paper and in Excel, and nobody sees the whole picture. With ALEF 360° every job lands in one place with an owner and a status.",
+  "items": [
+    {
+      "id": "leak",
+      "source": "whatsapp",
+      "sourceLabel": "WhatsApp",
+      "title": "Pipe leaking in Block B toilets, water on the floor",
+      "meta": "Voice note from the caretaker, 07:42",
+      "result": {
+        "ref": "WO 1042",
+        "type": "Work order",
+        "title": "Pipe leak, Block B toilets",
+        "owner": "Omar K.",
+        "status": "Assigned",
+        "tone": "purple",
+        "module": "CAFM"
+      }
+    },
+    {
+      "id": "door",
+      "source": "paper",
+      "sourceLabel": "Paper form",
+      "title": "Fire door FD 12 failed its weekly check",
+      "meta": "Inspection sheet, left in the office tray",
+      "result": {
+        "ref": "INS 318",
+        "type": "Inspection finding",
+        "title": "Fire door FD 12 does not latch",
+        "owner": "Sara M.",
+        "status": "Action open",
+        "tone": "warning",
+        "module": "HSEQ"
+      }
+    },
+    {
+      "id": "permit",
+      "source": "excel",
+      "sourceLabel": "Excel",
+      "title": "Contractor needs a hot work permit for the roof",
+      "meta": "Row 214 in permits_2026_final_v3.xlsx",
+      "result": {
+        "ref": "PTW 077",
+        "type": "Permit to work",
+        "title": "Hot work on the roof, Block A",
+        "owner": "Ali R.",
+        "status": "Awaiting approval",
+        "tone": "info",
+        "module": "HSEQ"
+      }
+    }
+  ],
+  "before": { "value": "3", "label": "apps and a paper tray" },
+  "after": { "value": "1", "label": "platform with every job tracked" }
+}

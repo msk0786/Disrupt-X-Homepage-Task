@@ -1,0 +1,83 @@
+{
+  "eyebrow": "The ALEF 360° platform",
+  "title": "Five live modules.",
+  "accent": "One source of truth.",
+  "lead": "Start with the module you need today and add the rest when you are ready. They all share the same assets, people and data.",
+  "items": [
+    {
+      "id": "hseq",
+      "name": "HSEQ",
+      "icon": "shieldCheck",
+      "outcome": "Safer, compliant operations with records ready for any audit.",
+      "features": [
+        "Incident reporting and root cause investigation",
+        "Planned and unplanned inspections with mobile checklists",
+        "Permits to work with approvals, isolations and gas tests",
+        "Corrective and preventive actions with owners and deadlines"
+      ],
+      "chip": { "label": "INC 2291", "value": "Closed with evidence", "tone": "success" },
+      "image": { "src": "/images/modules/hseq.webp", "width": 1290, "height": 885, "alt": "ALEF 360° HSEQ investigation board with incidents sorted by status and severity" },
+      "href": "https://disrupt-x.io/alef-360-hseq/"
+    },
+    {
+      "id": "cafm",
+      "name": "CAFM | CMMS",
+      "icon": "wrench",
+      "outcome": "Faster jobs and fewer breakdowns across every asset you look after.",
+      "features": [
+        "Planned and reactive maintenance with work orders",
+        "Asset lifecycle, history and warranty in one record",
+        "Contracts, subcontractors and SLAs tracked automatically",
+        "Workforce scheduling and spare parts inventory"
+      ],
+      "chip": { "label": "WO 1042", "value": "Completed in 14 min", "tone": "success" },
+      "image": { "src": "/images/modules/cafm-cmms.webp", "width": 900, "height": 565, "alt": "ALEF 360° CAFM work orders list with statuses from pending to completed" },
+      "href": "https://disrupt-x.io/alef-360-cafm-cmms/"
+    },
+    {
+      "id": "ibms",
+      "name": "iBMS",
+      "icon": "building",
+      "outcome": "Live building monitoring that finds faults before people do.",
+      "features": [
+        "Monitor HVAC, electrical and plumbing systems in real time",
+        "AI fault detection with smart prioritisation",
+        "Faults turn into work orders automatically",
+        "Energy and carbon tracking across many sites"
+      ],
+      "chip": { "label": "AHU 3", "value": "Bearing wear predicted", "tone": "warning" },
+      "image": { "src": "/images/modules/ibms.webp", "width": 900, "height": 595, "alt": "ALEF 360° iBMS map showing several residential facilities and their live system status" },
+      "href": "https://disrupt-x.io/alef-360-integrated-building-management-system/"
+    },
+    {
+      "id": "connected",
+      "name": "Connected Operations",
+      "icon": "radio",
+      "outcome": "Sensors and meters that show building health as it happens.",
+      "features": [
+        "Indoor air quality, temperature and occupancy sensors",
+        "Smart metering for energy, water and gas",
+        "Leak and anomaly alarms sent to the right team",
+        "Works with the hardware and protocols you already use"
+      ],
+      "chip": { "label": "Classroom 2.14", "value": "CO₂ 612 ppm, normal", "tone": "success" },
+      "image": { "src": "/images/modules/connected-operations.webp", "width": 900, "height": 595, "alt": "ALEF 360° IoT dashboard with air quality alarms and 2,500 connected devices" },
+      "href": "https://disrupt-x.io/alef-360-iot-platform/"
+    },
+    {
+      "id": "mobility",
+      "name": "Mobility",
+      "icon": "truck",
+      "outcome": "Know where every vehicle and valuable asset is, right now.",
+      "features": [
+        "Live fleet tracking and route monitoring",
+        "Driver assignment and route deviation alerts",
+        "Asset tracking for tools, equipment and containers",
+        "Movement alerts that prevent loss"
+      ],
+      "chip": { "label": "Van 14", "value": "On route, ETA 09:20", "tone": "info" },
+      "image": { "src": "/images/modules/mobility.webp", "width": 716, "height": 701, "alt": "ALEF 360° Mobility route map tracking a freight truck with its assigned driver" },
+      "href": "https://disrupt-x.io/alef-360-mobility/"
+    }
+  ]
+}

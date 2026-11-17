@@ -1,0 +1,21 @@
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 6px 14px 6px 12px;
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-mint);
+  box-shadow: 0 0 10px var(--c-mint);
+}

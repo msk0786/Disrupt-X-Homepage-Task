@@ -1,0 +1,34 @@
+{
+  "eyebrow": "Why ALEF 360°",
+  "title": "Built to fit the way",
+  "accent": "you already work.",
+  "lead": "No rip and replace. ALEF 360° connects to the systems, sensors and teams you have today.",
+  "stats": [
+    { "value": 5, "label": "live modules on one platform" },
+    { "value": 2500, "suffix": "+", "label": "devices connected in a single deployment" },
+    { "value": 3, "label": "ways to deploy: cloud, hybrid or on premises" },
+    { "value": 24, "suffix": "/7", "label": "live monitoring of every building" }
+  ],
+  "cards": [
+    {
+      "icon": "cpu",
+      "title": "Any sensor, any protocol",
+      "body": "Hardware agnostic by design. Connect the meters, sensors and building systems you already own."
+    },
+    {
+      "icon": "sparkles",
+      "title": "AI that spots problems early",
+      "body": "Built in AI finds patterns, forecasts failures and tells teams what to fix first."
+    },
+    {
+      "icon": "cloud",
+      "title": "Deploy your way",
+      "body": "Cloud, hybrid or on premises, set up to match your IT and security rules."
+    },
+    {
+      "icon": "layers",
+      "title": "Many clients, one platform",
+      "body": "Multi tenancy and white labelling for service providers that run many portfolios."
+    }
+  ]
+}

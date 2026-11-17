@@ -37,6 +37,16 @@
   --c-paper: #f3efe6;
   --c-paper-ink: #3a3631;
 
+  /* Device and browser chrome */
+  --c-glass: rgba(11, 11, 11, 0.72);
+  --c-chrome: #141516;
+  --c-chrome-red: #ff5f57;
+  --c-chrome-amber: #febc2e;
+  --c-chrome-green: #28c840;
+  --c-device: #111214;
+  --c-device-edge: #2a2d30;
+  --c-black: #000000;
+
   --gradient-brand: linear-gradient(90deg, var(--c-mint), var(--c-purple));
   --gradient-line: linear-gradient(180deg, var(--c-mint), var(--c-teal) 60%, transparent);
   --glow-mint: 0 0 24px rgba(0, 255, 206, 0.35);

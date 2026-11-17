@@ -1,0 +1,53 @@
+{
+  "eyebrow": "Built for the people on the ground",
+  "title": "Three teams. One platform.",
+  "accent": "Better outcomes for each.",
+  "lead": "Every team gets the screen it needs, and every screen shares the same live data.",
+  "items": [
+    {
+      "id": "facility",
+      "icon": "wrench",
+      "audience": "Facility and maintenance teams",
+      "title": "Jobs done faster.",
+      "accent": "Fewer breakdowns.",
+      "lead": "The job lands on the technician's phone with the asset, the location and the checklist. They start it, add a photo and close it on site, so nothing waits for paperwork.",
+      "points": [
+        "Work orders assigned to the right person in seconds",
+        "Asset history and checklists in every pocket",
+        "Planned maintenance that catches failures early"
+      ],
+      "screen": "workOrder",
+      "hint": "Try it. Tap through the job on the phone."
+    },
+    {
+      "id": "hse",
+      "icon": "shield",
+      "audience": "HSE and compliance teams",
+      "title": "Safer sites.",
+      "accent": "Audit ready, every time.",
+      "lead": "An incident becomes an investigation, then an action with an owner and a deadline, then a closed record with evidence. Every step is logged, so the audit trail writes itself.",
+      "points": [
+        "Incidents, inspections and permits in one flow",
+        "Corrective actions with owners and due dates",
+        "A complete audit trail without chasing anyone"
+      ],
+      "screen": "incident",
+      "hint": "Try it. Move the incident through to closed."
+    },
+    {
+      "id": "operators",
+      "icon": "building",
+      "audience": "Building operators and owners",
+      "title": "Lower costs.",
+      "accent": "Every site in one view.",
+      "lead": "See jobs, alerts and energy across every building on one dashboard. Spot the site that needs attention, compare performance and cut waste before it reaches the bill.",
+      "points": [
+        "Live status for every building and asset",
+        "AI fault detection that flags issues early",
+        "Energy and cost tracked site by site"
+      ],
+      "screen": "dashboard",
+      "hint": "Try it. Pick a school to see its numbers."
+    }
+  ]
+}

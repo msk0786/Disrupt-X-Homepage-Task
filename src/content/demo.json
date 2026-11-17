@@ -1,0 +1,111 @@
+{
+  "workOrder": {
+    "ref": "WO 1042",
+    "title": "Pipe leak, Block B toilets",
+    "priority": "High",
+    "site": "Hills Academy",
+    "location": "Block B, ground floor",
+    "asset": "Cold water line B 1.04",
+    "reportedBy": "Caretaker, 07:42",
+    "checklist": ["Isolate the water supply", "Replace the damaged joint", "Pressure test and clean up"]
+  },
+  "incident": {
+    "ref": "INC 2291",
+    "title": "Fire door FD 12 failed its check",
+    "site": "Marina Primary",
+    "severity": "Medium",
+    "steps": [
+      {
+        "key": "reported",
+        "label": "Reported",
+        "status": "Reported",
+        "tone": "danger",
+        "action": "Start investigation",
+        "who": "Sara M.",
+        "time": "Mon 08:14",
+        "note": "Logged from the inspection app with two photos"
+      },
+      {
+        "key": "investigated",
+        "label": "Investigated",
+        "status": "Investigating",
+        "tone": "warning",
+        "action": "Assign corrective action",
+        "who": "Sara M.",
+        "time": "Mon 10:02",
+        "note": "Root cause found. Worn closer arm, door does not latch"
+      },
+      {
+        "key": "assigned",
+        "label": "Action assigned",
+        "status": "Action open",
+        "tone": "purple",
+        "action": "Verify and close",
+        "who": "Omar K.",
+        "time": "Mon 10:05",
+        "note": "Replace closer arm. Owner Omar K., due Wednesday"
+      },
+      {
+        "key": "closed",
+        "label": "Closed",
+        "status": "Closed",
+        "tone": "success",
+        "action": "",
+        "who": "Sara M.",
+        "time": "Tue 15:40",
+        "note": "Retested and passed. Evidence attached, audit ready"
+      }
+    ]
+  },
+  "sites": [
+    {
+      "id": "hills",
+      "name": "Hills Academy",
+      "openJobs": 14,
+      "alerts": 3,
+      "energy": [6.1, 5.8, 6.4, 6.9, 6.2, 3.1, 2.7],
+      "compliance": 96,
+      "issues": [
+        { "tone": "warning", "module": "iBMS", "text": "AHU 3 vibration rising, bearing wear predicted" },
+        { "tone": "info", "module": "CAFM", "text": "WO 1042 pipe leak in progress, Omar K." }
+      ]
+    },
+    {
+      "id": "marina",
+      "name": "Marina Primary",
+      "openJobs": 8,
+      "alerts": 1,
+      "energy": [4.2, 4.0, 4.4, 4.1, 4.3, 2.0, 1.8],
+      "compliance": 98,
+      "issues": [
+        { "tone": "success", "module": "HSEQ", "text": "Fire door FD 12 retested and passed" },
+        { "tone": "info", "module": "CAFM", "text": "Quarterly chiller service booked for Thursday" }
+      ]
+    },
+    {
+      "id": "lakeside",
+      "name": "Lakeside School",
+      "openJobs": 21,
+      "alerts": 5,
+      "energy": [7.4, 7.9, 8.2, 7.6, 8.8, 4.9, 4.6],
+      "compliance": 89,
+      "issues": [
+        { "tone": "danger", "module": "Connected Ops", "text": "Night water use 40% above normal, possible leak" },
+        { "tone": "warning", "module": "iBMS", "text": "Chiller 2 running outside school hours" }
+      ]
+    },
+    {
+      "id": "northgate",
+      "name": "Northgate College",
+      "openJobs": 6,
+      "alerts": 0,
+      "energy": [5.0, 4.7, 5.1, 4.9, 4.8, 2.2, 2.0],
+      "compliance": 99,
+      "issues": [
+        { "tone": "success", "module": "HSEQ", "text": "All permits closed, no open actions" },
+        { "tone": "info", "module": "Mobility", "text": "Maintenance van 14 on route, ETA 09:20" }
+      ]
+    }
+  ],
+  "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+}
