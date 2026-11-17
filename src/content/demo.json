@@ -1,4 +1,28 @@
 {
+  "portfolio": {
+    "title": "Portfolio overview",
+    "scope": "12 schools",
+    "kpis": [
+      { "label": "Open work orders", "value": 248, "delta": "12% fewer than last month", "trend": "down" },
+      { "label": "Active alerts", "value": 7, "delta": "3 flagged by AI", "trend": "flat" },
+      { "label": "Energy this month", "value": 412, "suffix": " MWh", "delta": "8% below target", "trend": "down" },
+      { "label": "Compliance", "value": 97, "suffix": "%", "delta": "Audit ready", "trend": "up" }
+    ],
+    "energyTitle": "Energy use by week, MWh",
+    "energy": [118, 112, 121, 109, 104, 107, 99, 101, 96, 94, 92, 89],
+    "attentionTitle": "Sites needing attention",
+    "attention": [
+      { "name": "Lakeside School", "detail": "Night water use high", "tone": "danger", "status": "5 alerts" },
+      { "name": "Hills Academy", "detail": "AHU 3 vibration rising", "tone": "warning", "status": "3 alerts" },
+      { "name": "Marina Primary", "detail": "Permit awaiting approval", "tone": "info", "status": "1 alert" },
+      { "name": "Northgate College", "detail": "All systems normal", "tone": "success", "status": "Healthy" }
+    ]
+  },
+  "heroCards": {
+    "job": { "app": "ALEF 360°", "time": "now", "title": "New job WO 1042", "body": "Pipe leak, Block B toilets. Hills Academy" },
+    "alert": { "label": "AI fault detection", "title": "AHU 3 bearing wear predicted", "body": "Work order raised automatically" },
+    "closed": { "label": "INC 2291", "title": "Closed and audit ready" }
+  },
   "workOrder": {
     "ref": "WO 1042",
     "title": "Pipe leak, Block B toilets",
