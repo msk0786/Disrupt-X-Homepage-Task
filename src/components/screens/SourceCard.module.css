@@ -1,0 +1,168 @@
+.card {
+  width: 280px;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-float);
+  will-change: transform;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* WhatsApp */
+.whatsapp {
+  background: var(--c-bg-raised);
+  border: 1px solid var(--c-border-strong);
+}
+
+.whatsapp .head {
+  color: var(--c-whatsapp);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.chat {
+  padding: var(--space-3);
+}
+
+.bubble {
+  display: grid;
+  gap: 2px;
+  max-width: 92%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 4px var(--r-md) var(--r-md) var(--r-md);
+  background: var(--c-whatsapp-bubble);
+  color: var(--c-text);
+  font-size: var(--fs-sm);
+  line-height: 1.45;
+}
+
+.sender {
+  color: var(--c-whatsapp);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+}
+
+.time {
+  justify-self: end;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-2xs);
+}
+
+/* Paper form */
+.paper {
+  position: relative;
+  background: var(--c-paper);
+  color: var(--c-paper-ink);
+}
+
+.paper .head {
+  color: var(--c-paper-ink);
+  border-bottom: 1px dashed rgba(58, 54, 49, 0.3);
+}
+
+.paperBody {
+  position: relative;
+  padding: var(--space-3) var(--space-3) var(--space-4);
+}
+
+.paperTitle {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.paperMeta {
+  margin-top: var(--space-1);
+  font-size: var(--fs-xs);
+  opacity: 0.75;
+}
+
+.lines {
+  display: block;
+  height: 30px;
+  margin-top: var(--space-2);
+  background: repeating-linear-gradient(to bottom, transparent 0 9px, rgba(58, 54, 49, 0.18) 9px 10px);
+}
+
+.stamp {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  padding: 2px 10px;
+  color: var(--c-stamp);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 2px solid var(--c-stamp);
+  border-radius: var(--r-xs);
+  transform: rotate(-12deg);
+  opacity: 0.85;
+}
+
+/* Spreadsheet */
+.excel {
+  background: var(--c-sheet);
+  color: var(--c-paper-ink);
+}
+
+.excel .head {
+  color: var(--c-text);
+  background: var(--c-excel);
+}
+
+.sheet {
+  font-size: var(--fs-xs);
+}
+
+.sheetRow {
+  display: grid;
+  grid-template-columns: 36px 1fr 74px;
+  border-bottom: 1px solid var(--c-sheet-grid);
+}
+
+.sheetRow > span {
+  padding: 6px 8px;
+  border-right: 1px solid var(--c-sheet-grid);
+  line-height: 1.35;
+}
+
+.sheetHeader {
+  min-height: 24px;
+  color: rgba(58, 54, 49, 0.6);
+  font-size: var(--fs-2xs);
+  text-align: center;
+  background: rgba(58, 54, 49, 0.05);
+}
+
+.rowNo {
+  color: rgba(58, 54, 49, 0.6);
+  font-size: var(--fs-2xs);
+  text-align: center;
+  background: rgba(58, 54, 49, 0.05);
+}
+
+.selected {
+  outline: 2px solid var(--c-excel);
+  outline-offset: -2px;
+  font-weight: 500;
+}
+
+.sheetFile {
+  padding: 6px 8px;
+  color: rgba(58, 54, 49, 0.65);
+  font-size: var(--fs-2xs);
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 250px;
+  }
+}

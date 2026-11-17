@@ -4,6 +4,7 @@ import { useReveal } from './motion/useReveal.js'
 import Header from './sections/Header.jsx'
 import Hero from './sections/Hero.jsx'
 import LogoMarquee from './sections/LogoMarquee.jsx'
+import ScatteredToOne from './sections/ScatteredToOne.jsx'
 import Footer from './sections/Footer.jsx'
 
 import './styles/fonts.css'
@@ -15,7 +16,7 @@ export default function App() {
   const root = useRef(null)
   useReveal(root)
 
-  const { site, clients, demo } = content
+  const { site, clients, story, demo } = content
 
   return (
     <div ref={root}>
@@ -26,6 +27,7 @@ export default function App() {
       <main id="main">
         <Hero hero={site.hero} demo={site.demo} dashboard={demo.portfolio} cards={demo.heroCards} />
         <LogoMarquee title={site.clients.title} clients={clients} />
+        <ScatteredToOne story={story} />
       </main>
       <Footer brand={site.brand} footer={site.footer} />
     </div>

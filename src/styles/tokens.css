@@ -33,7 +33,11 @@
 
   /* Third party colours used inside the story mockups */
   --c-whatsapp: #25d366;
+  --c-whatsapp-bubble: #005c4b;
   --c-excel: #1f9d55;
+  --c-sheet: #f8faf9;
+  --c-sheet-grid: #dfe5e2;
+  --c-stamp: #d33a3a;
   --c-paper: #f3efe6;
   --c-paper-ink: #3a3631;
 

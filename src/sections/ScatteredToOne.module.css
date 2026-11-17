@@ -1,0 +1,150 @@
+.section {
+  padding-block: var(--section-y);
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: var(--space-6) clamp(2rem, 1rem + 5vw, 6rem);
+  margin-top: var(--space-8);
+}
+
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.label {
+  color: var(--c-text-dim);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.labelAfter {
+  color: var(--c-mint);
+}
+
+.chaos {
+  position: relative;
+  height: 420px;
+}
+
+.card {
+  position: absolute;
+}
+
+.card1 {
+  top: 0;
+  left: 2%;
+  z-index: 1;
+  transform: rotate(-7deg);
+}
+
+.card2 {
+  top: 130px;
+  left: 28%;
+  z-index: 2;
+  transform: rotate(5deg);
+}
+
+.card3 {
+  top: 262px;
+  left: 6%;
+  z-index: 3;
+  transform: rotate(-3deg);
+}
+
+.tally {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 0.5rem + 3vw, 3rem);
+  padding-top: var(--space-5);
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 260px;
+  font-size: var(--fs-sm);
+  line-height: 1.35;
+}
+
+.before {
+  color: var(--c-text);
+}
+
+.number {
+  font-size: var(--fs-stat);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.arrow {
+  flex: none;
+  color: var(--c-mint);
+}
+
+@media (max-width: 899px) {
+  .stage {
+    grid-template-columns: 1fr;
+  }
+
+  .chaos {
+    height: 400px;
+  }
+
+  .card1 {
+    left: calc(50% - 160px);
+  }
+
+  .card2 {
+    left: calc(50% - 110px);
+  }
+
+  .card3 {
+    left: calc(50% - 150px);
+  }
+}
+
+@media (max-width: 480px) {
+  .chaos {
+    height: 380px;
+  }
+
+  .card1 {
+    left: 0;
+  }
+
+  .card2 {
+    left: auto;
+    right: 0;
+  }
+
+  .card3 {
+    left: 4%;
+  }
+
+  .tally {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .count {
+    max-width: none;
+  }
+}
