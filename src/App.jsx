@@ -6,6 +6,9 @@ import Hero from './sections/Hero.jsx'
 import LogoMarquee from './sections/LogoMarquee.jsx'
 import ScatteredToOne from './sections/ScatteredToOne.jsx'
 import Teams from './sections/Teams.jsx'
+import Modules from './sections/Modules.jsx'
+import Strengths from './sections/Strengths.jsx'
+import FinalCta from './sections/FinalCta.jsx'
 import Footer from './sections/Footer.jsx'
 
 import './styles/fonts.css'
@@ -17,7 +20,7 @@ export default function App() {
   const root = useRef(null)
   useReveal(root)
 
-  const { site, clients, story, teams, demo } = content
+  const { site, clients, story, teams, modules, strengths, demo } = content
 
   return (
     <div ref={root}>
@@ -30,6 +33,9 @@ export default function App() {
         <LogoMarquee title={site.clients.title} clients={clients} />
         <ScatteredToOne story={story} />
         <Teams teams={teams} demo={demo} />
+        <Modules modules={modules} />
+        <Strengths strengths={strengths} />
+        <FinalCta cta={site.finalCta} demo={site.demo} />
       </main>
       <Footer brand={site.brand} footer={site.footer} />
     </div>

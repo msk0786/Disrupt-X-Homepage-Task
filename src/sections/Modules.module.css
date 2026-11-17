@@ -1,0 +1,153 @@
+.section {
+  padding-block: var(--section-y);
+  background:
+    radial-gradient(60% 40% at 50% 0%, rgba(158, 105, 255, 0.08), transparent 70%),
+    var(--c-bg);
+}
+
+.tabs {
+  display: grid;
+  gap: var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.tabs > [role='tablist'] {
+  justify-self: center;
+  max-width: 100%;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: var(--space-6) clamp(2rem, 1rem + 4vw, 5rem);
+  padding: clamp(1.25rem, 0.5rem + 3vw, 3rem);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 30%),
+    var(--c-surface);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.kicker,
+.name {
+  display: block;
+  line-height: 1.15;
+}
+
+.kicker {
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+}
+
+.name {
+  color: var(--c-text);
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.outcome {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--c-text);
+  letter-spacing: 0;
+}
+
+.features {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+
+.features svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--c-mint);
+}
+
+/* The real product screenshot from disrupt-x.io on a dark stage */
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: var(--space-5);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-lg);
+  background:
+    radial-gradient(70% 60% at 50% 40%, rgba(0, 255, 206, 0.12), transparent 70%),
+    linear-gradient(var(--c-border) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--c-border) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--c-bg-sunken);
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.6));
+}
+
+.chip {
+  position: absolute;
+  left: var(--space-5);
+  bottom: var(--space-5);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-4) var(--space-2) var(--space-2);
+  color: var(--c-text);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--c-chrome) 90%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-float);
+}
+
+@media (max-width: 899px) {
+  .panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .media {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .media {
+    padding: var(--space-3);
+  }
+
+  .chip {
+    left: var(--space-3);
+    right: var(--space-3);
+    bottom: var(--space-3);
+  }
+}

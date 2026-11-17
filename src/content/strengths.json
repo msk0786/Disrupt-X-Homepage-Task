@@ -6,8 +6,8 @@
   "stats": [
     { "value": 5, "label": "live modules on one platform" },
     { "value": 2500, "suffix": "+", "label": "devices connected in a single deployment" },
-    { "value": 3, "label": "ways to deploy: cloud, hybrid or on premises" },
-    { "value": 24, "suffix": "/7", "label": "live monitoring of every building" }
+    { "value": 15, "suffix": "+", "label": "ready made IoT monitoring solutions" },
+    { "value": 3, "label": "ways to deploy: cloud, hybrid or on premises" }
   ],
   "cards": [
     {
