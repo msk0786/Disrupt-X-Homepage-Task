@@ -5,6 +5,16 @@
   font-size: var(--fs-sm);
 }
 
+/* sits behind the page and gets uncovered as the last section scrolls away */
+@media (min-width: 900px) and (min-height: 640px) {
+  .footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 0;
+    border-top: 0;
+  }
+}
+
 .top {
   display: grid;
   grid-template-columns: 1.4fr repeat(3, 1fr);

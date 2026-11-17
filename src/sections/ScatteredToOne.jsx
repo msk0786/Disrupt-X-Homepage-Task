@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import Container from '../components/ui/Container.jsx'
-import SectionHeading from '../components/ui/SectionHeading.jsx'
+import ChapterIntro from './ChapterIntro.jsx'
 import GradientText from '../components/ui/GradientText.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import BrowserFrame from '../components/frames/BrowserFrame.jsx'
@@ -21,7 +21,7 @@ function centreWithin(el, ancestor) {
   return { x, y }
 }
 
-export default function ScatteredToOne({ story }) {
+export default function ScatteredToOne({ story, chapter }) {
   const root = useRef(null)
   const stage = useRef(null)
 
@@ -78,9 +78,17 @@ export default function ScatteredToOne({ story }) {
 
   return (
     <section ref={root} id="platform" className={styles.section} aria-labelledby="story-title">
-      <Container>
-        <SectionHeading id="story-title" eyebrow={story.eyebrow} title={story.title} accent={story.accent} lead={story.lead} />
+      <ChapterIntro
+        id="story-title"
+        chapter={chapter}
+        enter="window"
+        eyebrow={story.eyebrow}
+        title={story.title}
+        accent={story.accent}
+        lead={story.lead}
+      />
 
+      <Container>
         <div ref={stage} className={styles.stage}>
           <div className={styles.column}>
             <p className={styles.label} data-reveal="left">

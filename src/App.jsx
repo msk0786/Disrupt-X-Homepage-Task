@@ -6,7 +6,6 @@ import Header from './sections/Header.jsx'
 import Hero from './sections/Hero.jsx'
 import LogoMarquee from './sections/LogoMarquee.jsx'
 import ScatteredToOne from './sections/ScatteredToOne.jsx'
-import Statement from './sections/Statement.jsx'
 import Teams from './sections/Teams.jsx'
 import Modules from './sections/Modules.jsx'
 import Strengths from './sections/Strengths.jsx'
@@ -24,6 +23,7 @@ export default function App() {
   useParallax(root)
 
   const { site, clients, story, teams, modules, strengths, demo } = content
+  const chapter = (number) => ({ number, total: '04' })
 
   return (
     <div ref={root}>
@@ -34,11 +34,10 @@ export default function App() {
       <main id="main">
         <Hero hero={site.hero} demo={site.demo} dashboard={demo.portfolio} cards={demo.heroCards} />
         <LogoMarquee title={site.clients.title} clients={clients} />
-        <ScatteredToOne story={story} />
-        <Statement statement={site.statement} />
-        <Teams teams={teams} demo={demo} />
-        <Modules modules={modules} />
-        <Strengths strengths={strengths} />
+        <ScatteredToOne story={story} chapter={chapter('01')} />
+        <Teams teams={teams} demo={demo} chapter={chapter('02')} />
+        <Modules modules={modules} chapter={chapter('03')} />
+        <Strengths strengths={strengths} chapter={chapter('04')} />
         <FinalCta cta={site.finalCta} demo={site.demo} />
       </main>
       <Footer brand={site.brand} footer={site.footer} />

@@ -1,12 +1,12 @@
 .section {
-  padding-block: var(--section-y);
+  padding-bottom: var(--section-y);
 }
 
 .track {
   position: relative;
   display: grid;
   gap: clamp(5rem, 3rem + 6vw, 9rem);
-  margin-top: var(--space-8);
+  margin-top: var(--space-7);
 }
 
 /* Runs through the centre of every team's icon node */

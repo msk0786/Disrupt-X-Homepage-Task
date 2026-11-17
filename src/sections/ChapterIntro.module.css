@@ -1,0 +1,103 @@
+.chapter {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-block: var(--space-8);
+  overflow: hidden;
+}
+
+/* The scene behind the title: brand grid, coloured squares and two glows */
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background:
+    radial-gradient(45% 55% at 50% 55%, color-mix(in srgb, var(--c-mint) 18%, transparent), transparent 70%),
+    radial-gradient(35% 45% at 85% 15%, color-mix(in srgb, var(--c-purple) 20%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 10% 90%, color-mix(in srgb, var(--c-blue) 14%, transparent), transparent 70%),
+    var(--c-bg-raised);
+}
+
+.panel img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+/* soft top and bottom so the panel melts into the sections around it */
+.panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--c-bg) 0%, transparent 14%, transparent 82%, var(--c-bg) 100%);
+}
+
+.edge {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.edge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: var(--c-mint);
+  box-shadow:
+    0 0 24px 4px color-mix(in srgb, var(--c-mint) 70%, transparent),
+    0 0 80px 20px color-mix(in srgb, var(--c-mint) 25%, transparent);
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  text-align: center;
+}
+
+.number {
+  color: var(--c-mint);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.number span {
+  color: var(--c-text-dim);
+}
+
+.title {
+  max-width: 820px;
+  font-size: var(--fs-h2);
+}
+
+.lead {
+  max-width: 620px;
+  font-size: var(--fs-lg);
+}
+
+@media (max-width: 899px) {
+  .chapter {
+    min-height: 0;
+    padding-block: clamp(5rem, 4rem + 6vw, 7rem);
+  }
+
+  .lead {
+    font-size: var(--fs-base);
+  }
+}

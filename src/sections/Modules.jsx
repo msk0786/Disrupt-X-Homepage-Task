@@ -1,27 +1,49 @@
 import { useRef, useState } from 'react'
 import Container from '../components/ui/Container.jsx'
-import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Tabs from '../components/ui/Tabs.jsx'
+import ChapterIntro from './ChapterIntro.jsx'
 import IconBadge from '../components/ui/IconBadge.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import Button from '../components/ui/Button.jsx'
 import StatusPill from '../components/ui/StatusPill.jsx'
-import { gsap, ScrollTrigger, useGSAP, motion, prefersReducedMotion } from '../motion/gsap.js'
+import { gsap, ScrollTrigger, useGSAP, media, motion, prefersReducedMotion } from '../motion/gsap.js'
 import styles from './Modules.module.css'
 
-export default function Modules({ modules }) {
+export default function Modules({ modules, chapter }) {
   const root = useRef(null)
   const [active, setActive] = useState(modules.items[0].id)
   const previous = useRef(active)
 
-  // hidden panels skip their lazy images, so warm them up once the section is close
   useGSAP(
     () => {
+      // hidden panels skip their lazy images, so warm them up once the section is close
       ScrollTrigger.create({
         trigger: root.current,
         start: 'top bottom+=400',
         once: true,
         onEnter: () => modules.items.forEach((item) => (new Image().src = item.image.src)),
+      })
+
+      // the explorer rises out of a smaller rounded window and settles at full size
+      const mm = gsap.matchMedia()
+      mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+        gsap.fromTo(
+          '[data-explorer]',
+          {
+            y: conditions.desktop ? 160 : 60,
+            scale: conditions.desktop ? 0.82 : 0.92,
+            clipPath: 'inset(0% 6% 12% 6% round 32px)',
+            autoAlpha: 0.3,
+          },
+          {
+            y: 0,
+            scale: 1,
+            clipPath: 'inset(0% 0% 0% 0% round 0px)',
+            autoAlpha: 1,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: '[data-explorer]', start: 'top bottom', end: 'top 30%', scrub: 0.7 },
+          },
+        )
       })
     },
     { scope: root },
@@ -43,11 +65,18 @@ export default function Modules({ modules }) {
 
   return (
     <section ref={root} id="modules" className={styles.section} aria-labelledby="modules-title">
-      <Container>
-        <SectionHeading id="modules-title" eyebrow={modules.eyebrow} title={modules.title} accent={modules.accent} lead={modules.lead} />
+      <ChapterIntro
+        id="modules-title"
+        chapter={chapter}
+        enter="circle"
+        eyebrow={modules.eyebrow}
+        title={modules.title}
+        accent={modules.accent}
+        lead={modules.lead}
+      />
 
-        {/* the whole explorer opens like a curtain, top to bottom */}
-        <div data-reveal="clip">
+      <Container>
+        <div className={styles.explorer} data-explorer>
           <Tabs
             label={modules.tabsLabel}
             items={modules.items}

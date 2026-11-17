@@ -34,6 +34,17 @@ main {
   overflow-x: clip;
 }
 
+/* On larger screens the page lifts off the footer, which waits underneath (see Footer) */
+@media (min-width: 900px) and (min-height: 640px) {
+  main {
+    position: relative;
+    z-index: 1;
+    background: var(--c-bg);
+    border-radius: 0 0 var(--r-xl) var(--r-xl);
+    box-shadow: 0 40px 80px -20px var(--c-black);
+  }
+}
+
 h1,
 h2,
 h3,
