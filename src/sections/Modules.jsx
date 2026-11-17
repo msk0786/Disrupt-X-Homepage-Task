@@ -6,7 +6,12 @@ import IconBadge from '../components/ui/IconBadge.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import Button from '../components/ui/Button.jsx'
 import StatusPill from '../components/ui/StatusPill.jsx'
-import { gsap, ScrollTrigger, useGSAP, media, motion, prefersReducedMotion } from '../motion/gsap.js'
+import BrowserFrame from '../components/frames/BrowserFrame.jsx'
+import Skyline from '../components/screens/Skyline.jsx'
+import { gsap, useGSAP, media, motion, smoothing, prefersReducedMotion } from '../motion/gsap.js'
+import { afterPaint } from '../motion/schedule.js'
+import { onceVisible } from '../motion/observe.js'
+import { srcSetOf } from '../lib/image.js'
 import styles from './Modules.module.css'
 
 export default function Modules({ modules, chapter }) {
@@ -17,34 +22,53 @@ export default function Modules({ modules, chapter }) {
   useGSAP(
     () => {
       // hidden panels skip their lazy images, so warm them up once the section is close
-      ScrollTrigger.create({
-        trigger: root.current,
-        start: 'top bottom+=400',
-        once: true,
-        onEnter: () => modules.items.forEach((item) => (new Image().src = item.image.src)),
-      })
+      const stopWarm = onceVisible(
+        root.current,
+        () =>
+          modules.items.forEach((item) => {
+            const image = new Image()
+            image.sizes = sizes
+            image.srcset = srcSetOf(item.image.srcSet)
+            image.src = item.image.src
+          }),
+        '0px 0px 400px 0px',
+      )
 
-      // the explorer rises out of a smaller rounded window and settles at full size
-      const mm = gsap.matchMedia()
-      mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
-        gsap.fromTo(
-          '[data-explorer]',
-          {
-            y: conditions.desktop ? 160 : 60,
-            scale: conditions.desktop ? 0.82 : 0.92,
-            clipPath: 'inset(0% 6% 12% 6% round 32px)',
-            autoAlpha: 0.3,
-          },
-          {
-            y: 0,
-            scale: 1,
-            clipPath: 'inset(0% 0% 0% 0% round 0px)',
-            autoAlpha: 1,
-            ease: 'power2.out',
-            scrollTrigger: { trigger: '[data-explorer]', start: 'top bottom', end: 'top 30%', scrub: 0.7 },
-          },
-        )
-      })
+      // the explorer rises out of a smaller rounded window and settles at full size,
+      // while a dark veil lifts off it (the veil keeps the text itself at full contrast)
+      const mm = gsap.matchMedia(root.current)
+      const cancel = afterPaint(() =>
+        mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+          const desktop = conditions.desktop
+          gsap.fromTo(
+            '[data-explorer]',
+            {
+              y: desktop ? 160 : 60,
+              scale: desktop ? 0.82 : 0.92,
+              clipPath: 'inset(0% 6% 12% 6% round 32px)',
+              '--veil': 0.7,
+            },
+            {
+              y: 0,
+              scale: 1,
+              clipPath: 'inset(0% 0% 0% 0% round 0px)',
+              '--veil': 0,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '[data-explorer]',
+                start: 'top bottom',
+                end: desktop ? 'top 40%' : 'top 70%',
+                scrub: desktop ? 0.7 : smoothing.mobile,
+              },
+            },
+          )
+        }),
+      )
+
+      return () => {
+        stopWarm()
+        cancel()
+      }
     },
     { scope: root },
   )
@@ -77,6 +101,17 @@ export default function Modules({ modules, chapter }) {
 
       <Container>
         <div className={styles.explorer} data-explorer>
+          <div className={styles.skyline}>
+            <Skyline
+              items={modules.items}
+              active={active}
+              onSelect={setActive}
+              prefix={modules.skyline.prefix}
+              logoAlt={modules.skyline.logoAlt}
+            />
+            <p className={styles.skylineHint}>{modules.skyline.hint}</p>
+          </div>
+
           <Tabs
             label={modules.tabsLabel}
             items={modules.items}
@@ -89,7 +124,14 @@ export default function Modules({ modules, chapter }) {
                 {item.name}
               </>
             )}
-            renderPanel={(item) => <ModulePanel item={item} linkLabel={modules.linkLabel} />}
+            renderPanel={(item) => (
+              <ModulePanel
+                item={item}
+                kicker={modules.kicker}
+                linkLabel={modules.linkLabel}
+                productsLabel={modules.productsLabel}
+              />
+            )}
           />
         </div>
       </Container>
@@ -97,14 +139,31 @@ export default function Modules({ modules, chapter }) {
   )
 }
 
-function ModulePanel({ item, linkLabel }) {
+const sizes = '(max-width: 899px) 92vw, 620px'
+
+function ModulePanel({ item, kicker, linkLabel, productsLabel }) {
+  const { image } = item
+  const picture = (
+    <img
+      src={image.src}
+      srcSet={srcSetOf(image.srcSet)}
+      sizes={sizes}
+      width={image.width}
+      height={image.height}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+      style={image.focus ? { '--focus': image.focus, '--zoom': image.phoneZoom ?? 1 } : undefined}
+    />
+  )
+
   return (
     <div className={styles.panel} data-panel={item.id}>
       <div className={styles.copy}>
         <div className={styles.label} data-swap>
           <IconBadge name={item.icon} size="lg" active />
           <p>
-            <span className={styles.kicker}>ALEF 360°</span>
+            <span className={styles.kicker}>{kicker}</span>
             <span className={styles.name}>{item.name}</span>
           </p>
         </div>
@@ -119,6 +178,22 @@ function ModulePanel({ item, linkLabel }) {
             </li>
           ))}
         </ul>
+        {item.products && (
+          <div className={styles.products} data-swap>
+            <p className={styles.productsLabel}>{productsLabel}</p>
+            <ul>
+              {item.products.map((product) => (
+                <li key={product.name}>
+                  <a href={product.href}>
+                    <strong>{product.name}</strong>
+                    <span>{product.detail}</span>
+                    <Icon name="arrowUpRight" size={14} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <div data-swap>
           <Button href={item.href} variant="link" arrow>
             {linkLabel} {item.name}
@@ -127,14 +202,13 @@ function ModulePanel({ item, linkLabel }) {
       </div>
 
       <div className={styles.media} data-swap>
-        <img
-          src={item.image.src}
-          width={item.image.width}
-          height={item.image.height}
-          alt={item.image.alt}
-          loading="lazy"
-          decoding="async"
-        />
+        {image.frame ? (
+          <BrowserFrame title={image.frame} className={styles.framed}>
+            {picture}
+          </BrowserFrame>
+        ) : (
+          picture
+        )}
         <div className={styles.chip}>
           <StatusPill tone={item.chip.tone} pulse>
             {item.chip.label}

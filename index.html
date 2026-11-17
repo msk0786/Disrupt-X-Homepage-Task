@@ -10,18 +10,71 @@
     />
     <meta name="theme-color" content="#0b0b0b" />
     <meta name="color-scheme" content="dark" />
+    <link rel="canonical" href="https://disrupt-x-homepage-task.vercel.app/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Disrupt-X" />
+    <meta property="og:url" content="https://disrupt-x-homepage-task.vercel.app/" />
     <meta property="og:title" content="Disrupt-X | ALEF 360°" />
-    <meta
-      property="og:description"
-      content="One AI platform for maintenance, safety and building operations."
-    />
-    <meta property="og:image" content="/images/og.png" />
+    <meta property="og:description" content="One AI platform for maintenance, safety and building operations." />
+    <meta property="og:image" content="https://disrupt-x-homepage-task.vercel.app/images/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Disrupt-X ALEF 360°: fewer breakdowns, safer sites, every building in one view" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Disrupt-X | ALEF 360°" />
+    <meta name="twitter:description" content="One AI platform for maintenance, safety and building operations." />
+    <meta name="twitter:image" content="https://disrupt-x-homepage-task.vercel.app/images/og.jpg" />
 
     <link rel="icon" href="/images/brand/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="preload" href="/fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Animated elements wait in their starting state until scripts take over. If scripts never run, everything shows after 4 seconds. -->
+    <script>document.documentElement.classList.add('js');setTimeout(function(){window.__dxReady||document.documentElement.classList.remove('js')},4000)</script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://disrupt-x.io/#organization",
+            "name": "Disrupt-X",
+            "alternateName": ["DisruptX", "Disrupt X"],
+            "url": "https://disrupt-x.io/",
+            "logo": "https://disrupt-x-homepage-task.vercel.app/images/brand/apple-touch-icon.png",
+            "description": "AI-powered technology provider for the built environment. Operating since 2022, working with 50+ enterprise customers across 20+ countries.",
+            "foundingDate": "2022",
+            "sameAs": [
+              "https://www.linkedin.com/company/disruptxio",
+              "https://x.com/disruptxio",
+              "https://www.instagram.com/disruptxio/",
+              "https://www.facebook.com/disruptxio",
+              "https://www.tiktok.com/@disruptxio",
+              "https://www.youtube.com/@disruptxio"
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "ALEF 360°",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web, iOS, Android",
+            "description": "AI platform for the built environment. ALEF 360° brings maintenance (CAFM and CMMS), health, safety and quality (HSEQ), building systems (iBMS and connected operations) and mobility into one place.",
+            "featureList": [
+              "HSEQ: incidents, inspections, permits to work and corrective actions",
+              "CAFM and CMMS: maintenance, assets, contracts, workforce and inventory",
+              "iBMS: live building monitoring, AI fault detection and energy tracking across many sites",
+              "Connected Operations: sensors and meters for environment, assets and utilities",
+              "Mobility: vehicle fleet and asset tracking"
+            ],
+            "provider": { "@id": "https://disrupt-x.io/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"><!--app--></div>

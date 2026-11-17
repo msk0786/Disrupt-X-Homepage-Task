@@ -26,3 +26,31 @@
 .skip-link:focus-visible {
   transform: none;
 }
+
+/*
+  Starting states for the shared reveals (see motion/useReveal.js). They apply only
+  while scripts are running (the `js` class from index.html) and only until the
+  element is handed over to JavaScript (data-motion-ready). So the prerendered page
+  never shows something that will vanish a moment later, and people who ask for
+  reduced motion always see everything.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal]:not([data-motion-ready]) {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .js [data-reveal='clip']:not([data-motion-ready]) {
+    opacity: 1;
+    visibility: visible;
+    clip-path: inset(0% 0% 100% 0%);
+  }
+
+  .js [data-words]:not([data-motion-ready]) [data-word] {
+    transform: translateY(115%);
+  }
+
+  .js [data-draw]:not([data-motion-ready]) {
+    --draw: 0;
+  }
+}

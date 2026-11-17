@@ -1,0 +1,33 @@
+.apps {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.title {
+  color: var(--c-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.badge {
+  display: block;
+  border-radius: var(--r-sm);
+  transition: transform var(--dur-fast) ease;
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+}
+
+.badge img {
+  width: auto;
+  height: 44px;
+}

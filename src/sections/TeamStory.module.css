@@ -70,13 +70,18 @@
   color: var(--c-mint);
 }
 
+.apps {
+  margin-top: var(--space-2);
+}
+
 .hint {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   margin-top: var(--space-2);
-  color: var(--c-text-dim);
-  font-size: var(--fs-xs);
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
 }
 
 .hint svg {
@@ -89,18 +94,60 @@
 }
 
 .screenInner {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
 }
 
+/* soft mint light under the screen, drawn wide instead of blurred */
 .screen::before {
   content: '';
   position: absolute;
-  inset: 10% 5%;
-  z-index: -1;
+  inset: 0% -5%;
+  z-index: 0;
   border-radius: 50%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--c-mint) 16%, transparent), transparent);
-  filter: blur(30px);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--c-mint) 14%, transparent),
+    color-mix(in srgb, var(--c-mint) 5%, transparent) 60%,
+    transparent
+  );
+}
+
+/* A real site photo behind the product screen. It is darkened and tinted so the
+   screen stays the hero, and it drifts a little slower than the page (data-speed). */
+.photo {
+  position: absolute;
+  inset: 8% -3% 8% 12%;
+  z-index: 0;
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-xl);
+  background: var(--c-bg-raised);
+}
+
+.photo img {
+  position: absolute;
+  top: -12%;
+  left: 0;
+  width: 100%;
+  height: 124%;
+  max-width: none;
+  object-fit: cover;
+  opacity: 0.72;
+  /* graded toward the brand: cooler and calmer than the original photo */
+  filter: grayscale(0.35) contrast(1.05);
+}
+
+.photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--c-bg) 85%, transparent) 0%, color-mix(in srgb, var(--c-bg) 25%, transparent) 50%, transparent),
+    linear-gradient(0deg, color-mix(in srgb, var(--c-bg) 70%, transparent), transparent 45%),
+    linear-gradient(135deg, color-mix(in srgb, var(--c-mint) 14%, transparent), color-mix(in srgb, var(--c-purple) 12%, transparent));
 }
 
 @media (max-width: 899px) {
@@ -127,5 +174,9 @@
   /* the product screen takes the full width and covers the rail behind it */
   .screen {
     margin-left: calc(-1 * (var(--node) + var(--node-gap)));
+  }
+
+  .photo {
+    inset: 6% 0;
   }
 }

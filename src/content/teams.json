@@ -17,7 +17,18 @@
         "Planned maintenance that catches failures early"
       ],
       "screen": "workOrder",
-      "hint": "Try it. Tap through the job on the phone."
+      "showApps": true,
+      "photo": {
+        "src": "/images/photos/facility-technician-1200.webp",
+        "srcSet": [
+          { "src": "/images/photos/facility-technician-720.webp", "width": 720 },
+          { "src": "/images/photos/facility-technician-1200.webp", "width": 1200 }
+        ],
+        "width": 1200,
+        "height": 874,
+        "focus": "20% 50%"
+      },
+      "hint": "Try it: tap through the job on the phone."
     },
     {
       "id": "hse",
@@ -32,7 +43,17 @@
         "A complete audit trail without chasing anyone"
       ],
       "screen": "incident",
-      "hint": "Try it. Move the incident through to closed."
+      "photo": {
+        "src": "/images/photos/school-classroom-1200.webp",
+        "srcSet": [
+          { "src": "/images/photos/school-classroom-720.webp", "width": 720 },
+          { "src": "/images/photos/school-classroom-1200.webp", "width": 1200 }
+        ],
+        "width": 1200,
+        "height": 800,
+        "focus": "50% 40%"
+      },
+      "hint": "Try it: move the incident through to a closed action."
     },
     {
       "id": "operators",
@@ -40,14 +61,24 @@
       "audience": "Building operators and owners",
       "title": "Lower costs.",
       "accent": "Every site in one view.",
-      "lead": "See jobs, alerts and energy across every building on one dashboard. Spot the site that needs attention, compare performance and cut waste before it reaches the bill.",
+      "lead": "See jobs, alerts, energy and cost across every building on one dashboard. Spot the site that needs attention, compare performance and cut waste before it reaches the bill.",
       "points": [
         "Live status for every building and asset",
         "AI fault detection that flags issues early",
-        "Energy and cost tracked site by site"
+        "Energy cost tracked against budget, site by site"
       ],
       "screen": "dashboard",
-      "hint": "Try it. Pick a school to see its numbers."
+      "photo": {
+        "src": "/images/photos/control-room-1200.webp",
+        "srcSet": [
+          { "src": "/images/photos/control-room-720.webp", "width": 720 },
+          { "src": "/images/photos/control-room-1200.webp", "width": 1200 }
+        ],
+        "width": 1200,
+        "height": 874,
+        "focus": "70% 50%"
+      },
+      "hint": "Try it: pick a school to see its numbers."
     }
   ]
 }

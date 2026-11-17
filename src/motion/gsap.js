@@ -15,16 +15,43 @@ export const motion = {
   stagger: 0.08,
 }
 
-// Use these with gsap.matchMedia(). Anything animated lives under `ok`,
-// so people who ask for reduced motion get the final state straight away.
+const ok = '(prefers-reduced-motion: no-preference)'
+
+/*
+  Use these with gsap.matchMedia(). Anything animated lives under `ok`,
+  so people who ask for reduced motion get the final state straight away.
+
+  desktop  wide screens driven by a mouse: pinned scenes and longer scrubs
+  mobile   everything else (phones, tablets, touch laptops): the same animations,
+           no pins, shorter ranges so they settle while still in view
+  The two never match at the same time.
+*/
 export const media = {
-  ok: '(prefers-reduced-motion: no-preference)',
-  desktop: '(min-width: 900px) and (prefers-reduced-motion: no-preference)',
-  mobile: '(max-width: 899px) and (prefers-reduced-motion: no-preference)',
+  ok,
+  desktop: `(min-width: 900px) and (hover: hover) and (pointer: fine) and ${ok}`,
+  mobile: [
+    `(max-width: 899px) and ${ok}`,
+    `(hover: none) and ${ok}`,
+    `(pointer: coarse) and ${ok}`,
+    `(pointer: none) and ${ok}`,
+  ].join(', '),
 }
+
+// How long a scrubbed animation takes to catch up with the scroll, in seconds.
+// Short on touch screens so nothing trails behind the finger.
+export const smoothing = { desktop: 0.6, mobile: 0.3 }
 
 export function prefersReducedMotion() {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+/**
+ * Marks an element as handed over to JavaScript. Until then, CSS keeps animated
+ * elements in their starting state (see `.js` in index.html and utilities.css),
+ * so nothing appears, vanishes and appears again while the page wakes up.
+ */
+export function markReady(el) {
+  el?.setAttribute('data-motion-ready', '')
 }
 
 export { gsap, ScrollTrigger, useGSAP }

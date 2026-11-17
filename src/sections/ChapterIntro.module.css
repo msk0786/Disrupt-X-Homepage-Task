@@ -101,3 +101,24 @@
     font-size: var(--fs-base);
   }
 }
+
+/*
+  Starting state while the page wakes up (see markReady in motion/gsap.js): the panel
+  is still closed and the text is waiting below its masks, exactly where the scroll
+  scene starts, so nothing is shown and then hidden again.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .chapter:not([data-motion-ready]) .panel {
+    clip-path: var(--panel-from);
+  }
+
+  :global(.js) .chapter:not([data-motion-ready]) [data-word] {
+    transform: translateY(115%);
+  }
+
+  :global(.js) .chapter:not([data-motion-ready]) [data-chapter-meta],
+  :global(.js) .chapter:not([data-motion-ready]) [data-chapter-lead] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

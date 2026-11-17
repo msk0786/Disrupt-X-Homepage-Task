@@ -33,3 +33,16 @@
     left: 21px;
   }
 }
+
+/* Starting state while the page wakes up: copy, screens and the line wait for the scroll */
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .track:not([data-motion-ready]) [data-team-copy],
+  :global(.js) .track:not([data-motion-ready]) [data-team-screen] {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  :global(.js) .track:not([data-motion-ready]) [data-line] {
+    transform: scaleY(0);
+  }
+}

@@ -24,14 +24,14 @@ export default function HeroDashboard({ data }) {
       <div className={styles.body}>
         <div className={styles.top}>
           <div>
-            <p className={styles.kicker}>ALEF 360°</p>
+            <p className={styles.kicker}>{data.kicker}</p>
             <p className={styles.title}>{data.title}</p>
           </div>
           <div className={styles.topRight}>
             <StatusPill tone="success" pulse>
-              {data.scope} live
+              {data.scope} {data.liveLabel}
             </StatusPill>
-            <span className={styles.avatar}>SM</span>
+            <span className={styles.avatar}>{data.user}</span>
           </div>
         </div>
 
@@ -40,7 +40,7 @@ export default function HeroDashboard({ data }) {
             <div key={kpi.label} className={styles.kpi}>
               <p className={styles.kpiLabel}>{kpi.label}</p>
               <p className={styles.kpiValue}>
-                <CountUp value={kpi.value} suffix={kpi.suffix} duration={1.6} />
+                <CountUp value={kpi.value} decimals={kpi.decimals} suffix={kpi.suffix} duration={1.6} />
               </p>
               <p className={cx(styles.kpiDelta, styles[kpi.trend])}>{kpi.delta}</p>
             </div>

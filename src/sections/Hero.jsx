@@ -6,7 +6,8 @@ import Button from '../components/ui/Button.jsx'
 import Icon from '../components/ui/Icon.jsx'
 import BrowserFrame from '../components/frames/BrowserFrame.jsx'
 import HeroDashboard from '../components/screens/HeroDashboard.jsx'
-import { gsap, useGSAP, media } from '../motion/gsap.js'
+import { gsap, useGSAP, media, smoothing } from '../motion/gsap.js'
+import { afterPaint } from '../motion/schedule.js'
 import { trackPointer } from '../motion/pointer.js'
 import { cx } from '../lib/cx.js'
 import styles from './Hero.module.css'
@@ -16,34 +17,30 @@ export default function Hero({ hero, demo, dashboard, cards }) {
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia(root.current)
 
-      mm.add(media.ok, () => {
-        // the floating cards arrive one after another once the page is ready
-        gsap.to('[data-float]', {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          stagger: 0.15,
-          delay: 0.3,
-        })
+      // The entrance (text, dashboard and floating cards) is plain CSS, so it plays from the
+      // first paint. The scroll effects below join in once the page has painted.
+      return afterPaint(() =>
+        mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+          const scrub = conditions.desktop ? smoothing.desktop : smoothing.mobile
 
-        // layered depth: the dashboard tilts flat while each card drifts at its own speed
-        const depth = gsap.timeline({
-          scrollTrigger: { trigger: root.current, start: 'top top', end: '+=640', scrub: 0.6 },
-        })
+          // layered depth: the dashboard tilts flat while each card drifts at its own speed
+          const depth = gsap.timeline({
+            scrollTrigger: { trigger: root.current, start: 'top top', end: '+=640', scrub },
+          })
 
-        depth.fromTo('[data-tilt]', { rotateX: 14, scale: 0.94 }, { rotateX: 0, scale: 1, ease: 'none' }, 0)
-        gsap.utils.toArray('[data-depth]', root.current).forEach((card) => {
-          depth.to(card, { yPercent: -Number(card.dataset.depth) * 100, ease: 'none' }, 0)
-        })
+          depth.fromTo('[data-tilt]', { rotateX: 14, scale: 0.94 }, { rotateX: 0, scale: 1, ease: 'none' }, 0)
+          gsap.utils.toArray('[data-depth]').forEach((card) => {
+            depth.to(card, { yPercent: -Number(card.dataset.depth) * 100, ease: 'none' }, 0)
+          })
 
-        // leaving the hero: the grid sinks slower than the page and the copy eases away
-        const exit = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true }
-        gsap.to('[data-backdrop]', { yPercent: 30, ease: 'none', scrollTrigger: exit })
-        gsap.to('[data-hero-copy]', { y: -90, opacity: 0, ease: 'none', scrollTrigger: { ...exit, end: '+=560' } })
-      })
+          // leaving the hero: the grid sinks slower than the page and the copy eases away
+          const exit = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true }
+          gsap.to('[data-backdrop]', { yPercent: 30, ease: 'none', scrollTrigger: exit })
+          gsap.to('[data-hero-copy]', { y: -90, opacity: 0, ease: 'none', scrollTrigger: { ...exit, end: '+=560' } })
+        }),
+      )
     },
     { scope: root },
   )
@@ -84,12 +81,12 @@ export default function Hero({ hero, demo, dashboard, cards }) {
 
       <div className={styles.stage}>
         <div className={styles.screen} data-tilt>
-          <BrowserFrame>
+          <BrowserFrame title={dashboard.window}>
             <HeroDashboard data={dashboard} />
           </BrowserFrame>
         </div>
 
-        <div className={cx(styles.float, styles.job)} data-float aria-hidden="true">
+        <div className={cx(styles.float, styles.job)} style={{ '--n': 0 }} aria-hidden="true">
           <div data-depth="0.9" className={styles.card}>
             <img src="/images/brand/favicon.svg" width="32" height="32" alt="" className={styles.appIcon} />
             <div>
@@ -102,7 +99,7 @@ export default function Hero({ hero, demo, dashboard, cards }) {
           </div>
         </div>
 
-        <div className={cx(styles.float, styles.alert)} data-float aria-hidden="true">
+        <div className={cx(styles.float, styles.alert)} style={{ '--n': 1 }} aria-hidden="true">
           <div data-depth="0.5" className={cx(styles.card, styles.alertCard)}>
             <span className={styles.alertIcon}>
               <Icon name="sparkles" size={18} />
@@ -115,7 +112,7 @@ export default function Hero({ hero, demo, dashboard, cards }) {
           </div>
         </div>
 
-        <div className={cx(styles.float, styles.closed)} data-float aria-hidden="true">
+        <div className={cx(styles.float, styles.closed)} style={{ '--n': 2 }} aria-hidden="true">
           <div data-depth="1.3" className={cx(styles.card, styles.closedCard)}>
             <span className={styles.check}>
               <Icon name="check" size={16} strokeWidth={2.5} />

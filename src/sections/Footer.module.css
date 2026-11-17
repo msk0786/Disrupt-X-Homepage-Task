@@ -24,8 +24,34 @@
 .brand {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  max-width: 300px;
+  gap: var(--space-5);
+  max-width: 340px;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--c-text-muted);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 50%;
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.socials a:hover {
+  color: var(--c-mint);
+  border-color: color-mix(in srgb, var(--c-mint) 50%, transparent);
+  background: color-mix(in srgb, var(--c-mint) 6%, transparent);
 }
 
 .heading {
@@ -43,7 +69,7 @@
 .column a,
 .legal a {
   display: inline-block;
-  padding-block: var(--space-1);
+  padding-block: 6px;
   transition: color var(--dur-fast) ease;
 }
 
@@ -55,17 +81,35 @@
 .bottom {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
+  gap: var(--space-4) var(--space-6);
   margin-top: var(--space-8);
   padding-top: var(--space-5);
   border-top: 1px solid var(--c-border);
   color: var(--c-text-dim);
 }
 
-.legal {
+.legal,
+.languages ul {
   display: flex;
-  gap: var(--space-5);
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+}
+
+.languages a {
+  display: inline-block;
+  padding-block: var(--space-1);
+  transition: color var(--dur-fast) ease;
+}
+
+.languages a:hover {
+  color: var(--c-mint);
+}
+
+.languages [aria-current] {
+  color: var(--c-text);
+  font-weight: 600;
 }
 
 @media (max-width: 899px) {

@@ -16,6 +16,25 @@
   -webkit-backdrop-filter: blur(14px) saturate(140%);
 }
 
+/* Touch screens get a plain, nearly opaque bar: a live blur behind a fixed header
+   has to be redrawn on every frame of a scroll, which phones feel. */
+@media (hover: none) {
+  .solid {
+    background: var(--c-glass-solid);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Phones get the solid bar from the very first paint, so nothing scrolls under
+   the logo while the page is still waking up. */
+@media (max-width: 899px) {
+  .header {
+    background: var(--c-glass-solid);
+    border-bottom-color: var(--c-border);
+  }
+}
+
 .inner {
   display: flex;
   align-items: center;
@@ -145,8 +164,18 @@
   }
 }
 
+/* Small phones keep the call to action: a smaller logo and tighter spacing make room */
 @media (max-width: 420px) {
+  .inner {
+    gap: var(--space-3);
+  }
+
+  .logo img {
+    width: 96px;
+    height: auto;
+  }
+
   .demo {
-    display: none;
+    padding-inline: var(--space-4);
   }
 }

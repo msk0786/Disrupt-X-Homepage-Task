@@ -1,6 +1,7 @@
 {
   "brand": {
     "name": "Disrupt-X",
+    "product": "ALEF 360°",
     "logo": {
       "src": "/images/brand/disrupt-x-logo.svg",
       "width": 95,
@@ -8,27 +9,38 @@
     },
     "home": "https://disrupt-x.io/"
   },
+  "a11y": {
+    "skip": "Skip to content",
+    "mainNav": "Main",
+    "mobileNav": "Mobile",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "home": "Disrupt-X home"
+  },
   "nav": [
-    {
-      "label": "Platform",
-      "href": "#platform"
-    },
-    {
-      "label": "Teams",
-      "href": "#teams"
-    },
-    {
-      "label": "Modules",
-      "href": "#modules"
-    },
-    {
-      "label": "Why ALEF 360°",
-      "href": "#why"
-    }
+    { "label": "Platform", "href": "#platform" },
+    { "label": "Teams", "href": "#teams" },
+    { "label": "Modules", "href": "#modules" },
+    { "label": "Why ALEF 360°", "href": "#why" }
   ],
   "demo": {
     "label": "Book a demo",
     "href": "https://disrupt-x.io/request-a-demo/"
+  },
+  "apps": {
+    "title": "Get the ALEF 360° app",
+    "items": [
+      {
+        "store": "App Store",
+        "href": "https://apps.apple.com/no/developer/disruptx/id1565522302",
+        "image": { "src": "/images/badges/app-store.webp", "width": 172, "height": 52, "alt": "Download ALEF 360° on the App Store" }
+      },
+      {
+        "store": "Google Play",
+        "href": "https://play.google.com/store/apps/developer?id=Disrupt-X",
+        "image": { "src": "/images/badges/google-play.webp", "width": 170, "height": 52, "alt": "Get ALEF 360° on Google Play" }
+      }
+    ]
   },
   "hero": {
     "eyebrow": "For the built environment",
@@ -40,10 +52,8 @@
       "href": "#platform"
     }
   },
-  "clients": {
-    "title": "Trusted by facility and safety teams across MENA and APAC"
-  },
   "finalCta": {
+    "logoAlt": "ALEF 360°",
     "eyebrow": "Ready when you are",
     "title": "See every site",
     "accent": "in one place.",
@@ -54,85 +64,60 @@
     }
   },
   "footer": {
-    "tagline": "AI powered technology for the built environment. One platform for buildings, assets and safety.",
+    "tagline": "Disrupt-X is a UAE-based software company. Its ALEF 360° platform runs facility maintenance, HSEQ and building management on one AI platform.",
+    "socialLabel": "Disrupt-X on social media",
+    "socials": [
+      { "id": "linkedin", "label": "LinkedIn", "href": "https://www.linkedin.com/company/disruptxio" },
+      { "id": "x", "label": "X", "href": "https://x.com/disruptxio" },
+      { "id": "instagram", "label": "Instagram", "href": "https://www.instagram.com/disruptxio/" },
+      { "id": "facebook", "label": "Facebook", "href": "https://www.facebook.com/disruptxio" },
+      { "id": "tiktok", "label": "TikTok", "href": "https://www.tiktok.com/@disruptxio" },
+      { "id": "youtube", "label": "YouTube", "href": "https://www.youtube.com/@disruptxio" }
+    ],
     "columns": [
       {
         "title": "Platform",
         "links": [
-          {
-            "label": "ALEF 360° HSEQ",
-            "href": "https://disrupt-x.io/alef-360-hseq/"
-          },
-          {
-            "label": "ALEF 360° CAFM | CMMS",
-            "href": "https://disrupt-x.io/alef-360-cafm-cmms/"
-          },
-          {
-            "label": "ALEF 360° iBMS",
-            "href": "https://disrupt-x.io/alef-360-integrated-building-management-system/"
-          },
-          {
-            "label": "Connected Operations",
-            "href": "https://disrupt-x.io/alef-360-iot-platform/"
-          },
-          {
-            "label": "Mobility",
-            "href": "https://disrupt-x.io/alef-360-mobility/"
-          }
+          { "label": "ALEF 360° HSEQ", "href": "https://disrupt-x.io/alef-360-hseq/" },
+          { "label": "ALEF 360° CAFM | CMMS", "href": "https://disrupt-x.io/alef-360-cafm-cmms/" },
+          { "label": "ALEF 360° iBMS", "href": "https://disrupt-x.io/alef-360-integrated-building-management-system/" },
+          { "label": "ALEF 360° Connected Operations", "href": "https://disrupt-x.io/alef-360-iot-platform/" },
+          { "label": "ALEF 360° Mobility", "href": "https://disrupt-x.io/alef-360-mobility/" }
         ]
       },
       {
         "title": "Company",
         "links": [
-          {
-            "label": "Our story",
-            "href": "https://disrupt-x.io/our-story/"
-          },
-          {
-            "label": "Our team",
-            "href": "https://disrupt-x.io/our-team/"
-          },
-          {
-            "label": "Become a partner",
-            "href": "https://disrupt-x.io/become-a-partner/"
-          },
-          {
-            "label": "Press releases",
-            "href": "https://disrupt-x.io/press-releases/"
-          }
+          { "label": "Our story", "href": "https://disrupt-x.io/our-story/" },
+          { "label": "Our team", "href": "https://disrupt-x.io/our-team/" },
+          { "label": "Board of directors", "href": "https://disrupt-x.io/board-of-directors/" },
+          { "label": "Become a partner", "href": "https://disrupt-x.io/become-a-partner/" },
+          { "label": "Request a demo", "href": "https://disrupt-x.io/request-a-demo/" },
+          { "label": "Contact us", "href": "https://disrupt-x.io/contact-us/" }
         ]
       },
       {
-        "title": "Get in touch",
+        "title": "Insights",
         "links": [
-          {
-            "label": "Request a demo",
-            "href": "https://disrupt-x.io/request-a-demo/"
-          },
-          {
-            "label": "Contact us",
-            "href": "https://disrupt-x.io/contact-us/"
-          },
-          {
-            "label": "LinkedIn",
-            "href": "https://www.linkedin.com/company/disruptxio"
-          },
-          {
-            "label": "YouTube",
-            "href": "https://www.youtube.com/@disruptxio"
-          }
+          { "label": "Press releases", "href": "https://disrupt-x.io/press-releases/" },
+          { "label": "Podcasts", "href": "https://disrupt-x.io/podcast/" },
+          { "label": "Newsletter", "href": "https://disrupt-x.io/" }
         ]
       }
     ],
+    "languages": {
+      "label": "Language",
+      "items": [
+        { "label": "English", "lang": "en", "href": "/", "current": true },
+        { "label": "العربية", "lang": "ar", "href": "https://disrupt-x.io/ar/" },
+        { "label": "Français", "lang": "fr", "href": "https://disrupt-x.io/fr/" },
+        { "label": "Melayu", "lang": "ms", "href": "https://disrupt-x.io/ms/" },
+        { "label": "Español", "lang": "es", "href": "https://disrupt-x.io/es/" }
+      ]
+    },
     "legal": [
-      {
-        "label": "Privacy policy",
-        "href": "https://disrupt-x.io/privacy-policy/"
-      },
-      {
-        "label": "Cookie policy",
-        "href": "https://disrupt-x.io/cookie-policy/"
-      }
+      { "label": "Privacy policy", "href": "https://disrupt-x.io/privacy-policy/" },
+      { "label": "Cookie policy", "href": "https://disrupt-x.io/cookie-policy/" }
     ],
     "copyright": "© 2026 Disrupt-X. All rights reserved."
   }

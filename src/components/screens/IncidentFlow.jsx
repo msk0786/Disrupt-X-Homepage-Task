@@ -6,6 +6,9 @@ import Icon from '../ui/Icon.jsx'
 import { cx } from '../../lib/cx.js'
 import styles from './IncidentFlow.module.css'
 
+// "Action assigned" is the third step in content/demo.json
+const ACTION_STEP = 2
+
 /**
  * An HSEQ incident you can move from reported to closed.
  * Every step adds a line to the audit trail, which is the point of the story.
@@ -15,10 +18,13 @@ export default function IncidentFlow({ data }) {
   const last = data.steps.length - 1
   const current = data.steps[step]
   const closed = step === last
+  // the corrective action exists from the "Action assigned" step onwards
+  const hasAction = step >= ACTION_STEP
+  const { action } = data
 
   return (
-    <BrowserFrame title="ALEF 360° HSEQ" className={styles.frame}>
-      <div className={styles.flow} role="group" aria-label={`${data.ref} demo`}>
+    <BrowserFrame title={data.window} className={styles.frame}>
+      <div className={styles.flow} role="group" aria-label={data.demoLabel}>
         <header className={styles.head}>
           <div>
             <p className={styles.ref}>
@@ -63,12 +69,11 @@ export default function IncidentFlow({ data }) {
               </p>
               <p className={styles.note}>{current.note}</p>
             </div>
-            {closed && (
-              <span className={styles.badge}>
-                <Icon name="shieldCheck" size={16} />
-                {data.closedBadge}
-              </span>
-            )}
+            {/* the badge keeps its space before the incident closes, so the card never grows */}
+            <span className={cx(styles.badge, !closed && styles.badgeWaiting)} aria-hidden={!closed || undefined}>
+              <Icon name="shieldCheck" size={16} />
+              {data.closedBadge}
+            </span>
           </div>
 
           <div className={styles.trail}>
@@ -83,6 +88,50 @@ export default function IncidentFlow({ data }) {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* The corrective action the incident turns into. The card is always there,
+              so the screen never changes height as you move through the steps. */}
+          <div className={cx(styles.action, hasAction ? styles.actionLive : styles.actionEmpty)}>
+            <p className={styles.actionHead}>
+              <span className={styles.actionTitle}>{action.title}</span>
+              {hasAction && (
+                <StatusPill key={closed ? 'closed' : 'open'} tone={closed ? 'success' : 'purple'} className={styles.pop}>
+                  {closed ? action.closed : action.open}
+                </StatusPill>
+              )}
+            </p>
+            {hasAction ? (
+              <div key={closed ? 'closed' : 'open'} className={cx(styles.actionBody, styles.pop)}>
+                <p className={styles.actionTask}>
+                  <span className={styles.actionRef}>{action.ref}</span> {action.task}
+                </p>
+                <ul className={styles.actionFacts}>
+                  <li>
+                    <Icon name="user" size={14} />
+                    {action.owner}
+                  </li>
+                  <li>
+                    <Icon name="clock" size={14} />
+                    {action.due}
+                  </li>
+                  <li className={cx(closed && styles.evidenceDone)}>
+                    <Icon name={closed ? 'check' : 'camera'} size={14} />
+                    {closed ? action.evidenceDone : action.evidence}
+                  </li>
+                  {closed && (
+                    <li className={styles.evidenceDone}>
+                      <Icon name="shieldCheck" size={14} />
+                      {action.verified}
+                    </li>
+                  )}
+                </ul>
+              </div>
+            ) : (
+              <p className={styles.actionHint}>
+                <span>{action.empty}</span> {action.emptyHint}
+              </p>
+            )}
           </div>
         </div>
 

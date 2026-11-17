@@ -31,6 +31,12 @@
   --c-danger: #ff5d6c;
   --c-info: #4f8cff;
 
+  /* Light band for client logos, which are drawn for white backgrounds */
+  --c-light: #f4f6f5;
+  --c-light-raised: #ffffff;
+  --c-light-edge: rgba(11, 11, 11, 0.08);
+  --c-light-ink: #1b1d20;
+
   /* Third party colours used inside the story mockups */
   --c-whatsapp: #25d366;
   --c-whatsapp-bubble: #005c4b;
@@ -43,6 +49,7 @@
 
   /* Device and browser chrome */
   --c-glass: rgba(11, 11, 11, 0.86);
+  --c-glass-solid: rgba(11, 11, 11, 0.96);
   --c-chrome: #141516;
   --c-chrome-red: #ff5f57;
   --c-chrome-amber: #febc2e;

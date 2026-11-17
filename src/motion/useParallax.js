@@ -1,4 +1,5 @@
 import { gsap, useGSAP, media } from './gsap.js'
+import { afterPaint } from './schedule.js'
 
 /**
  * Gives depth to anything with data-speed. The element drifts against the scroll
@@ -8,24 +9,26 @@ import { gsap, useGSAP, media } from './gsap.js'
 export function useParallax(scope) {
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia(scope.current)
 
-      mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
-        const range = conditions.desktop ? 120 : 60
+      return afterPaint(() =>
+        mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+          const range = conditions.desktop ? 120 : 60
 
-        gsap.utils.toArray('[data-speed]').forEach((el) => {
-          const distance = Number(el.dataset.speed) * range
-          gsap.fromTo(
-            el,
-            { y: distance },
-            {
-              y: -distance,
-              ease: 'none',
-              scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-            },
-          )
-        })
-      })
+          gsap.utils.toArray('[data-speed]').forEach((el) => {
+            const distance = Number(el.dataset.speed) * range
+            gsap.fromTo(
+              el,
+              { y: distance },
+              {
+                y: -distance,
+                ease: 'none',
+                scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
+              },
+            )
+          })
+        }),
+      )
     },
     { scope },
   )

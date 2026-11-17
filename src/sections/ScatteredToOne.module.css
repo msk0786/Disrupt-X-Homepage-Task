@@ -164,3 +164,20 @@
     max-width: none;
   }
 }
+
+/* Starting state while the page wakes up: the inbox rows wait for their message to land */
+@media (prefers-reduced-motion: no-preference) {
+  :global(.js) .stage:not([data-motion-ready]) [data-row] {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.96);
+  }
+
+  :global(.js) .stage:not([data-motion-ready]) [data-strike] {
+    transform: scaleX(0);
+  }
+
+  :global(.js) .stage:not([data-motion-ready]) [data-after] {
+    transform: scale(0.88);
+  }
+}

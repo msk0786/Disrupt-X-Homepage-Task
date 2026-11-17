@@ -16,6 +16,7 @@ function portfolio(sites, label) {
     alerts: sum(sites.map((s) => s.alerts)),
     energy: sites[0].energy.map((_, day) => Math.round(sum(sites.map((s) => s.energy[day])) * 10) / 10),
     compliance: Math.round(sum(sites.map((s) => s.compliance)) / sites.length),
+    budget: sum(sites.map((s) => s.budget)),
     issues: [...sites].sort((a, b) => b.alerts - a.alerts).map((s) => ({ ...s.issues[0], site: s.name })).slice(0, 2),
   }
 }
@@ -31,8 +32,14 @@ export default function SiteDashboard({ sites, days, labels }) {
   const weekTotal = sum(view.energy)
   const options = [all, ...sites]
 
+  // energy cost this week in thousands, against the site's weekly budget
+  const cost = (weekTotal * labels.tariff) / 1000
+  const variance = Math.round(((cost - view.budget) / view.budget) * 100)
+  const budgetNote =
+    variance === 0 ? labels.onBudget : `${Math.abs(variance)}% ${variance < 0 ? labels.under : labels.over}`
+
   return (
-    <BrowserFrame title="ALEF 360° iBMS" className={styles.frame}>
+    <BrowserFrame title={labels.window} className={styles.frame}>
       <div className={styles.dash} role="group" aria-label={labels.sitesLabel}>
         <div className={styles.sites}>
           {options.map((site) => (
@@ -65,10 +72,11 @@ export default function SiteDashboard({ sites, days, labels }) {
               </dd>
             </div>
             <div>
-              <dt>{labels.alerts}</dt>
+              <dt>{labels.cost}</dt>
               <dd>
-                <CountUp value={view.alerts} />
+                <CountUp value={cost} decimals={1} prefix={labels.currency} suffix={labels.thousands} />
               </dd>
+              <dd className={cx(styles.budget, variance > 0 ? styles.over : styles.under)}>{budgetNote}</dd>
             </div>
             <div>
               <dt>{labels.energy}</dt>
@@ -130,7 +138,7 @@ export default function SiteDashboard({ sites, days, labels }) {
         </div>
 
         <p className="visually-hidden" aria-live="polite">
-          {`${view.name}: ${view.openJobs} ${labels.openJobs.toLowerCase()}, ${view.alerts} ${labels.alertsUnit}, ${labels.compliance.toLowerCase()} ${view.compliance}%.`}
+          {`${view.name}: ${view.openJobs} ${labels.openJobs.toLowerCase()}, ${view.alerts} ${labels.alertsUnit}, ${labels.cost.toLowerCase()} ${labels.currency}${cost.toFixed(1)}${labels.thousands}, ${budgetNote}, ${labels.compliance.toLowerCase()} ${view.compliance}%.`}
         </p>
       </div>
     </BrowserFrame>

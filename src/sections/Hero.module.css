@@ -25,29 +25,40 @@
   mask-image: linear-gradient(180deg, black 55%, transparent 90%);
 }
 
+/* The glows are soft gradients drawn wide. A blur filter would look the same but has
+   to be repainted whenever the page scrolls past it, which phones feel. */
 .backdrop::before,
 .backdrop::after {
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
 }
 
 .backdrop::before {
-  top: 42%;
+  top: calc(42% - 90px);
   left: 50%;
-  width: min(900px, 90vw);
-  height: 420px;
+  width: min(1080px, 110vw);
+  height: 600px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--c-mint) 22%, transparent), transparent);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--c-mint) 18%, transparent),
+    color-mix(in srgb, var(--c-mint) 7%, transparent) 55%,
+    transparent
+  );
 }
 
 .backdrop::after {
-  top: 55%;
-  left: 62%;
-  width: min(640px, 70vw);
-  height: 360px;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--c-purple) 20%, transparent), transparent);
+  top: calc(55% - 90px);
+  left: calc(62% - 90px);
+  width: min(820px, 90vw);
+  height: 540px;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--c-purple) 16%, transparent),
+    color-mix(in srgb, var(--c-purple) 6%, transparent) 55%,
+    transparent
+  );
 }
 
 .spotlight {
@@ -69,6 +80,13 @@
 @media (hover: hover) {
   .hero:hover .spotlight {
     opacity: 1;
+  }
+}
+
+/* touch screens have no cursor to follow, so the blended layer is not drawn at all */
+@media (hover: none) {
+  .spotlight {
+    display: none;
   }
 }
 
@@ -111,12 +129,12 @@
 .stage::before {
   content: '';
   position: absolute;
-  inset: 8% 6% -4%;
+  inset: -4% -2% -16%;
   z-index: -1;
-  border-radius: var(--r-xl);
-  background: var(--gradient-brand);
-  filter: blur(70px);
-  opacity: 0.22;
+  background:
+    radial-gradient(42% 46% at 34% 56%, var(--c-mint), transparent),
+    radial-gradient(40% 46% at 68% 56%, var(--c-purple), transparent);
+  opacity: 0.2;
 }
 
 .screen {
@@ -131,12 +149,12 @@
   /* Focus pull: each line rises while the blur clears. No opacity, so the text
      counts as painted straight away and the LCP time is not held back. */
   .intro {
-    animation: focus-in 1s var(--ease-out) both;
-    animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+    animation: focus-in 0.9s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 80ms + 40ms);
   }
 
   .stage {
-    animation: rise-in 1.2s var(--ease-out) 0.45s both;
+    animation: rise-in 1s var(--ease-out) 0.3s both;
   }
 
   /* Matches the first frame of the GSAP tilt so nothing jumps on load */
@@ -144,9 +162,16 @@
     transform: rotateX(14deg) scale(0.94);
   }
 
+  /* The floating cards arrive one after another as the dashboard lands */
   .float {
+    animation: float-in 0.8s var(--ease-out) both;
+    animation-delay: calc(var(--n, 0) * 150ms + 650ms);
+  }
+}
+
+@keyframes float-in {
+  from {
     opacity: 0;
-    visibility: hidden;
     transform: translateY(24px);
   }
 }

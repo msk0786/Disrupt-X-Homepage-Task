@@ -1,0 +1,55 @@
+{
+  "eyebrow": "Newsroom",
+  "title": "The latest from",
+  "accent": "Disrupt-X.",
+  "lead": "New partners, new markets and new ways ALEF 360° is keeping buildings and people safe.",
+  "readLabel": "Read the story",
+  "viewAll": {
+    "label": "All press releases",
+    "href": "https://disrupt-x.io/press-releases/"
+  },
+  "items": [
+    {
+      "id": "intel-taaleem",
+      "tag": "Schools",
+      "date": "2025-11-04",
+      "dateLabel": "4 November 2025",
+      "title": "Disrupt-X, Intel and Taaleem collaborate on AI-powered certifications for safer, smarter schools",
+      "href": "https://disrupt-x.io/disrupt-x-intel-and-taaleem-collaborate-on-ai-powered-certifications-for-safer-smarter-schools/",
+      "image": {
+        "src": "/images/news/intel-taaleem.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "Disrupt-X, Intel and Taaleem teams at the announcement of AI-powered school certifications"
+      }
+    },
+    {
+      "id": "qnc",
+      "tag": "Saudi Arabia",
+      "date": "2026-10-14",
+      "dateLabel": "14 October 2026",
+      "title": "Disrupt-X and Qudrat National Company sign MOU to advance digital facilities management in Saudi Arabia",
+      "href": "https://disrupt-x.io/disrupt-x-and-qudrat-national-company-sign-mou-to-advance-digital-facilities-management-in-saudi-arabia/",
+      "image": {
+        "src": "/images/news/qnc-mou.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "Asim Sajwani, CEO of Disrupt-X, and Ahmed Alsafadi, CEO of QNC, signing the MOU"
+      }
+    },
+    {
+      "id": "delta-flow",
+      "tag": "Ports",
+      "date": "2026-05-04",
+      "dateLabel": "4 May 2026",
+      "title": "Disrupt-X and Delta Flow announce a strategic collaboration to launch the intelligent operating system for global ports",
+      "href": "https://disrupt-x.io/disrupt-x-and-delta-flow-announce-strategic-collaboration-to-launch-the-intelligent-operating-system-for-global-ports/",
+      "image": {
+        "src": "/images/news/delta-flow.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "Disrupt-X and Delta Flow Global logos"
+      }
+    }
+  ]
+}

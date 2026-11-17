@@ -2,11 +2,43 @@
   padding-bottom: var(--section-y);
 }
 
+/* a dark veil that lifts off the explorer as it scrolls in (see Modules.jsx).
+   Registered so changing it never restyles anything inside the explorer. */
+@property --veil {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
 /* the padding keeps focus rings inside the clip used by the scroll entrance */
 .explorer {
+  position: relative;
+  display: grid;
+  gap: var(--space-6);
   margin: calc(-1 * var(--space-3));
   padding: var(--space-3);
   transform-origin: 50% 0%;
+}
+
+.explorer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: var(--c-bg);
+  opacity: var(--veil);
+  pointer-events: none;
+}
+
+.skyline {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.skylineHint {
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  text-align: center;
 }
 
 .tabs {
@@ -90,6 +122,55 @@
   color: var(--c-mint);
 }
 
+/* the named products inside a module, linking to their pages on disrupt-x.io */
+.products {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.productsLabel {
+  color: var(--c-text-dim);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.products ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.products a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--fs-xs);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+  transition:
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.products a:hover {
+  border-color: color-mix(in srgb, var(--c-mint) 50%, transparent);
+  background: color-mix(in srgb, var(--c-mint) 6%, transparent);
+}
+
+.products strong {
+  color: var(--c-text);
+  font-weight: 600;
+}
+
+.products svg {
+  color: var(--c-mint);
+}
+
 /* The real product screenshot from disrupt-x.io on a dark stage */
 .media {
   position: relative;
@@ -112,6 +193,16 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 24px 40px color-mix(in srgb, var(--c-black) 60%, transparent));
+}
+
+/* flat screenshots sit in the same dark browser frame as the coded screens */
+.framed {
+  width: 100%;
+}
+
+.framed img {
+  height: auto;
+  filter: none;
 }
 
 .chip {
@@ -138,6 +229,12 @@
 
   .media {
     order: -1;
+  }
+
+  /* phones zoom into the busiest part of the screenshot so it stays readable */
+  .media > img {
+    transform: scale(var(--zoom, 1));
+    transform-origin: var(--focus, 50% 50%);
   }
 }
 

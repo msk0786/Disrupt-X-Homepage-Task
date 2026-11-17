@@ -3,7 +3,8 @@ import Container from '../components/ui/Container.jsx'
 import Eyebrow from '../components/ui/Eyebrow.jsx'
 import GradientText from '../components/ui/GradientText.jsx'
 import SplitWords, { SplitLine } from '../components/ui/SplitWords.jsx'
-import { gsap, ScrollTrigger, useGSAP, media } from '../motion/gsap.js'
+import { gsap, ScrollTrigger, useGSAP, media, smoothing, markReady } from '../motion/gsap.js'
+import { afterPaint } from '../motion/schedule.js'
 import styles from './ChapterIntro.module.css'
 
 // How the chapter's panel arrives. Each section uses a different one so the page keeps surprising.
@@ -16,63 +17,68 @@ const entrances = {
 
 /**
  * Opens a chapter of the page. The brand grid panel starts wiping in as soon as the
- * section peeks in, then on desktop the scene holds while the title finishes rising
- * and the text drifts, so every bit of scroll moves something on screen.
- * Everything is tied to the scroll, so it plays backwards too.
+ * section peeks in, then on desktop the scene holds while the text drifts, so every
+ * bit of scroll moves something on screen. Everything is tied to the scroll, so it
+ * plays backwards too.
  */
 export default function ChapterIntro({ id, chapter, eyebrow, title, accent, lead, enter = 'right' }) {
   const { number, total } = chapter
   const root = useRef(null)
+  const shape = entrances[enter]
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia(root.current)
 
-      mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
-        const shape = entrances[enter]
-        const vh = () => window.innerHeight
+      return afterPaint(() =>
+        mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+          const vh = () => window.innerHeight
+          markReady(root.current)
 
-        /*
-          One timeline from the moment the chapter peeks in at the bottom until the end of the hold.
-          Positions are in screens of scroll: 0 to 1 is the chapter rising to the top,
-          1 to 1.7 is the desktop hold. Something moves at every point, so it never feels stuck.
-        */
-        const scene = gsap.timeline({
-          defaults: { ease: 'none' },
-          scrollTrigger: conditions.desktop
-            ? { trigger: root.current, start: 'top bottom', end: () => `+=${vh() * 1.7}`, scrub: 0.8 }
-            : // phones have no hold, so the same story plays over a shorter stretch of scroll
-              { trigger: root.current, start: 'top 95%', end: 'bottom 85%', scrub: 0.8 },
-        })
+          /*
+            One timeline from the moment the chapter peeks in at the bottom until the end of the hold.
+            Positions are in screens of scroll: 0 to 1 is the chapter rising to the top, 1 to 1.7 is
+            the desktop hold. The title and lead are fully up by 0.85, before the chapter reaches the
+            top, so a jump from the menu always lands on a finished heading.
+          */
+          const scene = gsap.timeline({
+            defaults: { ease: 'none' },
+            scrollTrigger: conditions.desktop
+              ? { trigger: root.current, start: 'top bottom', end: () => `+=${vh() * 1.7}`, scrub: smoothing.desktop }
+              : // phones have no hold, so the same scene plays over a shorter stretch and settles on screen
+                { trigger: root.current, start: 'top 95%', end: 'top 35%', scrub: smoothing.mobile },
+          })
 
-        scene
-          .fromTo('[data-panel]', { clipPath: shape.from }, { clipPath: shape.to, duration: 0.9 }, 0)
-          .fromTo('[data-chapter-grid]', { scale: 1.15 }, { scale: 1, duration: 1.4 }, 0.3)
-
-        // the glowing edge rides along the front of the right hand wipe
-        if (enter === 'right') {
           scene
-            .fromTo('[data-edge]', { xPercent: 100, autoAlpha: 1 }, { xPercent: 0, duration: 0.9 }, 0)
-            .to('[data-edge]', { autoAlpha: 0, duration: 0.1 }, 0.9)
-        }
+            .fromTo('[data-panel]', { clipPath: shape.from }, { clipPath: shape.to, duration: 0.8 }, 0)
+            .fromTo('[data-chapter-grid]', { scale: 1.15 }, { scale: 1, duration: 1.4 }, 0.2)
 
-        scene
-          .from('[data-chapter-meta]', { y: 30, autoAlpha: 0, stagger: 0.08, duration: 0.25, ease: 'power2.out' }, 0.6)
-          .from('[data-word]', { yPercent: 115, stagger: 0.04, duration: 0.3, ease: 'power3.out' }, 0.75)
-          .from('[data-chapter-lead]', { y: 30, autoAlpha: 0, duration: 0.25, ease: 'power2.out' }, 1.1)
-          .fromTo('[data-chapter-content]', { y: 0 }, { y: -50, duration: 0.7 }, 1)
+          // the glowing edge rides along the front of the right hand wipe
+          if (enter === 'right') {
+            scene
+              .fromTo('[data-edge]', { xPercent: 100, autoAlpha: 1 }, { xPercent: 0, duration: 0.8 }, 0)
+              .to('[data-edge]', { autoAlpha: 0, duration: 0.1 }, 0.8)
+          }
 
-        // desktop only: hold the scene while the title finishes and the text drifts
-        if (conditions.desktop) {
-          ScrollTrigger.create({ trigger: root.current, start: 'top top', end: () => `+=${vh() * 0.7}`, pin: true })
-        }
-      })
+          const words = root.current.querySelectorAll('[data-word]')
+          scene
+            .from('[data-chapter-meta]', { y: 30, autoAlpha: 0, stagger: 0.08, duration: 0.25, ease: 'power2.out' }, 0.3)
+            .from(words, { yPercent: 115, stagger: Math.min(0.04, 0.18 / words.length), duration: 0.28, ease: 'power3.out' }, 0.38)
+            .from('[data-chapter-lead]', { y: 30, autoAlpha: 0, duration: 0.22, ease: 'power2.out' }, 0.62)
+            .fromTo('[data-chapter-content]', { y: 0 }, { y: -50, duration: 0.7 }, 1)
+
+          // desktop only: hold the scene while the text drifts
+          if (conditions.desktop) {
+            ScrollTrigger.create({ trigger: root.current, start: 'top top', end: () => `+=${vh() * 0.7}`, pin: true })
+          }
+        }),
+      )
     },
     { scope: root },
   )
 
   return (
-    <div ref={root} className={styles.chapter}>
+    <div ref={root} className={styles.chapter} style={{ '--panel-from': shape.from }}>
       <div className={styles.panel} data-panel aria-hidden="true">
         <img src="/images/brand/hero-grid.svg" width="1920" height="1223" alt="" loading="lazy" data-chapter-grid />
       </div>

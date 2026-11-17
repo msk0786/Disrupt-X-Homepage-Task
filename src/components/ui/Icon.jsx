@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  ArrowUpRight,
   Bell,
   Box,
   Building2,
@@ -17,6 +18,8 @@ import {
   MapPin,
   Menu,
   MessageCircle,
+  Pause,
+  Play,
   Radio,
   RotateCcw,
   Shield,
@@ -32,6 +35,7 @@ import {
 
 const icons = {
   arrowRight: ArrowRight,
+  arrowUpRight: ArrowUpRight,
   bell: Bell,
   box: Box,
   building: Building2,
@@ -49,6 +53,8 @@ const icons = {
   pin: MapPin,
   menu: Menu,
   message: MessageCircle,
+  pause: Pause,
+  play: Play,
   radio: Radio,
   reset: RotateCcw,
   shield: Shield,

@@ -58,7 +58,7 @@
     }
   ],
   "labels": { "before": "Today: WhatsApp, paper and Excel", "after": "With ALEF 360°" },
-  "inbox": { "title": "ALEF 360° Inbox", "subtitle": "Hills Academy group, this morning", "status": "Live" },
+  "inbox": { "window": "ALEF 360° Platform", "title": "ALEF 360° Inbox", "subtitle": "4 schools, this morning", "status": "Live" },
   "before": { "value": 3, "label": "apps and a paper tray" },
   "after": { "value": 1, "label": "platform with every job tracked" }
 }

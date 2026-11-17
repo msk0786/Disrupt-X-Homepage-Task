@@ -2,7 +2,8 @@ import { cx } from '../../lib/cx.js'
 import styles from './BrowserFrame.module.css'
 
 // Dark browser chrome, the same treatment disrupt-x.io uses around product screens
-export default function BrowserFrame({ title = 'ALEF 360° Platform', className, screenClassName, children }) {
+// `title` is the text in the address bar, from the content files
+export default function BrowserFrame({ title, className, screenClassName, children }) {
   return (
     <div className={cx(styles.frame, className)}>
       <div className={styles.bar} aria-hidden="true">

@@ -13,6 +13,8 @@ const DONE = 3
  * A technician's work order you can tap through:
  * assigned, in progress, photo added, completed.
  * The timer runs fast on purpose, one minute per second, so the demo feels real.
+ * Each step also brings the clock up to a realistic minimum (content: minutes),
+ * so tapping straight through never reports a job closed in 0 minutes.
  */
 export default function WorkOrderPhone({ data }) {
   const [step, setStep] = useState(0)
@@ -32,16 +34,25 @@ export default function WorkOrderPhone({ data }) {
       setMinutes(0)
       return
     }
-    setStep(step + 1)
+    const upcoming = step + 1
+    if (upcoming === PHOTO) setMinutes((m) => Math.max(m, data.minutes.photo))
+    if (upcoming === DONE) setMinutes((m) => Math.max(m, data.minutes.done))
+    setStep(upcoming)
   }
 
   const ticked = (i) => (step === DONE ? true : i < step)
 
   return (
-    <PhoneFrame className={styles.phone}>
-      <div className={styles.app} role="group" aria-label={`${data.ref} demo`}>
+    <PhoneFrame className={styles.phone} time={data.deviceTime}>
+      <div className={styles.app} role="group" aria-label={data.demoLabel}>
         <div className={styles.appBar}>
-          <p className={styles.appTitle}>{data.appTitle}</p>
+          <div className={styles.appName}>
+            <img src="/images/brand/favicon.svg" width="22" height="22" alt="" />
+            <p>
+              <span className={styles.appKicker}>{data.appKicker}</span>
+              <span className={styles.appTitle}>{data.appTitle}</span>
+            </p>
+          </div>
           <span className={styles.bell}>
             <Icon name="bell" size={18} />
           </span>
@@ -67,6 +78,10 @@ export default function WorkOrderPhone({ data }) {
               {data.assignee}
             </li>
           </ul>
+          <p className={styles.insight}>
+            <Icon name="sparkles" size={14} />
+            {data.insight}
+          </p>
         </div>
 
         <div className={styles.statusRow}>
@@ -75,7 +90,10 @@ export default function WorkOrderPhone({ data }) {
           </StatusPill>
           <span className={styles.timer}>
             <Icon name="clock" size={14} />
-            {data.timerLabel} <strong>{minutes} min</strong>
+            {data.timerLabel}{' '}
+            <strong>
+              {minutes} {data.timerUnit}
+            </strong>
           </span>
         </div>
 
@@ -93,15 +111,16 @@ export default function WorkOrderPhone({ data }) {
           </ul>
         </div>
 
-        {step >= PHOTO && (
-          <div className={cx(styles.photo, styles.pop)}>
-            <span className={styles.thumb}>
-              <Icon name="camera" size={18} />
-            </span>
-            <span>{data.photo}</span>
-            <Icon name="check" size={16} className={styles.photoOk} />
-          </div>
-        )}
+        {/* the slot is always there, so the phone never changes height */}
+        <div className={styles.photoSlot}>
+          {step >= PHOTO && (
+            <div className={cx(styles.photo, styles.pop)}>
+              <img className={styles.thumb} src={data.photoImage} width="48" height="48" alt="" />
+              <span>{data.photo}</span>
+              <Icon name="check" size={16} className={styles.photoOk} />
+            </div>
+          )}
+        </div>
 
         <button type="button" className={cx(styles.action, step === DONE && styles.actionGhost)} onClick={next}>
           {step === DONE && <Icon name="reset" size={16} />}

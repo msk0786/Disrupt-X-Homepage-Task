@@ -5,6 +5,13 @@
   "lead": "Start with the module you need today and add the rest when you are ready. They all share the same assets, people and data.",
   "tabsLabel": "ALEF 360° modules",
   "linkLabel": "Explore",
+  "productsLabel": "Products",
+  "kicker": "ALEF 360°",
+  "skyline": {
+    "prefix": "ALEF 360°",
+    "logoAlt": "ALEF 360°",
+    "hint": "Pick a module to light up the part of your estate it runs."
+  },
   "items": [
     {
       "id": "hseq",
@@ -15,10 +22,32 @@
         "Incident reporting and root cause investigation",
         "Planned and unplanned inspections with mobile checklists",
         "Permits to work with approvals, isolations and gas tests",
-        "Corrective and preventive actions with owners and deadlines"
+        "Corrective and preventive actions with owners and deadlines",
+        "Dashboards for incidents, overdue actions and risk trends"
       ],
-      "chip": { "label": "INC 2291", "value": "Closed with evidence", "tone": "success" },
-      "image": { "src": "/images/modules/hseq.webp", "width": 1290, "height": 885, "alt": "ALEF 360° HSEQ investigation board with incidents sorted by status and severity" },
+      "chip": {
+        "label": "CA 108",
+        "value": "Closed with evidence",
+        "tone": "success"
+      },
+      "image": {
+        "src": "/images/modules/hseq-1200.webp",
+        "srcSet": [
+          {
+            "src": "/images/modules/hseq-720.webp",
+            "width": 720
+          },
+          {
+            "src": "/images/modules/hseq-1200.webp",
+            "width": 1200
+          }
+        ],
+        "width": 1200,
+        "height": 823,
+        "focus": "100% 100%",
+        "alt": "ALEF 360° HSEQ actions list with a corrective action card showing its type, due date and status",
+        "phoneZoom": 1.55
+      },
       "href": "https://disrupt-x.io/alef-360-hseq/"
     },
     {
@@ -30,10 +59,32 @@
         "Planned and reactive maintenance with work orders",
         "Asset lifecycle, history and warranty in one record",
         "Contracts, subcontractors and SLAs tracked automatically",
-        "Workforce scheduling and spare parts inventory"
+        "Workforce scheduling and spare parts inventory",
+        "Digital inspections with custom checklists"
       ],
-      "chip": { "label": "WO 1042", "value": "Completed in 14 min", "tone": "success" },
-      "image": { "src": "/images/modules/cafm-cmms.webp", "width": 900, "height": 565, "alt": "ALEF 360° CAFM work orders list with statuses from pending to completed" },
+      "chip": {
+        "label": "WO 1042",
+        "value": "Completed in 14 min",
+        "tone": "success"
+      },
+      "image": {
+        "src": "/images/modules/cafm-cmms-1400.webp",
+        "srcSet": [
+          {
+            "src": "/images/modules/cafm-cmms-800.webp",
+            "width": 800
+          },
+          {
+            "src": "/images/modules/cafm-cmms-1400.webp",
+            "width": 1400
+          }
+        ],
+        "width": 1400,
+        "height": 879,
+        "focus": "0% 0%",
+        "alt": "ALEF 360° CAFM work orders list with scheduled and reactive maintenance jobs by status",
+        "phoneZoom": 1.7
+      },
       "href": "https://disrupt-x.io/alef-360-cafm-cmms/"
     },
     {
@@ -45,10 +96,31 @@
         "Monitor HVAC, electrical and plumbing systems in real time",
         "AI fault detection with smart prioritisation",
         "Faults turn into work orders automatically",
-        "Energy and carbon tracking across many sites"
+        "Energy and carbon tracking with reports",
+        "Multi-site control with portfolio-wide insight"
       ],
-      "chip": { "label": "AHU 3", "value": "Bearing wear predicted", "tone": "warning" },
-      "image": { "src": "/images/modules/ibms.webp", "width": 900, "height": 595, "alt": "ALEF 360° iBMS map showing several residential facilities and their live system status" },
+      "chip": {
+        "label": "AHU 3",
+        "value": "Bearing wear predicted",
+        "tone": "warning"
+      },
+      "image": {
+        "src": "/images/modules/ibms-939.webp",
+        "srcSet": [
+          {
+            "src": "/images/modules/ibms-640.webp",
+            "width": 640
+          },
+          {
+            "src": "/images/modules/ibms-939.webp",
+            "width": 939
+          }
+        ],
+        "width": 939,
+        "height": 528,
+        "frame": "ALEF 360° iBMS",
+        "alt": "ALEF 360° iBMS portfolio map listing towers with live alarms and energy readings for each building"
+      },
       "href": "https://disrupt-x.io/alef-360-integrated-building-management-system/"
     },
     {
@@ -62,8 +134,41 @@
         "Leak and anomaly alarms sent to the right team",
         "Works with the hardware and protocols you already use"
       ],
-      "chip": { "label": "Classroom 2.14", "value": "CO₂ 612 ppm, normal", "tone": "success" },
-      "image": { "src": "/images/modules/connected-operations.webp", "width": 900, "height": 595, "alt": "ALEF 360° IoT dashboard with air quality alarms and 2,500 connected devices" },
+      "products": [
+        {
+          "name": "Ignite Shield",
+          "detail": "Asset and environmental monitoring",
+          "href": "https://disrupt-x.io/alef-360-iot-platform/ignite-shield/"
+        },
+        {
+          "name": "Ignite Meter",
+          "detail": "Smart water, gas and power metering",
+          "href": "https://disrupt-x.io/alef-360-iot-platform/ignite-meter/"
+        }
+      ],
+      "chip": {
+        "label": "Meter LK 07",
+        "value": "Night flow 40% high",
+        "tone": "warning"
+      },
+      "image": {
+        "src": "/images/modules/connected-operations-900.webp",
+        "srcSet": [
+          {
+            "src": "/images/modules/connected-operations-600.webp",
+            "width": 600
+          },
+          {
+            "src": "/images/modules/connected-operations-900.webp",
+            "width": 900
+          }
+        ],
+        "width": 900,
+        "height": 596,
+        "focus": "15% 30%",
+        "alt": "ALEF 360° Connected Operations dashboard with electricity, gas and water use and meters on a map",
+        "phoneZoom": 1.45
+      },
       "href": "https://disrupt-x.io/alef-360-iot-platform/"
     },
     {
@@ -77,8 +182,41 @@
         "Asset tracking for tools, equipment and containers",
         "Movement alerts that prevent loss"
       ],
-      "chip": { "label": "Van 14", "value": "On route, ETA 09:20", "tone": "info" },
-      "image": { "src": "/images/modules/mobility.webp", "width": 716, "height": 701, "alt": "ALEF 360° Mobility route map tracking a freight truck with its assigned driver" },
+      "products": [
+        {
+          "name": "TechNex",
+          "detail": "Fleet management",
+          "href": "https://disrupt-x.io/alef-360-mobility/technex-fleet-management/"
+        },
+        {
+          "name": "Asset Watch",
+          "detail": "Asset tracking",
+          "href": "https://disrupt-x.io/alef-360-mobility/asset-watch/"
+        }
+      ],
+      "chip": {
+        "label": "Van 14",
+        "value": "On route, ETA 09:20",
+        "tone": "info"
+      },
+      "image": {
+        "src": "/images/modules/mobility-716.webp",
+        "srcSet": [
+          {
+            "src": "/images/modules/mobility-480.webp",
+            "width": 480
+          },
+          {
+            "src": "/images/modules/mobility-716.webp",
+            "width": 716
+          }
+        ],
+        "width": 716,
+        "height": 701,
+        "focus": "50% 45%",
+        "alt": "ALEF 360° Mobility route map tracking a freight truck with its assigned driver",
+        "phoneZoom": 1.1
+      },
       "href": "https://disrupt-x.io/alef-360-mobility/"
     }
   ]

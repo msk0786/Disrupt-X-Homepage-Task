@@ -4,7 +4,8 @@ import Eyebrow from '../components/ui/Eyebrow.jsx'
 import GradientText from '../components/ui/GradientText.jsx'
 import SplitWords, { SplitLine } from '../components/ui/SplitWords.jsx'
 import Button from '../components/ui/Button.jsx'
-import { gsap, useGSAP, media } from '../motion/gsap.js'
+import { gsap, useGSAP, media, smoothing } from '../motion/gsap.js'
+import { afterPaint } from '../motion/schedule.js'
 import styles from './FinalCta.module.css'
 
 export default function FinalCta({ cta, demo }) {
@@ -14,18 +15,26 @@ export default function FinalCta({ cta, demo }) {
     const mm = gsap.matchMedia()
 
     // the panel opens like a window as it scrolls up into view
-    mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
-      const inset = conditions.desktop ? '7% 9% 7% 9%' : '4% 5% 4% 5%'
-      gsap.fromTo(
-        panel.current,
-        { clipPath: `inset(${inset} round 28px)` },
-        {
-          clipPath: 'inset(0% 0% 0% 0% round 28px)',
-          ease: 'none',
-          scrollTrigger: { trigger: panel.current, start: 'top 95%', end: 'top 35%', scrub: 0.6 },
-        },
-      )
-    })
+    return afterPaint(() =>
+      mm.add({ desktop: media.desktop, mobile: media.mobile }, ({ conditions }) => {
+        const desktop = conditions.desktop
+        const inset = desktop ? '7% 9% 7% 9%' : '4% 5% 4% 5%'
+        gsap.fromTo(
+          panel.current,
+          { clipPath: `inset(${inset} round 28px)` },
+          {
+            clipPath: 'inset(0% 0% 0% 0% round 28px)',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: panel.current,
+              start: 'top 95%',
+              end: desktop ? 'top 35%' : 'top 60%',
+              scrub: desktop ? smoothing.desktop : smoothing.mobile,
+            },
+          },
+        )
+      }),
+    )
   })
 
   return (
@@ -38,7 +47,7 @@ export default function FinalCta({ cta, demo }) {
             src="/images/brand/alef-360-logo.svg"
             width="112"
             height="87"
-            alt="ALEF 360°"
+            alt={cta.logoAlt}
             loading="lazy"
             data-reveal="scale"
           />

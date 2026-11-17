@@ -1,15 +1,19 @@
 {
   "portfolio": {
+    "kicker": "ALEF 360°",
+    "window": "ALEF 360° Platform",
     "title": "Portfolio overview",
-    "scope": "12 schools",
+    "scope": "4 schools",
+    "liveLabel": "live",
+    "user": "SM",
     "kpis": [
-      { "label": "Open work orders", "value": 248, "delta": "12% fewer than last month", "trend": "down" },
-      { "label": "Active alerts", "value": 7, "delta": "3 flagged by AI", "trend": "flat" },
-      { "label": "Energy this month", "value": 412, "suffix": " MWh", "delta": "8% below target", "trend": "down" },
-      { "label": "Compliance", "value": 97, "suffix": "%", "delta": "Audit ready", "trend": "up" }
+      { "label": "Open work orders", "value": 49, "delta": "12% fewer than last month", "trend": "down" },
+      { "label": "Active alerts", "value": 9, "delta": "3 flagged by AI", "trend": "flat" },
+      { "label": "Energy this week", "value": 140.1, "decimals": 1, "suffix": " MWh", "delta": "8% below target", "trend": "down" },
+      { "label": "Compliance", "value": 96, "suffix": "%", "delta": "Audit ready", "trend": "up" }
     ],
     "energyTitle": "Energy use by week, MWh",
-    "energy": [118, 112, 121, 109, 104, 107, 99, 101, 96, 94, 92, 89],
+    "energy": [158, 155, 160, 152, 149, 151, 147, 145, 146, 143, 141, 140.1],
     "attentionTitle": "Sites needing attention",
     "attention": [
       { "name": "Lakeside School", "detail": "Night water use high", "tone": "danger", "status": "5 alerts" },
@@ -25,6 +29,7 @@
   },
   "workOrder": {
     "ref": "WO 1042",
+    "demoLabel": "WO 1042 demo",
     "title": "Pipe leak, Block B toilets",
     "priority": "High",
     "site": "Hills Academy",
@@ -32,11 +37,17 @@
     "asset": "Cold water line B 1.04",
     "reportedBy": "Caretaker, 07:42",
     "assignee": "Omar K.",
+    "deviceTime": "9:41",
+    "appKicker": "ALEF 360°",
     "appTitle": "My jobs",
     "timerLabel": "Time on job",
+    "timerUnit": "min",
+    "insight": "AI flagged this line: 2nd leak this year. The joint is now on the planned maintenance list.",
     "checklistTitle": "Checklist",
     "checklist": ["Isolate the water supply", "Replace the damaged joint", "Pressure test and clean up"],
     "photo": "IMG_0412.jpg",
+    "photoImage": "/images/photos/job-photo.webp",
+    "minutes": { "photo": 6, "done": 14 },
     "steps": [
       { "status": "Assigned", "tone": "purple", "action": "Start job", "announce": "Job WO 1042 is assigned to Omar K." },
       { "status": "In progress", "tone": "warning", "action": "Add photo", "announce": "Job started. The timer is running." },
@@ -47,6 +58,8 @@
   },
   "incident": {
     "ref": "INC 2291",
+    "demoLabel": "INC 2291 demo",
+    "window": "ALEF 360° HSEQ",
     "title": "Fire door FD 12 failed its check",
     "site": "Marina Primary",
     "severity": "Medium",
@@ -54,6 +67,20 @@
     "back": "Back",
     "restart": "Start again",
     "closedBadge": "Audit ready",
+    "action": {
+      "title": "Corrective action",
+      "ref": "CA 108",
+      "task": "Replace the closer arm on FD 12",
+      "owner": "Omar K.",
+      "due": "Due Wed 12:00",
+      "evidence": "Photo and retest required",
+      "evidenceDone": "retest_FD12.jpg attached",
+      "verified": "Verified by Sara M.",
+      "open": "Open",
+      "closed": "Closed",
+      "empty": "No corrective action yet",
+      "emptyHint": "It appears here as soon as the cause is known."
+    },
     "steps": [
       {
         "key": "reported",
@@ -83,7 +110,7 @@
         "action": "Verify and close",
         "who": "Omar K.",
         "time": "Mon 10:05",
-        "note": "Replace closer arm. Owner Omar K., due Wednesday"
+        "note": "CA 108 assigned to Omar K., due Wednesday"
       },
       {
         "key": "closed",
@@ -104,6 +131,7 @@
       "openJobs": 14,
       "alerts": 3,
       "energy": [6.1, 5.8, 6.4, 6.9, 6.2, 3.1, 2.7],
+      "budget": 15,
       "compliance": 96,
       "issues": [
         { "tone": "warning", "module": "iBMS", "text": "AHU 3 vibration rising, bearing wear predicted" },
@@ -116,6 +144,7 @@
       "openJobs": 8,
       "alerts": 1,
       "energy": [4.2, 4.0, 4.4, 4.1, 4.3, 2.0, 1.8],
+      "budget": 10,
       "compliance": 98,
       "issues": [
         { "tone": "success", "module": "HSEQ", "text": "Fire door FD 12 retested and passed" },
@@ -128,6 +157,7 @@
       "openJobs": 21,
       "alerts": 5,
       "energy": [7.4, 7.9, 8.2, 7.6, 8.8, 4.9, 4.6],
+      "budget": 17.5,
       "compliance": 89,
       "issues": [
         { "tone": "danger", "module": "Connected Ops", "text": "Night water use 40% above normal, possible leak" },
@@ -140,6 +170,7 @@
       "openJobs": 6,
       "alerts": 0,
       "energy": [5.0, 4.7, 5.1, 4.9, 4.8, 2.2, 2.0],
+      "budget": 11.8,
       "compliance": 99,
       "issues": [
         { "tone": "success", "module": "HSEQ", "text": "All permits closed, no open actions" },
@@ -149,15 +180,22 @@
   ],
   "days": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   "dashboard": {
+    "window": "ALEF 360° iBMS",
     "all": "All sites",
     "sitesLabel": "Choose a site",
     "openJobs": "Open jobs",
-    "alerts": "Active alerts",
+    "cost": "Energy cost",
     "energy": "Energy this week",
     "compliance": "Compliance",
     "chart": "Energy use this week, MWh",
     "issues": "Latest from site",
     "healthy": "Healthy",
-    "alertsUnit": "alerts"
+    "alertsUnit": "alerts",
+    "currency": "AED ",
+    "thousands": "k",
+    "tariff": 380,
+    "under": "under budget",
+    "over": "over budget",
+    "onBudget": "on budget"
   }
 }

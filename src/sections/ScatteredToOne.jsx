@@ -6,7 +6,8 @@ import Icon from '../components/ui/Icon.jsx'
 import BrowserFrame from '../components/frames/BrowserFrame.jsx'
 import SourceCard from '../components/screens/SourceCard.jsx'
 import UnifiedInbox from '../components/screens/UnifiedInbox.jsx'
-import { gsap, useGSAP, media } from '../motion/gsap.js'
+import { gsap, useGSAP, media, smoothing, markReady } from '../motion/gsap.js'
+import { afterPaint } from '../motion/schedule.js'
 import { cx } from '../lib/cx.js'
 import styles from './ScatteredToOne.module.css'
 
@@ -27,9 +28,10 @@ export default function ScatteredToOne({ story, chapter }) {
 
   useGSAP(
     () => {
-      const mm = gsap.matchMedia()
+      const mm = gsap.matchMedia(root.current)
 
       const build = (pinned) => {
+        markReady(stage.current)
         const cards = gsap.utils.toArray('[data-source]')
         const rows = gsap.utils.toArray('[data-row]')
 
@@ -49,7 +51,7 @@ export default function ScatteredToOne({ story, chapter }) {
             start: pinned ? 'center center' : 'top 25%',
             end: pinned ? '+=110%' : 'bottom 85%',
             pin: pinned,
-            scrub: 0.8,
+            scrub: pinned ? 0.8 : smoothing.mobile,
             invalidateOnRefresh: true,
           },
         })
@@ -70,8 +72,11 @@ export default function ScatteredToOne({ story, chapter }) {
           .fromTo('[data-after]', { scale: 0.88 }, { scale: 1, duration: 0.5, ease: 'back.out(2)' }, 1.2)
       }
 
-      mm.add(media.desktop, () => build(true))
-      mm.add(media.mobile, () => build(false))
+      // built after the first paint, like every other scroll scene on the page
+      return afterPaint(() => {
+        mm.add(media.desktop, () => build(true))
+        mm.add(media.mobile, () => build(false))
+      })
     },
     { scope: root },
   )
@@ -103,7 +108,7 @@ export default function ScatteredToOne({ story, chapter }) {
 
           <div className={styles.column} data-reveal="right">
             <p className={cx(styles.label, styles.labelAfter)}>{story.labels.after}</p>
-            <BrowserFrame>
+            <BrowserFrame title={story.inbox.window}>
               <UnifiedInbox title={story.inbox.title} subtitle={story.inbox.subtitle} status={story.inbox.status} items={story.items} />
             </BrowserFrame>
           </div>

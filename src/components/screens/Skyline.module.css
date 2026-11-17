@@ -1,0 +1,119 @@
+/* Fixed shape (the live layout is 980 x 431), scaled to the width it is given */
+.skyline {
+  position: relative;
+  width: min(100%, 980px);
+  aspect-ratio: 980 / 431;
+  margin-inline: auto;
+  user-select: none;
+}
+
+.skyline img {
+  position: absolute;
+  max-width: none;
+}
+
+.tower {
+  object-fit: contain;
+  object-position: bottom;
+  transition: filter var(--dur) var(--ease-out);
+}
+
+/* the building that belongs to the module in view */
+.towerOn {
+  filter: brightness(1.7) drop-shadow(0 0 6px color-mix(in srgb, var(--c-mint) 70%, transparent));
+}
+
+.beam {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.logo {
+  z-index: 2;
+}
+
+/* lines from the ALEF 360° hub to every module, the active one glowing */
+.rays {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.ray {
+  stroke: color-mix(in srgb, var(--c-text) 14%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 3 6;
+  transition:
+    stroke var(--dur) var(--ease-out),
+    stroke-width var(--dur) var(--ease-out);
+}
+
+.rayOn {
+  stroke: var(--c-mint);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--c-mint) 70%, transparent));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rayOn {
+    animation: flow 1.2s linear infinite;
+  }
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -18;
+  }
+}
+
+.node {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.node img {
+  position: static;
+  width: clamp(22px, 4.2vw, 40px);
+  height: auto;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.label {
+  color: var(--c-text);
+  font-size: var(--fs-2xs);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.node:hover,
+.nodeOn {
+  opacity: 1;
+}
+
+.nodeOn img {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--c-mint) 60%, transparent));
+}
+
+.nodeOn .label {
+  color: var(--c-mint);
+  font-weight: 600;
+}
+
+/* too small to read on phones: the tabs below name the module */
+@media (max-width: 639px) {
+  .label {
+    display: none;
+  }
+}

@@ -18,10 +18,29 @@
   justify-content: space-between;
 }
 
+.appName {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.appName p {
+  display: grid;
+}
+
+.appKicker {
+  color: var(--c-mint);
+  font-size: var(--fs-2xs);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+}
+
 .appTitle {
   color: var(--c-text);
   font-size: var(--fs-lg);
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .bell {
@@ -80,6 +99,27 @@
 .facts svg {
   flex: none;
   color: var(--c-text-dim);
+}
+
+/* the AI note that turns one repair into fewer breakdowns */
+.insight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  color: var(--c-text);
+  font-size: var(--fs-2xs);
+  line-height: 1.45;
+  border-radius: var(--r-sm);
+  background: color-mix(in srgb, var(--c-purple) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-purple) 28%, transparent);
+}
+
+.insight svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--c-purple);
 }
 
 .statusRow {
@@ -150,6 +190,10 @@
   background: var(--c-mint);
 }
 
+.photoSlot {
+  min-height: 66px;
+}
+
 .photo {
   display: flex;
   align-items: center;
@@ -162,13 +206,11 @@
 }
 
 .thumb {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  color: var(--c-text);
+  flex: none;
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
   border-radius: var(--r-sm);
-  background: linear-gradient(135deg, var(--c-blue), var(--c-purple));
 }
 
 .photoOk {

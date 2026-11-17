@@ -1,52 +1,32 @@
-.marquee {
-  padding-block: var(--space-7) var(--space-6);
-}
-
-.title {
-  color: var(--c-text-muted);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  letter-spacing: 0;
-  text-align: center;
-}
-
 .viewport {
-  margin-top: var(--space-6);
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
 }
 
 .track {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: slide 48s linear infinite;
+  animation: slide var(--duration, 48s) linear infinite;
   will-change: transform;
 }
 
-.viewport:hover .track {
+/* stops for the pause button, for a mouse resting on it and for keyboard focus inside */
+.paused .track,
+.viewport:hover .track,
+.viewport:focus-within .track {
   animation-play-state: paused;
 }
 
 .track li {
   flex: none;
-  padding-inline: clamp(1.5rem, 1rem + 2vw, 2.75rem);
+  padding-inline: clamp(1.25rem, 0.75rem + 2vw, 2.5rem);
 }
 
 .track img {
-  width: auto;
-  height: 30px;
-  max-width: 150px;
+  max-width: none;
   object-fit: contain;
-  /* client logos come in many colours, so they are shown as one calm white mark */
-  filter: brightness(0) invert(1);
-  opacity: 0.5;
-  transition: opacity var(--dur) var(--ease-out);
-}
-
-.track li:hover img {
-  opacity: 0.95;
 }
 
 @keyframes slide {
@@ -55,6 +35,7 @@
   }
 }
 
+/* without motion the logos simply sit in a wrapped grid */
 @media (prefers-reduced-motion: reduce) {
   .track {
     flex-wrap: wrap;
