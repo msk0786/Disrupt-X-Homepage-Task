@@ -64,9 +64,10 @@ export default function ScatteredToOne({ story }) {
             .to(row, { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, at + 0.8)
         })
 
+        // the old way gets struck out, the new number grows in. Text never fades, so it stays readable.
         timeline
-          .to('[data-before]', { opacity: 0.3, duration: 0.5 }, 0.5)
-          .fromTo('[data-after]', { opacity: 0.3 }, { opacity: 1, duration: 0.5 }, 1.2)
+          .fromTo('[data-strike]', { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, 0.5)
+          .fromTo('[data-after]', { scale: 0.88 }, { scale: 1, duration: 0.5, ease: 'back.out(2)' }, 1.2)
       }
 
       mm.add(media.desktop, () => build(true))
@@ -82,7 +83,9 @@ export default function ScatteredToOne({ story }) {
 
         <div ref={stage} className={styles.stage}>
           <div className={styles.column}>
-            <p className={styles.label}>{story.labels.before}</p>
+            <p className={styles.label} data-reveal="left">
+              {story.labels.before}
+            </p>
             <div className={styles.chaos}>
               {story.items.map((item, i) => (
                 <SourceCard key={item.id} item={item} data-source={item.id} className={cx(styles.card, styles[`card${i + 1}`])} />
@@ -90,16 +93,19 @@ export default function ScatteredToOne({ story }) {
             </div>
           </div>
 
-          <div className={styles.column}>
+          <div className={styles.column} data-reveal="right">
             <p className={cx(styles.label, styles.labelAfter)}>{story.labels.after}</p>
             <BrowserFrame>
               <UnifiedInbox title={story.inbox.title} subtitle={story.inbox.subtitle} status={story.inbox.status} items={story.items} />
             </BrowserFrame>
           </div>
 
-          <div className={styles.tally}>
-            <p className={styles.count} data-before>
-              <span className={cx(styles.number, styles.before)}>{story.before.value}</span>
+          <div className={styles.tally} data-reveal>
+            <p className={styles.count}>
+              <span className={cx(styles.number, styles.before)}>
+                {story.before.value}
+                <span className={styles.strike} data-strike aria-hidden="true" />
+              </span>
               <span>{story.before.label}</span>
             </p>
             <Icon name="arrowRight" size={22} className={styles.arrow} />

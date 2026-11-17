@@ -28,6 +28,12 @@ body {
   overflow-x: clip;
 }
 
+/* Things that slide in from the side start past the edge. Clip them here so phones
+   never widen the page. clip, unlike hidden, keeps sticky and pinned elements working. */
+main {
+  overflow-x: clip;
+}
+
 h1,
 h2,
 h3,

@@ -124,9 +124,7 @@
   font-weight: 500;
   border: 1px solid var(--c-border-strong);
   border-radius: var(--r-pill);
-  background: color-mix(in srgb, var(--c-chrome) 90%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--c-chrome) 96%, transparent);
   box-shadow: var(--shadow-float);
 }
 

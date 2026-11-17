@@ -21,6 +21,12 @@
   "clients": {
     "title": "Trusted by facility and safety teams across MENA and APAC"
   },
+  "statement": {
+    "label": "Maintenance, safety, energy, assets and fleet. One platform for every site.",
+    "words": ["Maintenance", "Safety", "Energy", "Assets", "Fleet", "Compliance"],
+    "line": "One platform.",
+    "accent": "Every site."
+  },
   "finalCta": {
     "eyebrow": "Ready when you are",
     "title": "See every site",

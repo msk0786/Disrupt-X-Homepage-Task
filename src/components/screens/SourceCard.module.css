@@ -44,14 +44,14 @@
 }
 
 .sender {
-  color: var(--c-whatsapp);
+  color: color-mix(in srgb, var(--c-whatsapp) 55%, var(--c-text));
   font-size: var(--fs-2xs);
   font-weight: 600;
 }
 
 .time {
   justify-self: end;
-  color: color-mix(in srgb, var(--c-text) 60%, transparent);
+  color: color-mix(in srgb, var(--c-text) 82%, transparent);
   font-size: var(--fs-2xs);
 }
 
@@ -136,14 +136,14 @@
 
 .sheetHeader {
   min-height: 24px;
-  color: color-mix(in srgb, var(--c-paper-ink) 60%, transparent);
+  color: color-mix(in srgb, var(--c-paper-ink) 80%, transparent);
   font-size: var(--fs-2xs);
   text-align: center;
   background: color-mix(in srgb, var(--c-paper-ink) 5%, transparent);
 }
 
 .rowNo {
-  color: color-mix(in srgb, var(--c-paper-ink) 60%, transparent);
+  color: color-mix(in srgb, var(--c-paper-ink) 80%, transparent);
   font-size: var(--fs-2xs);
   text-align: center;
   background: color-mix(in srgb, var(--c-paper-ink) 5%, transparent);
@@ -157,7 +157,7 @@
 
 .sheetFile {
   padding: 6px 8px;
-  color: color-mix(in srgb, var(--c-paper-ink) 65%, transparent);
+  color: color-mix(in srgb, var(--c-paper-ink) 85%, transparent);
   font-size: var(--fs-2xs);
 }
 

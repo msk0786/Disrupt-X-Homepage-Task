@@ -8,11 +8,11 @@ export default function LogoMarquee({ title, clients }) {
   return (
     <section className={styles.marquee} aria-labelledby="clients-title">
       <Container>
-        <h2 id="clients-title" className={styles.title}>
+        <h2 id="clients-title" className={styles.title} data-reveal>
           {title}
         </h2>
       </Container>
-      <div className={styles.viewport}>
+      <div className={styles.viewport} data-reveal="scale">
         <ul className={styles.track}>
           {loop.map((client, i) => {
             const copy = i >= clients.length

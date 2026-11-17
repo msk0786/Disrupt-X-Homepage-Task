@@ -15,22 +15,31 @@
 }
 
 .dot {
+  position: relative;
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: var(--tone);
 }
 
-.pulse {
+/* A ring that grows and fades. Only transform and opacity, so it never repaints the page. */
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--tone);
   animation: pulse 1.8s ease-out infinite;
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--tone) 60%, transparent);
+  from {
+    opacity: 0.6;
+    transform: scale(1);
   }
-  100% {
-    box-shadow: 0 0 0 6px transparent;
+  to {
+    opacity: 0;
+    transform: scale(3);
   }
 }
 

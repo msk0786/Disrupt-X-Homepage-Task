@@ -44,7 +44,7 @@
   min-width: min(260px, 40vw);
   justify-content: center;
   padding: 4px 14px;
-  color: var(--c-text-dim);
+  color: var(--c-text-muted);
   font-size: var(--fs-2xs);
   white-space: nowrap;
   border-radius: var(--r-xs);

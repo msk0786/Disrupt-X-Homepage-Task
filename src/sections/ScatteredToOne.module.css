@@ -80,7 +80,23 @@
 }
 
 .before {
+  position: relative;
   color: var(--c-text);
+}
+
+.strike {
+  position: absolute;
+  top: 52%;
+  left: -12%;
+  right: -12%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--c-danger);
+  transform-origin: left center;
+}
+
+.count[data-after] {
+  transform-origin: left center;
 }
 
 .number {

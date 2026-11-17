@@ -101,7 +101,22 @@
   transform-origin: 50% 0;
 }
 
+.title .intro {
+  display: block;
+}
+
 @media (prefers-reduced-motion: no-preference) {
+  /* Focus pull: each line rises while the blur clears. No opacity, so the text
+     counts as painted straight away and the LCP time is not held back. */
+  .intro {
+    animation: focus-in 1s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+  }
+
+  .stage {
+    animation: rise-in 1.2s var(--ease-out) 0.45s both;
+  }
+
   /* Matches the first frame of the GSAP tilt so nothing jumps on load */
   .screen {
     transform: rotateX(14deg) scale(0.94);
@@ -111,6 +126,20 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(24px);
+  }
+}
+
+@keyframes focus-in {
+  from {
+    transform: translateY(28px);
+    filter: blur(12px);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(90px);
   }
 }
 
@@ -126,9 +155,7 @@
   padding: var(--space-3) var(--space-4);
   border: 1px solid var(--c-border-strong);
   border-radius: var(--r-lg);
-  background: color-mix(in srgb, var(--c-chrome) 88%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--c-chrome) 96%, transparent);
   box-shadow: var(--shadow-float);
   text-align: left;
 }

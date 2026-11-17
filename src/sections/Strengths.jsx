@@ -12,7 +12,7 @@ export default function Strengths({ strengths }) {
       <Container>
         <SectionHeading id="why-title" eyebrow={strengths.eyebrow} title={strengths.title} accent={strengths.accent} lead={strengths.lead} />
 
-        <dl className={styles.stats}>
+        <dl className={styles.stats} data-draw>
           {strengths.stats.map((stat) => (
             <div key={stat.label} className={styles.stat} data-reveal>
               <dt>{stat.label}</dt>
@@ -27,7 +27,7 @@ export default function Strengths({ strengths }) {
 
         <ul className={styles.cards}>
           {strengths.cards.map((card) => (
-            <li key={card.title} data-reveal>
+            <li key={card.title} data-reveal="flip">
               <Card interactive className={styles.card}>
                 <IconBadge name={card.icon} />
                 <h3 className={styles.cardTitle}>{card.title}</h3>

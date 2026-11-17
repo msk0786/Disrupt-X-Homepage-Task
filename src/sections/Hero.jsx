@@ -37,6 +37,11 @@ export default function Hero({ hero, demo, dashboard, cards }) {
         gsap.utils.toArray('[data-depth]', root.current).forEach((card) => {
           depth.to(card, { yPercent: -Number(card.dataset.depth) * 100, ease: 'none' }, 0)
         })
+
+        // leaving the hero: the grid sinks slower than the page and the copy eases away
+        const exit = { trigger: root.current, start: 'top top', end: 'bottom top', scrub: true }
+        gsap.to('[data-backdrop]', { yPercent: 30, ease: 'none', scrollTrigger: exit })
+        gsap.to('[data-hero-copy]', { y: -90, opacity: 0, ease: 'none', scrollTrigger: { ...exit, end: '+=560' } })
       })
     },
     { scope: root },
@@ -44,17 +49,27 @@ export default function Hero({ hero, demo, dashboard, cards }) {
 
   return (
     <section ref={root} className={styles.hero} aria-labelledby="hero-title">
-      <div className={styles.backdrop} aria-hidden="true">
+      <div className={styles.backdrop} aria-hidden="true" data-backdrop>
         <img src="/images/brand/hero-grid.svg" alt="" width="1920" height="1223" fetchPriority="low" />
       </div>
 
-      <Container className={styles.copy}>
-        <Eyebrow>{hero.eyebrow}</Eyebrow>
+      {/* The intro is plain CSS, so it plays from the first paint without waiting for JavaScript */}
+      <Container className={styles.copy} data-hero-copy>
+        <Eyebrow className={styles.intro} style={{ '--i': 0 }}>
+          {hero.eyebrow}
+        </Eyebrow>
         <h1 id="hero-title" className={styles.title}>
-          {hero.title} <GradientText block>{hero.accent}</GradientText>
+          <span className={styles.intro} style={{ '--i': 1 }}>
+            {hero.title}
+          </span>{' '}
+          <GradientText block className={styles.intro} style={{ '--i': 2 }}>
+            {hero.accent}
+          </GradientText>
         </h1>
-        <p className={styles.lead}>{hero.lead}</p>
-        <div className={styles.ctas}>
+        <p className={cx(styles.lead, styles.intro)} style={{ '--i': 3 }}>
+          {hero.lead}
+        </p>
+        <div className={cx(styles.ctas, styles.intro)} style={{ '--i': 4 }}>
           <Button href={demo.href} arrow>
             {demo.label}
           </Button>

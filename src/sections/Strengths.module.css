@@ -3,10 +3,36 @@
 }
 
 .stats {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   margin: var(--space-8) 0 0;
-  border-block: 1px solid var(--c-border);
+}
+
+/* top and bottom rules that draw across when the row scrolls in (see data-draw) */
+.stats::before,
+.stats::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--c-border-strong) 15%, var(--c-border-strong) 85%, transparent);
+  transform: scaleX(var(--draw, 1));
+}
+
+.stats::before {
+  top: 0;
+  transform-origin: left center;
+}
+
+.stats::after {
+  bottom: 0;
+  transform-origin: right center;
+}
+
+.cards {
+  perspective: 1200px;
 }
 
 .stat {

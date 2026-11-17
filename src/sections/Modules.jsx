@@ -46,7 +46,8 @@ export default function Modules({ modules }) {
       <Container>
         <SectionHeading id="modules-title" eyebrow={modules.eyebrow} title={modules.title} accent={modules.accent} lead={modules.lead} />
 
-        <div data-reveal>
+        {/* the whole explorer opens like a curtain, top to bottom */}
+        <div data-reveal="clip">
           <Tabs
             label={modules.tabsLabel}
             items={modules.items}

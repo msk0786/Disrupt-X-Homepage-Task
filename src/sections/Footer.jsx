@@ -6,13 +6,13 @@ export default function Footer({ brand, footer }) {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.top}>
-          <div className={styles.brand}>
+          <div className={styles.brand} data-reveal>
             <img src={brand.logo.src} width={brand.logo.width * 1.25} height={brand.logo.height * 1.25} alt={brand.name} loading="lazy" />
             <p>{footer.tagline}</p>
           </div>
 
           {footer.columns.map((column) => (
-            <nav key={column.title} aria-label={column.title} className={styles.column}>
+            <nav key={column.title} aria-label={column.title} className={styles.column} data-reveal>
               <h2 className={styles.heading}>{column.title}</h2>
               <ul>
                 {column.links.map((link) => (

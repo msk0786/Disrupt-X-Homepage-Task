@@ -53,6 +53,25 @@
   background: color-mix(in srgb, var(--c-text) 5%, transparent);
 }
 
+.current {
+  color: var(--c-text);
+  background: color-mix(in srgb, var(--c-mint) 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c-mint) 30%, transparent);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gradient-brand);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--c-mint) 60%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
 .actions {
   display: flex;
   align-items: center;

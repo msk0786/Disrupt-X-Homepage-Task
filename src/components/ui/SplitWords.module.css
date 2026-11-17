@@ -1,0 +1,21 @@
+/* Clips each word so it can slide up from below its own baseline */
+.mask {
+  display: inline-block;
+  overflow: clip;
+  vertical-align: top;
+  /* room for descenders like g and y, given back with the negative margin */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.word {
+  display: inline-block;
+}
+
+.line {
+  display: block;
+}
+
+.line .word {
+  display: block;
+}
