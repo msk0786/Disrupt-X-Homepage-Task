@@ -1,42 +1,49 @@
-.band {
+.section {
   position: relative;
-  display: grid;
-  gap: clamp(0.25rem, 1vw, 1rem);
-  padding-block: clamp(3rem, 2rem + 4vw, 6rem);
-  overflow: hidden;
+  padding-block: clamp(6rem, 4rem + 8vw, 11rem);
+  overflow: clip;
   border-block: 1px solid var(--c-border);
   background:
-    radial-gradient(40% 80% at 50% 50%, color-mix(in srgb, var(--c-mint) 7%, transparent), transparent 70%),
+    radial-gradient(50% 60% at 50% 55%, color-mix(in srgb, var(--c-mint) 8%, transparent), transparent 70%),
+    radial-gradient(35% 45% at 80% 20%, color-mix(in srgb, var(--c-purple) 8%, transparent), transparent 70%),
     var(--c-bg-sunken);
 }
 
-.row {
+.inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: clamp(1.25rem, 0.5rem + 2.5vw, 3rem);
-  width: max-content;
-  font-size: clamp(3rem, 1.4rem + 7vw, 8.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  gap: var(--space-6);
+}
+
+.text {
+  max-width: 980px;
+  font-size: clamp(2rem, 1.1rem + 3.6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+/*
+  --lit runs from 0 to 1 as the reader scrolls (see Statement.jsx).
+  Unlit words sit in the dim text colour, which still passes AA on this background.
+  Without JavaScript or with reduced motion, --lit stays at 1 and everything is lit.
+*/
+.word {
+  --lit: 1;
+  display: inline-block;
+  color: color-mix(in srgb, var(--c-text) calc(var(--lit) * 100%), var(--c-text-dim));
+  transform: translateY(calc((1 - var(--lit)) * 0.12em));
+}
+
+/* the gradient sits underneath and shows through as the dim fill fades away */
+.accent {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: color-mix(in srgb, transparent calc(var(--lit) * 100%), var(--c-text-dim));
+  padding-bottom: 0.08em;
   white-space: nowrap;
-  will-change: transform;
-}
-
-.outline {
-  color: transparent;
-  -webkit-text-stroke: 1px color-mix(in srgb, var(--c-text) 28%, transparent);
-}
-
-.solid {
-  color: var(--c-text);
-}
-
-.spark {
-  flex: none;
-  width: 0.18em;
-  height: 0.18em;
-  border-radius: 50%;
-  background: var(--c-mint);
-  box-shadow: 0 0 24px var(--c-mint);
 }

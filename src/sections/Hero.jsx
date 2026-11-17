@@ -7,6 +7,7 @@ import Icon from '../components/ui/Icon.jsx'
 import BrowserFrame from '../components/frames/BrowserFrame.jsx'
 import HeroDashboard from '../components/screens/HeroDashboard.jsx'
 import { gsap, useGSAP, media } from '../motion/gsap.js'
+import { trackPointer } from '../motion/pointer.js'
 import { cx } from '../lib/cx.js'
 import styles from './Hero.module.css'
 
@@ -48,10 +49,12 @@ export default function Hero({ hero, demo, dashboard, cards }) {
   )
 
   return (
-    <section ref={root} className={styles.hero} aria-labelledby="hero-title">
+    <section ref={root} className={styles.hero} aria-labelledby="hero-title" onPointerMove={trackPointer}>
       <div className={styles.backdrop} aria-hidden="true" data-backdrop>
         <img src="/images/brand/hero-grid.svg" alt="" width="1920" height="1223" fetchPriority="low" />
       </div>
+      {/* a soft mint light that follows the cursor across the brand grid */}
+      <div className={styles.spotlight} aria-hidden="true" />
 
       {/* The intro is plain CSS, so it plays from the first paint without waiting for JavaScript */}
       <Container className={styles.copy} data-hero-copy>

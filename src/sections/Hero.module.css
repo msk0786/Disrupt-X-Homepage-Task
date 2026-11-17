@@ -50,6 +50,28 @@
   background: radial-gradient(closest-side, color-mix(in srgb, var(--c-purple) 20%, transparent), transparent);
 }
 
+.spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    560px circle at var(--x, 50%) var(--y, 30%),
+    color-mix(in srgb, var(--c-mint) 16%, transparent),
+    color-mix(in srgb, var(--c-purple) 6%, transparent) 40%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transition: opacity 0.8s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .hero:hover .spotlight {
+    opacity: 1;
+  }
+}
+
 .copy {
   display: flex;
   flex-direction: column;

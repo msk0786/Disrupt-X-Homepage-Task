@@ -38,7 +38,7 @@ npm run preview
 | 1 | Hero | Outcome headline, the ALEF 360° portfolio dashboard with floating cards for a new job, an AI alert and a closed incident |
 | 2 | Client logos | Real client logos from disrupt-x.io in a slow loop |
 | 3 | Scattered to one place | The brief's example: a pipe leak on WhatsApp, a failed fire door on paper and a permit in Excel fly into one ALEF 360° inbox as you scroll |
-| 4 | Kinetic statement | Oversized type that drifts with the scroll |
+| 4 | Statement | One big sentence that lights up word by word as you scroll, with the key phrases in the brand gradient |
 | 5 | Three teams | Facility, HSE and operator stories. Each one has a live demo screen |
 | 6 | Five live modules | HSEQ, CAFM \| CMMS, iBMS, Connected Operations and Mobility in tabs, with real product screenshots |
 | 7 | Why ALEF 360° | Platform strengths with count up numbers |
@@ -67,7 +67,8 @@ All motion runs through two hooks in `src/motion`. Components opt in with data a
 | Scroll progress and active section | Header | A gradient line fills with the page, and the nav link for the current section lights up |
 | Word by word title reveal | Every section title | `SplitWords` masks each word, `data-words` makes them rise in turn |
 | Scattered to one place | Story section | Pinned scrub on desktop, unpinned on phones, so nothing fights the address bar |
-| Kinetic type band | Statement | Two rows slide in opposite directions with the scroll |
+| Scroll lit statement | Statement | Each word goes from dim to white as you scroll, accent phrases light up in the gradient. Every word stays on screen and the dim colour still passes contrast |
+| Cursor spotlight | Hero and strength cards | `trackPointer` writes the cursor position to CSS variables, so a mint light follows the mouse across the grid and around card borders. No re-renders |
 | Timeline line | Teams | The brand's glowing line draws down the page and lights each team's node |
 | Swing in and parallax | Team screens | `data-reveal="right"` plus `data-speed` on a wrapper |
 | Curtain wipe | Module explorer | `data-reveal="clip"` |
@@ -159,7 +160,7 @@ Lighthouse on the production build (`npm run build && npm run preview`). The ful
 | Mobile | 97 | 100 | 100 | 100 |
 | Desktop | 100 | 100 | 100 | 100 |
 
-Mobile: LCP 2.3s, total blocking time 60ms, CLS 0. Desktop: LCP 0.6s, total blocking time 0ms, CLS 0.
+Mobile: LCP 2.3s, total blocking time 50ms, CLS 0. Desktop: LCP 0.6s, total blocking time 0ms, CLS 0.
 
 What keeps it fast:
 

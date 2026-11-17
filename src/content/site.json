@@ -22,10 +22,17 @@
     "title": "Trusted by facility and safety teams across MENA and APAC"
   },
   "statement": {
-    "label": "Maintenance, safety, energy, assets and fleet. One platform for every site.",
-    "words": ["Maintenance", "Safety", "Energy", "Assets", "Fleet", "Compliance"],
-    "line": "One platform.",
-    "accent": "Every site."
+    "eyebrow": "What changes with ALEF 360°",
+    "parts": [
+      { "text": "Every job gets" },
+      { "text": "an owner.", "accent": true },
+      { "text": "Every check leaves" },
+      { "text": "a record.", "accent": true },
+      { "text": "Every building sits in" },
+      { "text": "one view.", "accent": true },
+      { "text": "That is" },
+      { "text": "ALEF 360°.", "accent": true }
+    ]
   },
   "finalCta": {
     "eyebrow": "Ready when you are",

@@ -1,56 +1,56 @@
-import { Fragment, useRef } from 'react'
-import GradientText from '../components/ui/GradientText.jsx'
+import { useRef } from 'react'
+import Container from '../components/ui/Container.jsx'
+import Eyebrow from '../components/ui/Eyebrow.jsx'
 import { gsap, useGSAP, media } from '../motion/gsap.js'
+import { cx } from '../lib/cx.js'
 import styles from './Statement.module.css'
 
-// Each row repeats its content so there is always text on screen while it slides
-const REPEAT = 3
-
 /**
- * Oversized type that drifts sideways with the scroll, the two rows in opposite
- * directions. The rows are decorative, so screen readers get one plain sentence.
+ * One big sentence that lights up word by word as you scroll through it,
+ * so the reader's eye moves with the page. Accent phrases light up in the
+ * brand gradient. Every word is always on screen and readable, and the
+ * unlit colour still passes contrast.
  */
 export default function Statement({ statement }) {
   const root = useRef(null)
+  // plain text lights word by word, an accent phrase lights as one piece so its gradient runs unbroken
+  const words = statement.parts.flatMap((part) =>
+    part.accent ? [{ word: part.text, accent: true }] : part.text.split(' ').map((word) => ({ word })),
+  )
 
   useGSAP(
     () => {
       const mm = gsap.matchMedia()
 
       mm.add(media.ok, () => {
-        const scroll = { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 0.6 }
-        gsap.fromTo('[data-drift="left"]', { xPercent: 0 }, { xPercent: -22, ease: 'none', scrollTrigger: scroll })
-        gsap.fromTo('[data-drift="right"]', { xPercent: -22 }, { xPercent: 0, ease: 'none', scrollTrigger: scroll })
+        const lit = gsap.utils.toArray('[data-lit]')
+        gsap.set(lit, { '--lit': 0 })
+
+        gsap.to(lit, {
+          '--lit': 1,
+          ease: 'none',
+          stagger: 0.12,
+          scrollTrigger: { trigger: '[data-statement]', start: 'top 78%', end: 'bottom 42%', scrub: 0.4 },
+        })
       })
     },
     { scope: root },
   )
 
   return (
-    <section ref={root} className={styles.band}>
-      <p className="visually-hidden">{statement.label}</p>
-
-      <div className={styles.row} data-drift="left" aria-hidden="true">
-        {Array.from({ length: REPEAT }, (_, copy) =>
-          statement.words.map((word) => (
-            <Fragment key={`${copy}-${word}`}>
-              <span className={styles.outline}>{word}</span>
-              <span className={styles.spark} />
-            </Fragment>
-          )),
-        )}
-      </div>
-
-      <div className={styles.row} data-drift="right" aria-hidden="true">
-        {Array.from({ length: REPEAT }, (_, copy) => (
-          <Fragment key={copy}>
-            <span className={styles.solid}>
-              {statement.line} <GradientText>{statement.accent}</GradientText>
+    <section ref={root} className={styles.section} aria-labelledby="statement-text">
+      <Container className={styles.inner}>
+        <Eyebrow data-reveal="scale">{statement.eyebrow}</Eyebrow>
+        <p id="statement-text" className={styles.text} data-statement>
+          {words.map(({ word, accent }, i) => (
+            <span key={i}>
+              <span className={cx(styles.word, accent && styles.accent)} data-lit>
+                {word}
+              </span>{' '}
             </span>
-            <span className={styles.spark} />
-          </Fragment>
-        ))}
-      </div>
+          ))}
+        </p>
+      </Container>
     </section>
   )
 }
