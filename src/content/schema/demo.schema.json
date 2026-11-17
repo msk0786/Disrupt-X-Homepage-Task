@@ -1,0 +1,240 @@
+{
+  "$id": "demo.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Demo data for the product screens (one fictional group of four schools)",
+  "type": "object",
+  "required": ["portfolio", "heroCards", "workOrder", "incident", "sites", "days", "dashboard"],
+  "additionalProperties": false,
+  "definitions": {
+    "kpi": {
+      "type": "object",
+      "required": ["label", "value", "delta", "trend"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string" },
+        "value": { "type": "number" },
+        "decimals": { "type": "integer", "minimum": 0, "maximum": 2 },
+        "suffix": { "type": "string" },
+        "delta": { "type": "string" },
+        "trend": { "enum": ["up", "down", "flat"] }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["status", "tone", "action"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "status": { "type": "string" },
+        "tone": { "$ref": "shared.schema.json#/definitions/tone" },
+        "action": { "type": "string" },
+        "announce": { "type": "string" },
+        "who": { "type": "string" },
+        "time": { "type": "string" },
+        "note": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "portfolio": {
+      "type": "object",
+      "required": [
+        "kicker",
+        "window",
+        "title",
+        "scope",
+        "liveLabel",
+        "user",
+        "kpis",
+        "energyTitle",
+        "energy",
+        "attentionTitle",
+        "attention"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kicker": { "type": "string" },
+        "window": { "type": "string" },
+        "title": { "type": "string" },
+        "scope": { "type": "string" },
+        "liveLabel": { "type": "string" },
+        "user": { "type": "string" },
+        "kpis": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "$ref": "#/definitions/kpi" } },
+        "energyTitle": { "type": "string" },
+        "energy": { "type": "array", "minItems": 2, "items": { "type": "number", "exclusiveMinimum": 0 } },
+        "attentionTitle": { "type": "string" },
+        "attention": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "detail", "tone", "status"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "detail": { "type": "string" },
+              "tone": { "$ref": "shared.schema.json#/definitions/tone" },
+              "status": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "heroCards": {
+      "type": "object",
+      "required": ["job", "alert", "closed"],
+      "additionalProperties": { "type": "object", "additionalProperties": { "type": "string" } }
+    },
+    "workOrder": {
+      "type": "object",
+      "required": [
+        "ref",
+        "demoLabel",
+        "title",
+        "priority",
+        "site",
+        "location",
+        "asset",
+        "assignee",
+        "deviceTime",
+        "appKicker",
+        "appTitle",
+        "timerLabel",
+        "timerUnit",
+        "insight",
+        "checklistTitle",
+        "checklist",
+        "photo",
+        "photoImage",
+        "minutes",
+        "steps",
+        "done"
+      ],
+      "properties": {
+        "photoImage": { "$ref": "shared.schema.json#/definitions/asset" },
+        "checklist": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "minutes": {
+          "type": "object",
+          "required": ["photo", "done"],
+          "additionalProperties": false,
+          "properties": { "photo": { "type": "integer", "minimum": 1 }, "done": { "type": "integer", "minimum": 1 } }
+        },
+        "steps": { "type": "array", "minItems": 4, "maxItems": 4, "items": { "$ref": "#/definitions/step" } },
+        "done": {
+          "type": "object",
+          "required": ["title", "body"],
+          "additionalProperties": false,
+          "properties": { "title": { "type": "string", "pattern": "\\{minutes\\}" }, "body": { "type": "string" } }
+        }
+      }
+    },
+    "incident": {
+      "type": "object",
+      "required": [
+        "ref",
+        "demoLabel",
+        "window",
+        "title",
+        "site",
+        "severity",
+        "trailTitle",
+        "back",
+        "restart",
+        "closedBadge",
+        "action",
+        "steps"
+      ],
+      "properties": {
+        "action": {
+          "type": "object",
+          "required": [
+            "title",
+            "ref",
+            "task",
+            "owner",
+            "due",
+            "evidence",
+            "evidenceDone",
+            "verified",
+            "open",
+            "closed",
+            "empty",
+            "emptyHint"
+          ],
+          "additionalProperties": { "type": "string" }
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "items": {
+            "allOf": [
+              { "$ref": "#/definitions/step" },
+              { "type": "object", "required": ["key", "label", "who", "time", "note"] }
+            ]
+          }
+        }
+      }
+    },
+    "sites": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "openJobs", "alerts", "energy", "budget", "compliance", "issues"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z]+$" },
+          "name": { "type": "string" },
+          "openJobs": { "type": "integer", "minimum": 0 },
+          "alerts": { "type": "integer", "minimum": 0 },
+          "energy": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "number", "minimum": 0 } },
+          "budget": { "type": "number", "exclusiveMinimum": 0 },
+          "compliance": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "issues": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["tone", "module", "text"],
+              "additionalProperties": false,
+              "properties": {
+                "tone": { "$ref": "shared.schema.json#/definitions/tone" },
+                "module": { "type": "string" },
+                "text": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "days": { "type": "array", "minItems": 7, "maxItems": 7, "items": { "type": "string" } },
+    "dashboard": {
+      "type": "object",
+      "required": [
+        "window",
+        "all",
+        "sitesLabel",
+        "openJobs",
+        "cost",
+        "energy",
+        "compliance",
+        "chart",
+        "issues",
+        "healthy",
+        "alertsUnit",
+        "currency",
+        "thousands",
+        "tariff",
+        "under",
+        "over",
+        "onBudget"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "tariff": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "patternProperties": { "^(?!tariff$)": { "type": "string" } }
+    }
+  }
+}

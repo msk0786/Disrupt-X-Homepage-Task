@@ -1,0 +1,84 @@
+{
+  "$id": "modules.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Modules: the five live ALEF 360° modules",
+  "type": "object",
+  "required": [
+    "eyebrow",
+    "title",
+    "accent",
+    "lead",
+    "tabsLabel",
+    "linkLabel",
+    "productsLabel",
+    "kicker",
+    "skyline",
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": { "$ref": "shared.schema.json#/definitions/text" },
+    "title": { "$ref": "shared.schema.json#/definitions/text" },
+    "accent": { "$ref": "shared.schema.json#/definitions/text" },
+    "lead": { "$ref": "shared.schema.json#/definitions/text" },
+    "tabsLabel": { "$ref": "shared.schema.json#/definitions/text" },
+    "linkLabel": { "$ref": "shared.schema.json#/definitions/text" },
+    "productsLabel": { "$ref": "shared.schema.json#/definitions/text" },
+    "kicker": { "$ref": "shared.schema.json#/definitions/text" },
+    "skyline": {
+      "type": "object",
+      "required": ["prefix", "logoAlt", "hint"],
+      "additionalProperties": false,
+      "properties": {
+        "prefix": { "$ref": "shared.schema.json#/definitions/text" },
+        "logoAlt": { "$ref": "shared.schema.json#/definitions/text" },
+        "hint": { "$ref": "shared.schema.json#/definitions/text" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "icon", "outcome", "features", "chip", "image", "href"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "enum": ["hseq", "cafm", "ibms", "connected", "mobility"] },
+          "name": { "$ref": "shared.schema.json#/definitions/text" },
+          "icon": { "$ref": "shared.schema.json#/definitions/icon" },
+          "outcome": { "$ref": "shared.schema.json#/definitions/text" },
+          "features": { "type": "array", "minItems": 1, "items": { "$ref": "shared.schema.json#/definitions/text" } },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "detail", "href"],
+              "additionalProperties": false,
+              "properties": {
+                "name": { "$ref": "shared.schema.json#/definitions/text" },
+                "detail": { "$ref": "shared.schema.json#/definitions/text" },
+                "href": { "$ref": "shared.schema.json#/definitions/href" }
+              }
+            }
+          },
+          "chip": {
+            "type": "object",
+            "required": ["label", "value", "tone"],
+            "additionalProperties": false,
+            "properties": {
+              "label": { "$ref": "shared.schema.json#/definitions/text" },
+              "value": { "$ref": "shared.schema.json#/definitions/text" },
+              "tone": { "$ref": "shared.schema.json#/definitions/tone" }
+            }
+          },
+          "image": {
+            "allOf": [
+              { "$ref": "shared.schema.json#/definitions/responsiveImage" },
+              { "type": "object", "required": ["alt"] }
+            ]
+          },
+          "href": { "$ref": "shared.schema.json#/definitions/href" }
+        }
+      }
+    }
+  }
+}

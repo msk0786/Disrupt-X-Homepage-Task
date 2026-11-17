@@ -1,0 +1,154 @@
+{
+  "$id": "site.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Site settings (singleton)",
+  "type": "object",
+  "required": ["brand", "a11y", "nav", "demo", "apps", "hero", "finalCta", "footer"],
+  "additionalProperties": false,
+  "properties": {
+    "brand": {
+      "type": "object",
+      "required": ["name", "product", "logo", "home"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "$ref": "shared.schema.json#/definitions/text" },
+        "product": { "$ref": "shared.schema.json#/definitions/text" },
+        "logo": {
+          "type": "object",
+          "required": ["src", "width", "height"],
+          "additionalProperties": false,
+          "properties": {
+            "src": { "$ref": "shared.schema.json#/definitions/asset" },
+            "width": { "$ref": "shared.schema.json#/definitions/size" },
+            "height": { "$ref": "shared.schema.json#/definitions/size" }
+          }
+        },
+        "home": { "$ref": "shared.schema.json#/definitions/href" }
+      }
+    },
+    "a11y": {
+      "type": "object",
+      "required": ["skip", "mainNav", "mobileNav", "menuOpen", "menuClose", "home"],
+      "additionalProperties": { "$ref": "shared.schema.json#/definitions/text" }
+    },
+    "nav": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["label", "href"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "$ref": "shared.schema.json#/definitions/text" },
+          "href": { "type": "string", "pattern": "^#[a-z-]+$" }
+        }
+      }
+    },
+    "demo": { "$ref": "shared.schema.json#/definitions/link" },
+    "apps": {
+      "type": "object",
+      "required": ["title", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "$ref": "shared.schema.json#/definitions/text" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["store", "href", "image"],
+            "additionalProperties": false,
+            "properties": {
+              "store": { "$ref": "shared.schema.json#/definitions/text" },
+              "href": { "$ref": "shared.schema.json#/definitions/href" },
+              "image": { "$ref": "shared.schema.json#/definitions/image" }
+            }
+          }
+        }
+      }
+    },
+    "hero": {
+      "type": "object",
+      "required": ["eyebrow", "title", "accent", "lead", "secondary"],
+      "additionalProperties": false,
+      "properties": {
+        "eyebrow": { "$ref": "shared.schema.json#/definitions/text" },
+        "title": { "$ref": "shared.schema.json#/definitions/text" },
+        "accent": { "$ref": "shared.schema.json#/definitions/text" },
+        "lead": { "$ref": "shared.schema.json#/definitions/text" },
+        "secondary": { "$ref": "shared.schema.json#/definitions/link" }
+      }
+    },
+    "finalCta": {
+      "type": "object",
+      "required": ["logoAlt", "eyebrow", "title", "accent", "lead", "secondary"],
+      "additionalProperties": false,
+      "properties": {
+        "logoAlt": { "$ref": "shared.schema.json#/definitions/text" },
+        "eyebrow": { "$ref": "shared.schema.json#/definitions/text" },
+        "title": { "$ref": "shared.schema.json#/definitions/text" },
+        "accent": { "$ref": "shared.schema.json#/definitions/text" },
+        "lead": { "$ref": "shared.schema.json#/definitions/text" },
+        "secondary": { "$ref": "shared.schema.json#/definitions/link" }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "required": ["tagline", "socialLabel", "socials", "columns", "languages", "legal", "copyright"],
+      "additionalProperties": false,
+      "properties": {
+        "tagline": { "$ref": "shared.schema.json#/definitions/text" },
+        "socialLabel": { "$ref": "shared.schema.json#/definitions/text" },
+        "socials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "label", "href"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "enum": ["linkedin", "x", "instagram", "facebook", "tiktok", "youtube"] },
+              "label": { "$ref": "shared.schema.json#/definitions/text" },
+              "href": { "$ref": "shared.schema.json#/definitions/href" }
+            }
+          }
+        },
+        "columns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["title", "links"],
+            "additionalProperties": false,
+            "properties": {
+              "title": { "$ref": "shared.schema.json#/definitions/text" },
+              "links": { "type": "array", "minItems": 1, "items": { "$ref": "shared.schema.json#/definitions/link" } }
+            }
+          }
+        },
+        "languages": {
+          "type": "object",
+          "required": ["label", "items"],
+          "additionalProperties": false,
+          "properties": {
+            "label": { "$ref": "shared.schema.json#/definitions/text" },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["label", "lang", "href"],
+                "additionalProperties": false,
+                "properties": {
+                  "label": { "$ref": "shared.schema.json#/definitions/text" },
+                  "lang": { "type": "string", "pattern": "^[a-z]{2}$" },
+                  "href": { "$ref": "shared.schema.json#/definitions/href" },
+                  "current": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        "legal": { "type": "array", "items": { "$ref": "shared.schema.json#/definitions/link" } },
+        "copyright": { "$ref": "shared.schema.json#/definitions/text" }
+      }
+    }
+  }
+}

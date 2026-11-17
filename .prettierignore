@@ -1,0 +1,11 @@
+dist
+.ssr
+node_modules
+package-lock.json
+docs/lighthouse
+public
+playwright-report
+test-results
+
+# the inline script must stay byte for byte as hashed in vercel.json
+index.html

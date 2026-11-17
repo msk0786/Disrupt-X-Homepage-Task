@@ -1,0 +1,201 @@
+{
+  "$id": "shared.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Shared content types",
+  "definitions": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "href": {
+      "type": "string",
+      "pattern": "^(https://|/|#)"
+    },
+    "asset": {
+      "type": "string",
+      "pattern": "^/(images|fonts)/[a-z0-9./_-]+$"
+    },
+    "link": {
+      "type": "object",
+      "required": ["label", "href"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "$ref": "#/definitions/text"
+        },
+        "href": {
+          "$ref": "#/definitions/href"
+        }
+      }
+    },
+    "size": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "logo": {
+      "type": "object",
+      "required": ["name", "src", "width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/text"
+        },
+        "src": {
+          "$ref": "#/definitions/asset"
+        },
+        "width": {
+          "$ref": "#/definitions/size"
+        },
+        "height": {
+          "$ref": "#/definitions/size"
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "required": ["src", "width", "height", "alt"],
+      "additionalProperties": false,
+      "properties": {
+        "src": {
+          "$ref": "#/definitions/asset"
+        },
+        "width": {
+          "$ref": "#/definitions/size"
+        },
+        "height": {
+          "$ref": "#/definitions/size"
+        },
+        "alt": {
+          "type": "string"
+        }
+      }
+    },
+    "responsiveImage": {
+      "type": "object",
+      "required": ["src", "srcSet", "width", "height"],
+      "properties": {
+        "src": {
+          "$ref": "#/definitions/asset"
+        },
+        "srcSet": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["src", "width"],
+            "additionalProperties": false,
+            "properties": {
+              "src": {
+                "$ref": "#/definitions/asset"
+              },
+              "width": {
+                "$ref": "#/definitions/size"
+              }
+            }
+          }
+        },
+        "width": {
+          "$ref": "#/definitions/size"
+        },
+        "height": {
+          "$ref": "#/definitions/size"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "focus": {
+          "type": "string",
+          "pattern": "^\\d+% \\d+%$"
+        },
+        "phoneZoom": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "frame": {
+          "$ref": "#/definitions/text"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tone": {
+      "enum": ["success", "warning", "danger", "info", "purple", "neutral"]
+    },
+    "icon": {
+      "enum": [
+        "arrowRight",
+        "arrowUpRight",
+        "bell",
+        "box",
+        "building",
+        "camera",
+        "check",
+        "chevronLeft",
+        "chevronRight",
+        "clock",
+        "cloud",
+        "cpu",
+        "file",
+        "gauge",
+        "layers",
+        "dashboard",
+        "pin",
+        "menu",
+        "message",
+        "pause",
+        "play",
+        "radio",
+        "reset",
+        "shield",
+        "shieldCheck",
+        "sparkles",
+        "table",
+        "truck",
+        "user",
+        "wrench",
+        "close",
+        "zap"
+      ]
+    },
+    "heading": {
+      "type": "object",
+      "required": ["eyebrow", "title", "lead"],
+      "properties": {
+        "eyebrow": {
+          "$ref": "#/definitions/text"
+        },
+        "title": {
+          "$ref": "#/definitions/text"
+        },
+        "accent": {
+          "$ref": "#/definitions/text"
+        },
+        "lead": {
+          "$ref": "#/definitions/text"
+        }
+      }
+    },
+    "partnerLogo": {
+      "type": "object",
+      "required": ["name", "src", "width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/text"
+        },
+        "src": {
+          "$ref": "#/definitions/asset"
+        },
+        "width": {
+          "$ref": "#/definitions/size"
+        },
+        "height": {
+          "$ref": "#/definitions/size"
+        },
+        "whiteOnDark": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

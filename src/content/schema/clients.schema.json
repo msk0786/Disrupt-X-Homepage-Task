@@ -1,0 +1,30 @@
+{
+  "$id": "clients.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Clients: logos grouped by region",
+  "type": "object",
+  "required": ["eyebrow", "title", "lead", "tabsLabel", "pause", "play", "regions"],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": { "$ref": "shared.schema.json#/definitions/text" },
+    "title": { "$ref": "shared.schema.json#/definitions/text" },
+    "lead": { "$ref": "shared.schema.json#/definitions/text" },
+    "tabsLabel": { "$ref": "shared.schema.json#/definitions/text" },
+    "pause": { "$ref": "shared.schema.json#/definitions/text" },
+    "play": { "$ref": "shared.schema.json#/definitions/text" },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "items"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z]+$" },
+          "label": { "$ref": "shared.schema.json#/definitions/text" },
+          "items": { "type": "array", "minItems": 1, "items": { "$ref": "shared.schema.json#/definitions/logo" } }
+        }
+      }
+    }
+  }
+}

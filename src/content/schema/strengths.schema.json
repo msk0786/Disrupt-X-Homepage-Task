@@ -1,0 +1,116 @@
+{
+  "$id": "strengths.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Strengths: proof, platform strengths, awards and partners",
+  "type": "object",
+  "required": ["eyebrow", "title", "accent", "lead", "stats", "cards", "awards", "partners"],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": {
+      "$ref": "shared.schema.json#/definitions/text"
+    },
+    "title": {
+      "$ref": "shared.schema.json#/definitions/text"
+    },
+    "accent": {
+      "$ref": "shared.schema.json#/definitions/text"
+    },
+    "lead": {
+      "$ref": "shared.schema.json#/definitions/text"
+    },
+    "stats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["value", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "value": {
+            "type": "number",
+            "minimum": 0
+          },
+          "suffix": {
+            "type": "string"
+          },
+          "label": {
+            "$ref": "shared.schema.json#/definitions/text"
+          }
+        }
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["icon", "title", "body"],
+        "additionalProperties": false,
+        "properties": {
+          "icon": {
+            "$ref": "shared.schema.json#/definitions/icon"
+          },
+          "title": {
+            "$ref": "shared.schema.json#/definitions/text"
+          },
+          "body": {
+            "$ref": "shared.schema.json#/definitions/text"
+          }
+        }
+      }
+    },
+    "awards": {
+      "type": "object",
+      "required": ["title", "lead", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "$ref": "shared.schema.json#/definitions/text"
+        },
+        "lead": {
+          "$ref": "shared.schema.json#/definitions/text"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "detail", "image"],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "$ref": "shared.schema.json#/definitions/text"
+              },
+              "detail": {
+                "$ref": "shared.schema.json#/definitions/text"
+              },
+              "image": {
+                "$ref": "shared.schema.json#/definitions/image"
+              }
+            }
+          }
+        }
+      }
+    },
+    "partners": {
+      "type": "object",
+      "required": ["title", "lead", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "$ref": "shared.schema.json#/definitions/text"
+        },
+        "lead": {
+          "$ref": "shared.schema.json#/definitions/text"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "$ref": "shared.schema.json#/definitions/partnerLogo"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
