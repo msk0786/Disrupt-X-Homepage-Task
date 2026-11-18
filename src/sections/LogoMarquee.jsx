@@ -10,7 +10,7 @@ import styles from './LogoMarquee.module.css'
  * Logos load straight away (they are tiny), so none of them is blank as it slides in.
  * They are shown in white, so every mark stands out equally on a dark surface.
  */
-export default function LogoMarquee({ items, minPerPass = 14 }) {
+export default function LogoMarquee({ items, minPerPass = 18 }) {
   const repeats = Math.max(1, Math.ceil(minPerPass / items.length))
   const pass = Array.from({ length: repeats }, () => items).flat()
   const loop = [...pass, ...pass]

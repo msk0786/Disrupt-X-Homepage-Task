@@ -31,16 +31,40 @@
   justify-self: center;
 }
 
-.panel:focus-visible {
-  border-radius: var(--r-xl);
+/*
+  Both regions share one grid cell, so the band always takes the height of the
+  taller one and the page never jumps when the tab changes. The inactive panel
+  keeps its `hidden` attribute and is only made invisible, which still removes it
+  from the tab order and from screen readers.
+*/
+.panel {
+  display: grid;
+  grid-row: 2;
+  grid-column: 1;
 }
 
-/* a slate band, lighter than the page so the strip reads as one surface */
+.panel[hidden] {
+  display: grid;
+  visibility: hidden;
+}
+
+.panel[hidden] * {
+  animation-play-state: paused;
+}
+
+/* the band runs edge to edge, so the focus ring sits inside it */
+.panel:focus-visible {
+  outline-offset: -3px;
+  border-radius: 0;
+}
+
+/* a full width slate band, lighter than the page so the strip reads as one surface */
 .band {
   position: relative;
+  display: grid;
+  align-content: center;
   padding-block: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
-  border: 1px solid var(--c-band-edge);
-  border-radius: var(--r-xl);
+  border-block: 1px solid var(--c-band-edge);
   background:
     radial-gradient(60% 120% at 50% 0%, color-mix(in srgb, var(--c-mint) 6%, transparent), transparent 70%),
     var(--c-band);

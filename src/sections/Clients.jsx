@@ -6,9 +6,9 @@ import LogoMarquee from './LogoMarquee.jsx'
 import styles from './Clients.module.css'
 
 /*
-  Every client from disrupt-x.io on a slate band, split into MENA and APAC with the
-  same accessible tabs the module explorer uses. The logos are shown in white, so
-  dark and colourful marks are equally clear on the dark page.
+  Every client from disrupt-x.io on a full width slate band, split into MENA and APAC
+  with the same accessible tabs the module explorer uses. The logos are shown in white,
+  so dark and colourful marks are equally clear on the dark page.
 */
 export default function Clients({ clients }) {
   const [region, setRegion] = useState(clients.regions[0].id)
@@ -23,23 +23,23 @@ export default function Clients({ clients }) {
           </h2>
           <p className={styles.lead}>{clients.lead}</p>
         </div>
-
-        <div data-reveal="scale">
-          <Tabs
-            label={clients.tabsLabel}
-            items={clients.regions}
-            active={region}
-            onChange={setRegion}
-            className={styles.tabs}
-            panelClassName={styles.panel}
-            renderPanel={(item) => (
-              <div className={styles.band}>
-                <LogoMarquee items={item.items} />
-              </div>
-            )}
-          />
-        </div>
       </Container>
+
+      <div data-reveal="scale">
+        <Tabs
+          label={clients.tabsLabel}
+          items={clients.regions}
+          active={region}
+          onChange={setRegion}
+          className={styles.tabs}
+          panelClassName={styles.panel}
+          renderPanel={(item) => (
+            <div className={styles.band}>
+              <LogoMarquee items={item.items} />
+            </div>
+          )}
+        />
+      </div>
     </section>
   )
 }

@@ -23,13 +23,16 @@ const towers = [
   { id: 'right', src: '/images/skyline/skyline-right.svg', x: 699, y: 175, w: 281, h: 256 },
 ]
 
-// where each module sits on the skyline, and the building it lights up
+/*
+  Where each module sits, and the building it lights up. Every node is placed in the
+  open sky around the hub, so no icon or label sits on top of a building.
+*/
 const nodes = {
-  cafm: { x: 114, y: 163, tower: 'left', icon: '/images/skyline/node-stack.svg' },
-  ibms: { x: 311, y: 37, tower: 't1', icon: '/images/skyline/node-ibms.svg' },
-  connected: { x: 638, y: 37, tower: 't6', icon: '/images/skyline/node-stack.svg' },
-  mobility: { x: 669, y: 300, tower: 't8', icon: '/images/skyline/node-stack.svg' },
-  hseq: { x: 865, y: 163, tower: 'right', icon: '/images/skyline/node-stack.svg' },
+  cafm: { x: 90, y: 162, tower: 'left', icon: '/images/skyline/node-stack.svg' },
+  ibms: { x: 277, y: 42, tower: 't1', icon: '/images/skyline/node-ibms.svg' },
+  mobility: { x: 473, y: 28, tower: 't8', icon: '/images/skyline/node-stack.svg' },
+  connected: { x: 687, y: 37, tower: 't6', icon: '/images/skyline/node-stack.svg' },
+  hseq: { x: 871, y: 141, tower: 'right', icon: '/images/skyline/node-stack.svg' },
 }
 
 const pct = (value, of) => `${(value / of) * 100}%`
